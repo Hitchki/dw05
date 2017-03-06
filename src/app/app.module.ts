@@ -4,8 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { CoreModule } from './core/core/core.module';
+import { AngularFireModule } from 'angularfire2';
 import { AppRoutingModule } from './app-routing.module';
+import { CoreModule } from './core/core/core.module';
+import { firebaseConfig } from '../environments/firebase.config';
+import { PlaygroundModule } from './playground/playground.module';
 
 @NgModule({
   declarations: [
@@ -16,8 +19,10 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     HttpModule,
 
+    AppRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig),
     CoreModule,
-    AppRoutingModule
+    PlaygroundModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
