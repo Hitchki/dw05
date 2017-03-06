@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase, AngularFire } from 'angularfire2';
 
 @Component({
   selector: 'cpf-angular-fire',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AngularFireComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private db: AngularFireDatabase,
+    private af: AngularFire,
+  ) { }
 
   ngOnInit() {
+  }
+
+  listbinding() {
+    alert('Listbinding clicked');
   }
 
 }
