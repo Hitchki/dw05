@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PlaygroundComponent } from './playground.component';
+import { AngularFireComponent } from './angular-fire/angular-fire.component';
 
 
 const playgroundRoutes: Routes =
@@ -11,11 +12,11 @@ const playgroundRoutes: Routes =
     component: PlaygroundComponent,
     children:
     [
-/*      {
-        path: 'play1',
-        component: Play1Component
-      },
       {
+        path: 'angular-fire',
+        component: AngularFireComponent
+      },
+      /*      {
         path: 'play2',
         component: Play2Component
       },
