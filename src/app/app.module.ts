@@ -8,7 +8,6 @@ import { AngularFireModule } from 'angularfire2';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core/core.module';
 import { firebaseConfig } from '../environments/firebase.config';
-import { PlaygroundModule } from './playground/playground.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,6 @@ import { PlaygroundModule } from './playground/playground.module';
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     CoreModule,
-    PlaygroundModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
