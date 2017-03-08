@@ -1,11 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { FirebaseService } from './firebase.service';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: []
+  declarations: [],
+  providers: [
+    FirebaseService
+  ]
 })
 export class CoreModule {
 

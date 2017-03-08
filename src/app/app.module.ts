@@ -6,9 +6,10 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { AppRoutingModule } from './app-routing.module';
-import { CoreModule } from './core/core/core.module';
+import { CoreModule } from './core/core.module';
 import { firebaseConfig } from '../environments/firebase.config';
-import {PlaygroundModule} from './playground/playground.module';
+import { PlaygroundModule } from './playground/playground.module';
+import { CpfModule } from './cpf/cpf.module';
 
 @NgModule({
   declarations: [
@@ -22,8 +23,8 @@ import {PlaygroundModule} from './playground/playground.module';
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     CoreModule,
-
-    PlaygroundModule
+    CpfModule,
+    PlaygroundModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
