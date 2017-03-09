@@ -1,9 +1,9 @@
-import {CompVM} from '../content/content.interfaces'
+import { ContentVM } from '../cpf/content/content.interfaces';
 
 export interface ComponentStates {
   userId: number;
-  navCompVM: CompVM;
-  mainCompVM: CompVM;
+  navCompVM: ContentVM;
+  mainCompVM: ContentVM;
 }
 
 export interface UiState {

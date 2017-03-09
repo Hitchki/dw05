@@ -1,23 +1,9 @@
-
-
-// import {Participant} from "../../../shared/model/participant";
-// import {Thread} from "../../../shared/model/thread";
-// import {Message} from "../../../shared/model/message";
-
 export interface StoreData {
 
-  projects: any;
-    // participants: {[key:number]: Participant};
-    // threads: {[key:number]: Thread};
-    // messages: {[key:number]:Message};
-
+  content: any;
 }
 
 export const INITIAL_STORE_DATA: StoreData = {
 
-  projects: {}
-  // projects: 'abc'
-  // threads: {},
-    // messages: {},
-    // participants: {}
+  content: {}
 };
