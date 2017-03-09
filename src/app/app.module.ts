@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
+// import { Observable } from 'rxjs/Observable';
 
 import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';

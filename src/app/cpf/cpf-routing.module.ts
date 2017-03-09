@@ -8,6 +8,7 @@ const cpfRoutes: Routes =
   {
     path: 'cpf',
     component: ContentComponent,
+    data: { action: 'cpf' }
   }
 ];
 
