@@ -23,6 +23,17 @@ export class LoadUserContentAction implements  Action {
 }
 
 
+export const TEST_ACTION = 'TEST_ACTION';
+
+export class TestAction implements  Action {
+
+  readonly type = TEST_ACTION;
+
+  constructor(public payload?: any) {
+
+  }
+}
+
 
 //
 // export interface SendNewMessageActionPayload {

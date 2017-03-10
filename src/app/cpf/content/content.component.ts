@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContentService } from './content.service';
+import { ApplicationState } from '../../store/application-state';
+import { Store } from '@ngrx/store';
+import { TestAction } from '../../store/actions';
 
 @Component({
   selector: 'cpf-content',
@@ -12,18 +15,22 @@ export class ContentComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private contentService: ContentService
+              private contentService: ContentService,
+              private store: Store<ApplicationState>
   ) { }
 
   ngOnInit() {
     const content$ = this.contentService.getUserContent('test2');
 
+    this.store.subscribe(store => console.log('store!!!: ', store));
+
     console.log('content$: ', content$);
     content$.subscribe(
       userDb => {
         // this.userDb = userDb;
-        const projects = userDb.projects;
-        console.log('projects: ', projects);
+        const content = userDb.projects;
+        this.store.dispatch( new TestAction(content));
+        console.log('xxxxprojects: ', content);
       }
     );
 

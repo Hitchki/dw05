@@ -17,7 +17,25 @@ import { CpfModule } from './cpf/cpf.module';
 import { EffectsModule } from '@ngrx/effects';
 import { LoadContentEffectService } from './store/effects/load-content-effect.service';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, Action } from '@ngrx/store';
+import { INITIAL_APPLICATION_STATE, ApplicationState } from './store/application-state';
+import { TEST_ACTION } from './store/actions';
+
+export function storeReducer(state: ApplicationState, action: Action): ApplicationState {
+
+  switch (action.type) {
+    case TEST_ACTION:
+      return handleTestAction(state, action);
+
+    default: return state;
+  }
+}
+
+function handleTestAction(state: ApplicationState, action: Action): ApplicationState {
+  const newState: ApplicationState = Object.assign({}, state);
+  newState.storeData = { content: action.payload };
+  return newState;
+}
 
 @NgModule({
   declarations: [
@@ -33,6 +51,8 @@ import { StoreModule } from '@ngrx/store';
     CoreModule,
     CpfModule,
     PlaygroundModule,
+
+    StoreModule.provideStore(storeReducer, INITIAL_APPLICATION_STATE),
 
     // ES6 abbreviated syntax
     // StoreModule.provideStore(rootReducer, INITIAL_APPLICATION_STATE),
