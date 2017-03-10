@@ -23,6 +23,17 @@ export class LoadUserContentAction implements  Action {
 }
 
 
+export const PATH_STRING_CHANGED_ACTION = 'PATH_STRING_CHANGED_ACTION';
+
+export class PathStringChangedAction implements  Action {
+
+  readonly type = PATH_STRING_CHANGED_ACTION;
+
+  constructor(public payload?: any) {
+
+  }
+}
+
 export const TEST_ACTION = 'TEST_ACTION';
 
 export class TestAction implements  Action {

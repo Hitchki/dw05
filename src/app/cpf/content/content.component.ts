@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ContentService } from './content.service';
 import { ApplicationState } from '../../store/application-state';
 import { Store } from '@ngrx/store';
-import { TestAction } from '../../store/actions';
+import { TestAction, UserContentLoadedAction, PathStringChangedAction } from '../../store/actions';
 
 @Component({
   selector: 'cpf-content',
@@ -36,6 +36,7 @@ export class ContentComponent implements OnInit {
         this.store.dispatch( new TestAction(content));
 
         const pathNodes  = this.contentService.getPathNodes(this.pathNodesString, content);
+        this.store.dispatch( new UserContentLoadedAction(pathNodes));
 
         // $pathNodes.su
         console.log('CONTENT: ', content);
@@ -66,8 +67,11 @@ export class ContentComponent implements OnInit {
 
           const userId = this.getUserId(fragment);
           this.pathNodesString = this.replaceActionFromFragment(fragment);
+
+          this.store.dispatch( new PathStringChangedAction(this.pathNodesString));
+
           console.log('userId: ', userId);
-          console.log('pathNodesString: ', this.pathNodesString);
+          console.log('xxxxxxxxxxxxxxxxxxxxxxpathNodesString: ', this.pathNodesString);
           // if (userId !== this.userId) {
           //   this.userId = userId;
           //   this.loadProject();

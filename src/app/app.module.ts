@@ -19,13 +19,16 @@ import { LoadContentEffectService } from './store/effects/load-content-effect.se
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule, Action } from '@ngrx/store';
 import { INITIAL_APPLICATION_STATE, ApplicationState } from './store/application-state';
-import { TEST_ACTION } from './store/actions';
+import { TEST_ACTION, PATH_STRING_CHANGED_ACTION } from './store/actions';
 
 export function storeReducer(state: ApplicationState, action: Action): ApplicationState {
 
   switch (action.type) {
     case TEST_ACTION:
       return handleTestAction(state, action);
+
+    case PATH_STRING_CHANGED_ACTION:
+      return handlePathStringChangedAction(state, action);
 
     default: return state;
   }
@@ -34,6 +37,22 @@ export function storeReducer(state: ApplicationState, action: Action): Applicati
 function handleTestAction(state: ApplicationState, action: Action): ApplicationState {
   const newState: ApplicationState = Object.assign({}, state);
   newState.storeData = { content: action.payload };
+  return newState;
+}
+
+function handlePathStringChangedAction1(state: ApplicationState, action: Action): ApplicationState {
+  const newState: ApplicationState = Object.assign({}, state);
+  newState.uiState.pathNodesString = action.payload;
+  return newState;
+}
+
+function handlePathStringChangedAction(state: ApplicationState, action: Action): ApplicationState {
+  const newState: ApplicationState = Object.assign({}, state);
+
+  const newUiState = Object.assign({}, state.uiState);
+  newUiState.pathNodesString = action.payload;
+
+  newState.uiState = newUiState;
   return newState;
 }
 

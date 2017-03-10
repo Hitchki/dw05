@@ -1,4 +1,4 @@
-import { ContentVM } from '../cpf/content/content.interfaces';
+import { ContentVM, PathNodes } from '../cpf/content/content.interfaces';
 
 export interface ComponentStates {
   userId: number;
@@ -7,12 +7,14 @@ export interface ComponentStates {
 }
 
 export interface UiState {
-    userId: number;
-    pathData: string;
+  userId: string;
+  pathNodesString: string;
+  pathNodes: PathNodes;
 }
 
 
 export const INITIAL_UI_STATE: UiState = {
   userId: undefined,
-  pathData: undefined
+  pathNodesString: undefined,
+  pathNodes: undefined,
 };
