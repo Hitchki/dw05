@@ -1,7 +1,7 @@
 export interface PathNode {
-  fragment?: string;
+  pathNodesString?: string;
   type: string;  // is the same as the partialFragment
-  dwNodes: any[];
+  cpfNodes: any[];
   selectedIndex: number;
 }
 

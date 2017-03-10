@@ -13,6 +13,8 @@ import { TestAction } from '../../store/actions';
 })
 export class ContentComponent implements OnInit {
 
+  private pathNodesString: string;
+
   constructor(private route: ActivatedRoute,
               private router: Router,
               private contentService: ContentService,
@@ -30,6 +32,8 @@ export class ContentComponent implements OnInit {
         // this.userDb = userDb;
         const content = userDb.projects;
         this.store.dispatch( new TestAction(content));
+
+        // this.contentService.getPathNodes(this.pathNodesString, content);
         console.log('xxxxprojects: ', content);
       }
     );
@@ -56,10 +60,9 @@ export class ContentComponent implements OnInit {
         fragment => {
 
           const userId = this.getUserId(fragment);
-          const pathString = this.replaceActionFromFragment(fragment);
-
+          this.pathNodesString = this.replaceActionFromFragment(fragment);
           console.log('userId: ', userId);
-          console.log('pathString: ', pathString);
+          console.log('pathNodesString: ', this.pathNodesString);
           // if (userId !== this.userId) {
           //   this.userId = userId;
           //   this.loadProject();
@@ -71,12 +74,12 @@ export class ContentComponent implements OnInit {
       );
   }
 
-  getUserId(fragment: String): String {
+  getUserId(fragment: string): string {
     // this.userId = fragment.match(/^(.+?)\//g)[0];
     return fragment ? fragment.slice(0, fragment.indexOf('/')) : '';
   }
 
-  replaceActionFromFragment(fragment: String): String {
+  replaceActionFromFragment(fragment: string): string {
     return fragment ? fragment.replace(/^.+?\//, '') : '';
   }
 }
