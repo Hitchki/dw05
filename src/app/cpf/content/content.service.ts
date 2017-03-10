@@ -53,14 +53,19 @@ export class ContentService {
 
     let localCpfNodes = cpfNodes;
     const pathNodes: PathNodes = [];
+    let selectedNode;
+
     pathTypesArray.map(
-      (type, index) => {
-        const selectedNodeIndex = pathIndexArray[index];
-        const selectedNode = cpfNodes[selectedNodeIndex];
+      (type, arraysIndex) => {
+        localCpfNodes = localCpfNodes[type];
+
+        const selectedNodeIndex = pathIndexArray[arraysIndex];
+
+        selectedNode = localCpfNodes[selectedNodeIndex];
         const newPathNode: PathNode = this.getSinglePathNode(localCpfNodes, type, selectedNodeIndex);
         pathNodes.push(newPathNode);
 
-        localCpfNodes = localCpfNodes[type];
+        localCpfNodes = selectedNode;
       }
     );
     return pathNodes;
@@ -76,13 +81,10 @@ export class ContentService {
 
     const normalizedPathNodesString = this.getNormalizedPathNodesString(pathNodesString);
     const pathNodesStringsArray = this.getPathNodesStringsArray(normalizedPathNodesString);
-
     const pathNodesStringsHelpers = this.getNodesArrays(pathNodesStringsArray);
     const pathNodes = this.getPathNodesFRA(cpfNodes, pathNodesStringsHelpers.pathTypesArray, pathNodesStringsHelpers.pathIndexArray);
 
     this.buildPathNodesStringsForPathNodes(pathNodes);
-    // console.log('this.pathNodesSubject.next', pathNodes1);
-    // debugger;
     this.pathNodesSubject.next(pathNodes);
     return pathNodes;
   }

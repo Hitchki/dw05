@@ -30,11 +30,16 @@ export class ContentComponent implements OnInit {
     content$.subscribe(
       userDb => {
         // this.userDb = userDb;
-        const content = userDb.projects;
+        // const content = userDb.projects;
+
+        const content = userDb;
         this.store.dispatch( new TestAction(content));
 
-        // this.contentService.getPathNodes(this.pathNodesString, content);
-        console.log('xxxxprojects: ', content);
+        const pathNodes  = this.contentService.getPathNodes(this.pathNodesString, content);
+
+        // $pathNodes.su
+        console.log('CONTENT: ', content);
+        console.log('!!!!pathNodes!!!!: ', pathNodes);
       }
     );
 
