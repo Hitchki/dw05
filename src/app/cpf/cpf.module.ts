@@ -13,6 +13,6 @@ import { NavMoreeComponent } from './content/nav-moree/nav-moree.component';
     CommonModule,
     CpfRoutingModule
   ],
-  declarations: [ContentComponent, NavComponent, MainComponent, NavMoreComponent, NavMoreeComponent]
+  declarations: [ContentComponent, NavComponent, MainComponent, NavMoreComponent]
 })
 export class CpfModule { }
