@@ -79,16 +79,35 @@ export class ContentComponent implements OnInit {
 
   getNavState(pathNodes: PathNodes, cpfAction?: string, isEditMode?: boolean): ContentVM {
     return {
-      // pathData:
-    } as ContentVM;
+      pathData: {
+        pathNodes: pathNodes,
+        selectedPathNodeIndex: 0,
+        selectedPathNode: pathNodes[0]
+      }
+    };
   }
 
   getNavMoreState(pathNodes: PathNodes, cpfAction?: string, isEditMode?: boolean): ContentVM {
-    return {} as ContentVM;
+    // Momentan sind navMoreState und mainState gleich.
+    return this.getMainState(pathNodes, cpfAction, isEditMode);
   }
 
   getMainState(pathNodes: PathNodes, cpfAction?: string, isEditMode?: boolean): ContentVM {
-    return {} as ContentVM;
+    let mainState;
+
+    if (pathNodes.length > 2) {
+      mainState = {
+        pathData: {
+          pathNodes: pathNodes,
+          selectedPathNodeIndex: pathNodes.length - 1,
+          selectedPathNode: pathNodes[pathNodes.length - 1]
+        }
+      };
+    }  else {
+      mainState = undefined;
+    };
+
+    return mainState;
   }
 
   getAllData () {
