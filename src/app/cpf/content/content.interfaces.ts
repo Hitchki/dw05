@@ -18,3 +18,10 @@ export interface ContentVM {
   action?: string;
   isEditMode?: boolean;
 }
+
+export interface ContentStates {
+  navContent: ContentVM;
+  navMoreContent: ContentVM;
+  mainContent: ContentVM;
+}
+
