@@ -19,7 +19,8 @@ import { LoadContentEffectService } from './store/effects/load-content-effect.se
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule, Action } from '@ngrx/store';
 import { INITIAL_APPLICATION_STATE, ApplicationState } from './store/application-state';
-import { TEST_ACTION, PATH_STRING_CHANGED_ACTION } from './store/actions';
+import { TEST_ACTION, PATH_STRING_CHANGED_ACTION, CONTENT_STATE_CHANGED_ACTION } from './store/actions';
+import { ContentStates } from './cpf/content/content.interfaces'
 
 export function storeReducer(state: ApplicationState, action: Action): ApplicationState {
 
@@ -29,6 +30,9 @@ export function storeReducer(state: ApplicationState, action: Action): Applicati
 
     case PATH_STRING_CHANGED_ACTION:
       return handlePathStringChangedAction(state, action);
+
+    case CONTENT_STATE_CHANGED_ACTION:
+      return handleContenStateChangedAction(state, action);
 
     default: return state;
   }
@@ -40,12 +44,6 @@ function handleTestAction(state: ApplicationState, action: Action): ApplicationS
   return newState;
 }
 
-function handlePathStringChangedAction1(state: ApplicationState, action: Action): ApplicationState {
-  const newState: ApplicationState = Object.assign({}, state);
-  newState.uiState.pathNodesString = action.payload;
-  return newState;
-}
-
 function handlePathStringChangedAction(state: ApplicationState, action: Action): ApplicationState {
   const newState: ApplicationState = Object.assign({}, state);
 
@@ -53,6 +51,16 @@ function handlePathStringChangedAction(state: ApplicationState, action: Action):
   newUiState.pathNodesString = action.payload;
 
   newState.uiState = newUiState;
+  return newState;
+}
+
+function handleContenStateChangedAction(state: ApplicationState, action: Action): ApplicationState {
+  const newState: ApplicationState = Object.assign({}, state);
+
+  // irgendwie schräg...
+  const uiState = Object.assign({}, newState.uiState);
+  uiState.contentStates = action.payload;
+  newState.uiState = uiState;
   return newState;
 }
 

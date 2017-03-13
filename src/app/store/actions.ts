@@ -1,8 +1,10 @@
 import { Action } from '@ngrx/store';
+import { ContentStates } from '../cpf/content/content.interfaces'
 
 export const LOAD_USER_CONTENT_ACTION = 'LOAD_USER_CONTENT_ACTION';
 export const USER_CONTENT_LOADED_ACTION = 'USER_CONTENT_LOADED_ACTION';
-
+export const PATH_STRING_CHANGED_ACTION = 'PATH_STRING_CHANGED_ACTION';
+export const CONTENT_STATE_CHANGED_ACTION = 'CONTENT_STATE_CHANGED_ACTION';
 
 export class UserContentLoadedAction implements  Action {
 
@@ -23,13 +25,20 @@ export class LoadUserContentAction implements  Action {
 }
 
 
-export const PATH_STRING_CHANGED_ACTION = 'PATH_STRING_CHANGED_ACTION';
-
 export class PathStringChangedAction implements  Action {
 
   readonly type = PATH_STRING_CHANGED_ACTION;
 
   constructor(public payload?: any) {
+
+  }
+}
+
+export class ContentStatesChangedAction implements  Action {
+
+  readonly type = CONTENT_STATE_CHANGED_ACTION;
+
+  constructor(public payload?: ContentStates) {
 
   }
 }

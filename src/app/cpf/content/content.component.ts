@@ -3,7 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ContentService } from './content.service';
 import { ApplicationState } from '../../store/application-state';
 import { Store } from '@ngrx/store';
-import { TestAction, UserContentLoadedAction, PathStringChangedAction } from '../../store/actions';
+import {
+  TestAction, UserContentLoadedAction, PathStringChangedAction,
+  ContentStatesChangedAction
+} from '../../store/actions';
+import { ContentStates, PathData, PathNodes, ContentVM } from './content.interfaces'
 
 @Component({
   selector: 'cpf-content',
@@ -38,13 +42,17 @@ export class ContentComponent implements OnInit {
         const pathNodes  = this.contentService.getPathNodes(this.pathNodesString, content);
         this.store.dispatch( new UserContentLoadedAction(pathNodes));
 
-        // $pathNodes.su
         console.log('CONTENT: ', content);
         console.log('!!!!pathNodes!!!!: ', pathNodes);
+
+        const contentStates: ContentStates = this.getContentStates(pathNodes);
+        this.store.dispatch( new ContentStatesChangedAction(contentStates));
+
+        console.log('!!!!ContentStatesChangedAction!!!! contentStates: ', contentStates);
       }
     );
 
-      // .ofType(LOAD_USER_CONTENT_ACTION);
+    // .ofType(LOAD_USER_CONTENT_ACTION);
     // .debug("action received!!!!!!!")
     // .switchMap(action => this.centralService.pathNodes$)
     // .debug("data received via the HTTP request xxxxxxx")
@@ -57,6 +65,30 @@ export class ContentComponent implements OnInit {
     this.route.data.subscribe(console.log.bind(this, 'data: '));
 
     this.getAllData();
+  }
+
+  getContentStates(pathNodes: PathNodes, cpfAction?: string, isEditMode?: boolean) {
+    const contentStates: ContentStates = {
+      navContent: this.getNavState(pathNodes),
+      navMoreContent: this.getNavMoreState(pathNodes),
+      mainContent: this.getMainState(pathNodes),
+    };
+
+    return contentStates;
+  }
+
+  getNavState(pathNodes: PathNodes, cpfAction?: string, isEditMode?: boolean): ContentVM {
+    return {
+      // pathData:
+    } as ContentVM;
+  }
+
+  getNavMoreState(pathNodes: PathNodes, cpfAction?: string, isEditMode?: boolean): ContentVM {
+    return {} as ContentVM;
+  }
+
+  getMainState(pathNodes: PathNodes, cpfAction?: string, isEditMode?: boolean): ContentVM {
+    return {} as ContentVM;
   }
 
   getAllData () {
