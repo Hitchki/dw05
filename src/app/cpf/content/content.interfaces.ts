@@ -25,3 +25,8 @@ export interface ContentStates {
   mainContent: ContentVM;
 }
 
+// export interface UiChange {
+//   pathString: string;
+// }
+
+export type UiChange = string;

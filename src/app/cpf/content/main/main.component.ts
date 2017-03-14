@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
+import { UiChange } from '../content.interfaces'
 
 @Component({
   selector: 'cpf-main',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
+  @Input() contentData;
+  @Output() uiChange = new EventEmitter<UiChange>();
+
   constructor() { }
 
   ngOnInit() {
+    // alert(this.contentData);
+    this.uiChange.emit('Das ist ein Teststring!');
   }
 
 }

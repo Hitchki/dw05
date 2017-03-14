@@ -7,7 +7,7 @@ import {
   TestAction, UserContentLoadedAction, PathStringChangedAction,
   ContentStatesChangedAction
 } from '../../store/actions';
-import { ContentStates, PathData, PathNodes, ContentVM } from './content.interfaces'
+import { ContentStates, PathData, PathNodes, ContentVM, UiChange } from './content.interfaces'
 
 @Component({
   selector: 'cpf-content',
@@ -18,6 +18,9 @@ import { ContentStates, PathData, PathNodes, ContentVM } from './content.interfa
 export class ContentComponent implements OnInit {
 
   private pathNodesString: string;
+  private mainContentVM: ContentVM;
+  private navContentVM: ContentVM;
+  private navMoreContentVM: ContentVM;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -47,6 +50,10 @@ export class ContentComponent implements OnInit {
 
         const contentStates: ContentStates = this.getContentStates(pathNodes);
         this.store.dispatch( new ContentStatesChangedAction(contentStates));
+
+        this.mainContentVM = contentStates.mainContent;
+        this.navContentVM = contentStates.navContent;
+        this.navMoreContentVM = contentStates.navMoreContent;
 
         console.log('!!!!ContentStatesChangedAction!!!! contentStates: ', contentStates);
       }
@@ -141,5 +148,9 @@ export class ContentComponent implements OnInit {
 
   replaceActionFromFragment(fragment: string): string {
     return fragment ? fragment.replace(/^.+?\//, '') : '';
+  }
+
+  uiChange(uichange: UiChange) {
+    // alert(uichange);
   }
 }
