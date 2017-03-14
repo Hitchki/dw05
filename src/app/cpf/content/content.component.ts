@@ -30,7 +30,7 @@ export class ContentComponent implements OnInit {
 
   ngOnInit() {
     const content$ = this.contentService.getUserContent('test2');
-
+    debugger;
     this.store.subscribe(store => console.log('store!!!: ', store));
 
     console.log('content$: ', content$);
@@ -48,6 +48,7 @@ export class ContentComponent implements OnInit {
         console.log('CONTENT: ', content);
         console.log('!!!!pathNodes!!!!: ', pathNodes);
 
+        debugger;
         const contentStates: ContentStates = this.getContentStates(pathNodes);
         this.store.dispatch( new ContentStatesChangedAction(contentStates));
 
@@ -102,7 +103,8 @@ export class ContentComponent implements OnInit {
   getMainState(pathNodes: PathNodes, cpfAction?: string, isEditMode?: boolean): ContentVM {
     let mainState;
 
-    if (pathNodes.length > 2) {
+    debugger;
+    if (pathNodes.length = 3) {
       mainState = {
         pathData: {
           pathNodes: pathNodes,
@@ -110,6 +112,15 @@ export class ContentComponent implements OnInit {
           selectedPathNode: pathNodes[pathNodes.length - 1]
         }
       };
+    }  else if (pathNodes.length > 3) {
+        mainState = {
+          pathData: {
+            pathNodes: pathNodes,
+            selectedPathNodeIndex: pathNodes.length - 2,
+            selectedPathNode: pathNodes[pathNodes.length - 2]
+          }
+        };
+
     }  else {
       mainState = undefined;
     };
