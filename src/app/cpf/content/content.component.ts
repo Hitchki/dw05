@@ -103,7 +103,6 @@ export class ContentComponent implements OnInit {
   getMainState(pathNodes: PathNodes, cpfAction?: string, isEditMode?: boolean): ContentVM {
     let mainState;
 
-    debugger;
     if (pathNodes.length = 3) {
       mainState = {
         pathData: {

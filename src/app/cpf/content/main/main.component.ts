@@ -15,9 +15,12 @@ export class MainComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    // alert(this.contentData);
+    // this.contentData.subs
+    console.log('contentDataöööööööööööööööööö: ', this.contentData);
     this.uiChange.emit('Das ist ein Teststring!');
-    // this.contentData.mainContent
   }
 
+  onClick($event, index) {
+    alert( index);
+  }
 }
