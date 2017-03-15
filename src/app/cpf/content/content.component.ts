@@ -30,7 +30,6 @@ export class ContentComponent implements OnInit {
 
   ngOnInit() {
     const content$ = this.contentService.getUserContent('test2');
-    debugger;
     this.store.subscribe(store => console.log('store!!!: ', store));
 
     console.log('content$: ', content$);

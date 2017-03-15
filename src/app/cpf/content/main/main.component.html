@@ -2,7 +2,8 @@
   main works!
 </p>
 
-<div *ngFor="let contentItem of contentData?.pathData?.selectedPathNode?.cpfNodes; let i = index;" (click)="onClick($event, i)">
+<div *ngFor="let contentItem of contentData?.pathData?.selectedPathNode?.cpfNodes;
+              let i = index;" (click)="onClick($event, i)">
   {{ contentItem.text }}
  <!--<pre> {{contentItem | json}} </pre>-->
 </div>
