@@ -1,19 +1,57 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
-import { LOAD_USER_CONTENT_ACTION, UserContentLoadedAction } from '../actions';
+import { LOAD_USER_CONTENT_ACTION, UserContentLoadedAction, TEST_EFFECTS_ACTION } from '../actions';
 import { Action } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
-import { CentralService } from '../../core/central.service';
+
+import { Observable } from 'rxjs';
+
+import { ContentService } from '../../cpf/content/content.service';
 
 @Injectable()
 export class LoadContentEffectService {
 
-  @Effect() userProjects$: Observable<Action> = this.actions$
-    .ofType(LOAD_USER_CONTENT_ACTION);
-    // .debug("action received!!!!!!!")
-    // .switchMap(action => this.centralService.pathNodes$)
-    // .debug("data received via the HTTP request xxxxxxx")
-    // .map(pathNodes => new UserContentLoadedAction(pathNodes) );
-  constructor(private actions$: Actions, private centralService: CentralService) { }
+  constructor(private actions$: Actions) { }
 
+  /* tslint:disable:member-ordering */
+  @Effect() userContent$: Observable<Action> = this.actions$
+    .ofType(TEST_EFFECTS_ACTION)
+  // debugger;
+    .debug('action received!!!!!!!')
+    // .switchMap(action => this.contentService.getPathNodes('test2') )
+  //   .debug('data received via the HTTP request xxxxxxx')
+    .map(() => new UserContentLoadedAction() );
+  //
 }
+
+
+// import { Injectable } from '@angular/core';
+// import {ThreadsService} from "../../services/threads.service";
+// import {Actions, Effect} from "@ngrx/effects";
+// import {LOAD_USER_THREADS_ACTION, UserThreadsLoadedAction, SELECT_USER_ACTION, LoadUserThreadsAction} from "../actions";
+// import {Observable} from "rxjs";
+// import {Action} from "@ngrx/store";
+
+
+
+
+// @Injectable()
+// export class LoadThreadsEffectService {
+//
+//   constructor(private actions$: Actions, private threadsService: ThreadsService) {
+//
+//   }
+//
+//   @Effect() userThreads$: Observable<Action> = this.actions$
+//     .ofType(LOAD_USER_THREADS_ACTION)
+//     .debug("action received")
+//     .switchMap(action => this.threadsService.loadUserThreads(action.payload))
+//     .debug("data received via the HTTP request")
+//     .map(allUserData => new UserThreadsLoadedAction(allUserData) );
+//
+//
+//   @Effect() newUserSelected$ : Observable<Action> = this.actions$
+//     .ofType(SELECT_USER_ACTION)
+//     .debug("New user selected")
+//     .map(action =>  new LoadUserThreadsAction(action.payload));
+//
+// }

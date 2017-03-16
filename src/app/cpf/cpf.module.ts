@@ -6,12 +6,14 @@ import { CpfRoutingModule } from './cpf-routing.module';
 import { NavComponent } from './content/nav/nav.component';
 import { MainComponent } from './content/main/main.component';
 import { NavMoreComponent } from './content/nav-more/nav-more.component';
+import { ContentService } from './content/content.service';
 
 @NgModule({
   imports: [
     CommonModule,
     CpfRoutingModule
   ],
-  declarations: [ContentComponent, NavComponent, MainComponent, NavMoreComponent]
+  declarations: [ContentComponent, NavComponent, MainComponent, NavMoreComponent],
+  providers: [ContentService]
 })
 export class CpfModule { }

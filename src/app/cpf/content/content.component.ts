@@ -5,15 +5,14 @@ import { ApplicationState } from '../../store/application-state';
 import { Store } from '@ngrx/store';
 import {
   TestAction, UserContentLoadedAction, PathStringChangedAction,
-  ContentStatesChangedAction
+  ContentStatesChangedAction, LoadUserContentAction, TestEffectsAction
 } from '../../store/actions';
 import { ContentStates, PathData, PathNodes, ContentVM, UiChange } from './content.interfaces'
 
 @Component({
   selector: 'cpf-content',
   templateUrl: './content.component.html',
-  styleUrls: ['./content.component.css'],
-  providers: [ContentService]
+  styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit {
 
@@ -29,10 +28,14 @@ export class ContentComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const content$ = this.contentService.getUserContent('test2');
-    this.store.subscribe(store => console.log('store!!!: ', store));
 
-    console.log('content$: ', content$);
+    debugger;
+    this.store.dispatch( new TestEffectsAction('test2'));
+
+    const content$ = this.contentService.getUserContent('test2');
+    // this.store.subscribe(store => console.log('store!!!: ', store));
+    // this.store.dispatch( new LoadUserContentAction());
+    // console.log('content$: ', content$);
     content$.subscribe(
       userDb => {
         // this.userDb = userDb;
@@ -43,9 +46,9 @@ export class ContentComponent implements OnInit {
 
         const pathNodes  = this.contentService.getPathNodes(this.pathNodesString, content);
         this.store.dispatch( new UserContentLoadedAction(pathNodes));
-        
-        console.log('CONTENT: ', content);
-        console.log('!!!!pathNodes!!!!: ', pathNodes);
+
+        // console.log('CONTENT: ', content);
+        // console.log('!!!!pathNodes!!!!: ', pathNodes);
 
         const contentStates: ContentStates = this.getContentStates(pathNodes);
         this.store.dispatch( new ContentStatesChangedAction(contentStates));
@@ -54,7 +57,7 @@ export class ContentComponent implements OnInit {
         this.navContentVM = contentStates.navContent;
         this.navMoreContentVM = contentStates.navMoreContent;
 
-        console.log('!!!!ContentStatesChangedAction!!!! contentStates: ', contentStates);
+        // console.log('!!!!ContentStatesChangedAction!!!! contentStates: ', contentStates);
       }
     );
 
