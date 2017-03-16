@@ -17,6 +17,8 @@ function handleLoadUserContentAction(
   state: StoreData,
   action: UserContentLoadedAction): StoreData {
 
+  debugger;
+
   const contentData = action.payload;
   return {content: contentData};
 }

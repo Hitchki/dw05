@@ -21,7 +21,7 @@ const playgroundRoutes: Routes =
         path: 'angular-fire-list',
         component: AngularFireListComponent
       }, {
-        path: 'angular-fire-objectt',
+        path: 'angular-fire-object',
         component: AngularFireObjectComponent
       },
       /*      {

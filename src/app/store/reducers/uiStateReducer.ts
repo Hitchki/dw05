@@ -17,10 +17,12 @@ function handleLoadUserContentAction(
   state: UiState,
   action: UserContentLoadedAction): UiState {
 
+  debugger;
+
   const projectData = action.payload;
   const newUiState = Object.assign({}, state);
 
-  newUiState.userId = '17';
+  newUiState.userId = '42';
 
   return newUiState;
   // return { content: projectData };

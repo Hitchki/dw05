@@ -43,11 +43,10 @@ export class ContentComponent implements OnInit {
 
         const pathNodes  = this.contentService.getPathNodes(this.pathNodesString, content);
         this.store.dispatch( new UserContentLoadedAction(pathNodes));
-
+        
         console.log('CONTENT: ', content);
         console.log('!!!!pathNodes!!!!: ', pathNodes);
 
-        debugger;
         const contentStates: ContentStates = this.getContentStates(pathNodes);
         this.store.dispatch( new ContentStatesChangedAction(contentStates));
 
