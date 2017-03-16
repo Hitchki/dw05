@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
-import { LOAD_USER_CONTENT_ACTION, UserContentLoadedAction, TEST_EFFECTS_ACTION } from '../actions';
+import { LOAD_USER_CONTENT_ACTION, UserContentLoadedAction, TEST_EFFECTS_ACTION, TestEffectsAction } from '../actions';
 import { Action } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
@@ -19,7 +19,7 @@ export class LoadContentEffectService {
     .debug('action received!!!!!!!')
     // .switchMap(action => this.contentService.getPathNodes('test2') )
   //   .debug('data received via the HTTP request xxxxxxx')
-    .map(() => new UserContentLoadedAction() );
+    .map(() => new TestEffectsAction() );
   //
 }
 

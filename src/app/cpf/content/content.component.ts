@@ -29,8 +29,7 @@ export class ContentComponent implements OnInit {
 
   ngOnInit() {
 
-    debugger;
-    this.store.dispatch( new TestEffectsAction('test2'));
+    this.store.dispatch( new LoadUserContentAction('test2'));
 
     const content$ = this.contentService.getUserContent('test2');
     // this.store.subscribe(store => console.log('store!!!: ', store));
