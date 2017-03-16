@@ -3,4 +3,15 @@
 </p>
 
 
-<button (click)="listbinding()">Angular Fire Listbinding</button>
+<button (click)="listbinding()">Angular Fire List binding</button>
+
+<button (click)="objectbinding()">Angular Fire Object </button>
+
+<div>
+  afObj$: {{ afObj$ | async | json }}
+</div>
+
+<div>
+  afList$: {{ afList$ | async | json }}
+</div>
+
