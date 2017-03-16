@@ -10,15 +10,20 @@ import { ContentService } from '../../cpf/content/content.service';
 @Injectable()
 export class LoadContentEffectService {
 
-  constructor(private actions$: Actions) { }
+  constructor(private actions$: Actions, private contentService: ContentService) { }
+
+  // ngOnInit() {
+  //   this.contentService.getUserContent('test2');
+  // }
 
   /* tslint:disable:member-ordering */
   @Effect() userContent$: Observable<Action> = this.actions$
     .ofType(TEST_EFFECTS_ACTION)
   // debugger;
     .debug('action received!!!!!!!')
+    .switchMap(action => this.contentService.getUserContent('test2') )
     // .switchMap(action => this.contentService.getPathNodes('test2') )
-  //   .debug('data received via the HTTP request xxxxxxx')
+    .debug('data received via the HTTP request xxxxxxx')
     .map(() => new TestEffectsAction() );
   //
 }
