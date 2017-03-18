@@ -19,50 +19,50 @@ import { LoadContentEffectService } from './store/effects/load-content-effect.se
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule, Action } from '@ngrx/store';
 import { INITIAL_APPLICATION_STATE, ApplicationState } from './store/application-state';
-import { TEST_ACTION, PATH_STRING_CHANGED_ACTION, CONTENT_STATE_CHANGED_ACTION } from './store/actions';
+// import { TEST_ACTION, PATH_STRING_CHANGED_ACTION, CONTENT_STATE_CHANGED_ACTION } from './store/actions';
 import { ContentStates } from './cpf/content/content.interfaces';
 
-export function storeReducer(state: ApplicationState, action: Action): ApplicationState {
-
-  switch (action.type) {
-    case TEST_ACTION:
-      return handleTestAction(state, action);
-
-    case PATH_STRING_CHANGED_ACTION:
-      return handlePathStringChangedAction(state, action);
-
-    case CONTENT_STATE_CHANGED_ACTION:
-      return handleContenStateChangedAction(state, action);
-
-    default: return state;
-  }
-}
-
-function handleTestAction(state: ApplicationState, action: Action): ApplicationState {
-  const newState: ApplicationState = Object.assign({}, state);
-  newState.storeData = { content: action.payload };
-  return newState;
-}
-
-function handlePathStringChangedAction(state: ApplicationState, action: Action): ApplicationState {
-  const newState: ApplicationState = Object.assign({}, state);
-
-  const newUiState = Object.assign({}, state.uiState);
-  newUiState.pathNodesString = action.payload;
-
-  newState.uiState = newUiState;
-  return newState;
-}
-
-function handleContenStateChangedAction(state: ApplicationState, action: Action): ApplicationState {
-  const newState: ApplicationState = Object.assign({}, state);
-
-  // irgendwie schräg...
-  const uiState = Object.assign({}, newState.uiState);
-  uiState.contentStates = action.payload;
-  newState.uiState = uiState;
-  return newState;
-}
+// export function storeReducer(state: ApplicationState, action: Action): ApplicationState {
+//
+//   switch (action.type) {
+//     case TEST_ACTION:
+//       return handleTestAction(state, action);
+//
+//     case PATH_STRING_CHANGED_ACTION:
+//       return handlePathStringChangedAction(state, action);
+//
+//     case CONTENT_STATE_CHANGED_ACTION:
+//       return handleContenStateChangedAction(state, action);
+//
+//     default: return state;
+//   }
+// }
+//
+// function handleTestAction(state: ApplicationState, action: Action): ApplicationState {
+//   const newState: ApplicationState = Object.assign({}, state);
+//   newState.storeData = { content: action.payload };
+//   return newState;
+// }
+//
+// function handlePathStringChangedAction(state: ApplicationState, action: Action): ApplicationState {
+//   const newState: ApplicationState = Object.assign({}, state);
+//
+//   const newUiState = Object.assign({}, state.uiState);
+//   newUiState.pathNodesString = action.payload;
+//
+//   newState.uiState = newUiState;
+//   return newState;
+// }
+//
+// function handleContenStateChangedAction(state: ApplicationState, action: Action): ApplicationState {
+//   const newState: ApplicationState = Object.assign({}, state);
+//
+//   // irgendwie schräg...
+//   const uiState = Object.assign({}, newState.uiState);
+//   uiState.contentStates = action.payload;
+//   newState.uiState = uiState;
+//   return newState;
+// }
 
 @NgModule({
   declarations: [
@@ -79,14 +79,14 @@ function handleContenStateChangedAction(state: ApplicationState, action: Action)
     CpfModule,
     PlaygroundModule,
 
-    StoreModule.provideStore(storeReducer, INITIAL_APPLICATION_STATE),
+    // StoreModule.provideStore(storeReducer, INITIAL_APPLICATION_STATE),
 
     // ES6 abbreviated syntax
     // StoreModule.provideStore(rootReducer, INITIAL_APPLICATION_STATE),
     // StoreModule.provideStore(combineReducers({uiState, storeData}), INITIAL_APPLICATION_STATE),
 
-    EffectsModule.run(LoadContentEffectService),
-    StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    // EffectsModule.run(LoadContentEffectService),
+    // StoreDevtoolsModule.instrumentOnlyWithExtension(),
   ],
   providers: [],
   bootstrap: [AppComponent]

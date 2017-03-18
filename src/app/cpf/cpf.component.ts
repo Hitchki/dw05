@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { ApplicationState } from '../store/application-state';
+// import { Store } from '@ngrx/store';
+// import { ApplicationState } from '../store/application-state';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,8 +11,11 @@ import { Observable } from 'rxjs';
 })
 export class CpfComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,
-              private store: Store<ApplicationState>
+  // constructor(private route: ActivatedRoute,
+  //             private store: Store<ApplicationState>
+  // ) { }
+
+  constructor(private route: ActivatedRoute
   ) { }
 
   ngOnInit() {

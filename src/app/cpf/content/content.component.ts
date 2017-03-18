@@ -3,10 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ContentService } from './content.service';
 import { ApplicationState } from '../../store/application-state';
 import { Store } from '@ngrx/store';
-import {
-  TestAction, UserContentLoadedAction, PathStringChangedAction,
-  ContentStatesChangedAction, LoadUserContentAction, TestEffectsAction
-} from '../../store/actions';
+// import {
+//   TestAction, UserContentLoadedAction, PathStringChangedAction,
+//   ContentStatesChangedAction, LoadUserContentAction, TestEffectsAction
+// } from '../../store/actions';
 import { ContentStates, PathData, PathNodes, ContentVM, UiChange } from './content.interfaces'
 
 @Component({
@@ -29,7 +29,7 @@ export class ContentComponent implements OnInit {
 
   ngOnInit() {
 
-    this.store.dispatch( new LoadUserContentAction('test2'));
+/*    this.store.dispatch( new LoadUserContentAction('test2'));
 
     const content$ = this.contentService.getUserContent('test2');
     // this.store.subscribe(store => console.log('store!!!: ', store));
@@ -72,10 +72,10 @@ export class ContentComponent implements OnInit {
     // this.route.fragment.subscribe(console.log);
     this.route.data.subscribe(console.log.bind(this, 'data: '));
 
-    this.getAllData();
+    this.getAllData();*/
   }
 
-  getContentStates(pathNodes: PathNodes, cpfAction?: string, isEditMode?: boolean) {
+/*  getContentStates(pathNodes: PathNodes, cpfAction?: string, isEditMode?: boolean) {
     const contentStates: ContentStates = {
       navContent: this.getNavState(pathNodes),
       navMoreContent: this.getNavMoreState(pathNodes),
@@ -162,5 +162,5 @@ export class ContentComponent implements OnInit {
 
   uiChange(uichange: UiChange) {
     // alert(uichange);
-  }
+  }*/
 }

@@ -30,3 +30,16 @@ export interface ContentStates {
 // }
 
 export type UiChange = string;
+
+export interface UiChangeEvent {
+  urlPath: string;
+  firePath: string;
+}
+
+export interface ContentData {
+  cpfNodes: any[];
+  selectedIndex: number;
+  type: string;
+  urlPath: string;
+  firePath: string;
+}
