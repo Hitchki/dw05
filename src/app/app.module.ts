@@ -88,8 +88,8 @@ import { storeFreeze } from 'ngrx-store-freeze'
     // StoreModule.provideStore(storeReducer, INITIAL_APPLICATION_STATE),
 
     // ES6 abbreviated syntax
-    // StoreModule.provideStore(rootReducer, INITIAL_APPLICATION_STATE),
-    StoreModule.provideStore(combineReducers({uiState, storeData}), INITIAL_APPLICATION_STATE),
+    StoreModule.provideStore(rootReducer, INITIAL_APPLICATION_STATE),
+    // StoreModule.provideStore(combineReducers({uiState, storeData}), INITIAL_APPLICATION_STATE),
 
     // StoreModule.provideStore(compose(storeFreeze, combineReducers)({uiState, storeData}), INITIAL_APPLICATION_STATE),
     // StoreModule.provideStore(compose(storeFreeze, combineReducers)({uiState,storeData, router: routerReducer}), INITIAL_APPLICATION_STATE),
