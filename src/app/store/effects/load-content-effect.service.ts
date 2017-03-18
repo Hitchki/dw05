@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import {
-  LOAD_USER_CONTENT_ACTION, LoadUserContentAction, UserChangedAction, TestAction
+  LOAD_USER_CONTENT_ACTION, LoadUserContentAction, UserChangedAction, TestAction, UserContentLoadedAction
 } from '../actions';
 import { Action } from '@ngrx/store';
 
@@ -16,13 +16,15 @@ export class LoadContentEffectService {
 
   /* tslint:disable:member-ordering */
   @Effect() userContent$: Observable<Action> = this.actions$
+  // @Effect({dispatch: false}) userContent$: Observable<Action> = this.actions$
     .ofType(LOAD_USER_CONTENT_ACTION)
-  // debugger;
     .debug('LOAD_USER_CONTENT_ACTION received!')
-    // .switchMap(action => this.contentService.getUserContent('test2') )
+    .switchMap(action => this.contentService.getUserContent('test2') )
     // .switchMap(action => this.contentService.getPathNodes('test2') )
-    .debug('getUserContent - data received')
-    .map(() => new TestAction() );
+    .do((content) => console.log('content', content))
+    .debug('getUserContent - data received!!')
+    // .map((content) => new TestAction(content) );
+    .map((content) => new UserContentLoadedAction(content) );
   //
 }
 

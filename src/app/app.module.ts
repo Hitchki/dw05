@@ -24,6 +24,9 @@ import { ContentStates } from './cpf/content/content.interfaces';
 import { rootReducer } from './store/reducers/rootReducer'
 import { uiState } from './store/reducers/uiStateReducer'
 import { storeData } from './store/reducers/storeDataReducer'
+import { compose } from '@ngrx/core/compose'
+import { routerReducer } from '@ngrx/router-store'
+import { storeFreeze } from 'ngrx-store-freeze'
 
 // export function storeReducer(state: ApplicationState, action: Action): ApplicationState {
 //
@@ -87,6 +90,9 @@ import { storeData } from './store/reducers/storeDataReducer'
     // ES6 abbreviated syntax
     // StoreModule.provideStore(rootReducer, INITIAL_APPLICATION_STATE),
     StoreModule.provideStore(combineReducers({uiState, storeData}), INITIAL_APPLICATION_STATE),
+
+    // StoreModule.provideStore(compose(storeFreeze, combineReducers)({uiState, storeData}), INITIAL_APPLICATION_STATE),
+    // StoreModule.provideStore(compose(storeFreeze, combineReducers)({uiState,storeData, router: routerReducer}), INITIAL_APPLICATION_STATE),
 
     EffectsModule.run(LoadContentEffectService),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
