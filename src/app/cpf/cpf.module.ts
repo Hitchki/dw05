@@ -7,13 +7,14 @@ import { NavComponent } from './content/nav/nav.component';
 import { MainComponent } from './content/main/main.component';
 import { NavMoreComponent } from './content/nav-more/nav-more.component';
 import { ContentService } from './content/content.service';
+import { CpfComponent } from './cpf.component';
 
 @NgModule({
   imports: [
     CommonModule,
     CpfRoutingModule
   ],
-  declarations: [ContentComponent, NavComponent, MainComponent, NavMoreComponent],
+  declarations: [CpfComponent, ContentComponent, NavComponent, MainComponent, NavMoreComponent],
   providers: [ContentService]
 })
 export class CpfModule { }
