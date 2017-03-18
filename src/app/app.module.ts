@@ -88,7 +88,7 @@ import { storeData } from './store/reducers/storeDataReducer'
     // StoreModule.provideStore(rootReducer, INITIAL_APPLICATION_STATE),
     StoreModule.provideStore(combineReducers({uiState, storeData}), INITIAL_APPLICATION_STATE),
 
-    // EffectsModule.run(LoadContentEffectService),
+    EffectsModule.run(LoadContentEffectService),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
   ],
   providers: [],

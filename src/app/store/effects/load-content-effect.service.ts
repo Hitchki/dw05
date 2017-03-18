@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
-import { LOAD_USER_CONTENT_ACTION, UserContentLoadedAction, TEST_EFFECTS_ACTION, TestEffectsAction } from '../actions';
+import {
+  LOAD_USER_CONTENT_ACTION, LoadUserContentAction, UserChangedAction, TestAction
+} from '../actions';
 import { Action } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
@@ -12,19 +14,15 @@ export class LoadContentEffectService {
 
   constructor(private actions$: Actions, private contentService: ContentService) { }
 
-  // ngOnInit() {
-  //   this.contentService.getUserContent('test2');
-  // }
-
   /* tslint:disable:member-ordering */
   @Effect() userContent$: Observable<Action> = this.actions$
-    .ofType(TEST_EFFECTS_ACTION)
+    .ofType(LOAD_USER_CONTENT_ACTION)
   // debugger;
-    .debug('action received!!!!!!!')
-    .switchMap(action => this.contentService.getUserContent('test2') )
+    .debug('LOAD_USER_CONTENT_ACTION received!')
+    // .switchMap(action => this.contentService.getUserContent('test2') )
     // .switchMap(action => this.contentService.getPathNodes('test2') )
-    .debug('data received via the HTTP request xxxxxxx')
-    .map(() => new TestEffectsAction() );
+    .debug('getUserContent - data received')
+    .map(() => new TestAction() );
   //
 }
 
@@ -35,8 +33,6 @@ export class LoadContentEffectService {
 // import {LOAD_USER_THREADS_ACTION, UserThreadsLoadedAction, SELECT_USER_ACTION, LoadUserThreadsAction} from "../actions";
 // import {Observable} from "rxjs";
 // import {Action} from "@ngrx/store";
-
-
 
 
 // @Injectable()
@@ -60,3 +56,55 @@ export class LoadContentEffectService {
 //     .map(action =>  new LoadUserThreadsAction(action.payload));
 //
 // }
+
+
+/*
+@Injectable()
+export class ServerNotificationsEffectService {
+
+
+  constructor(private threadsService: ThreadsService, private store: Store<ApplicationState>) {
+
+  }
+
+
+  @Effect() newMessages$ = Observable.interval(3000)
+    .withLatestFrom(this.store.select("uiState"))
+    .map(([any,uiState]) => uiState)
+    .filter(uiState => uiState.userId)
+    .switchMap(uiState => this.threadsService.loadNewMessagesForUser(uiState.userId))
+    .debug("new messages received from server")
+    .withLatestFrom(this.store.select("uiState"))
+    .map(([unreadMessages, uiState]) =>  new NewMessagesReceivedAction({
+      unreadMessages,
+      currentThreadId: uiState.currentThreadId,
+      currentUserId: uiState.userId
+    }))*/
+
+
+/*
+constructor(private actions$: Actions, private threadsService: ThreadsService) {
+
+}
+
+
+@Effect({dispatch:false}) markMessagesAsRead$ =
+  this.actions$.ofType(THREAD_SELECTED_ACTION)
+    .switchMap((action: ThreadSelectedAction) =>
+      this.threadsService.markMessagesAsRead(
+        action.payload.currentUserId,
+        action.payload.selectedThreadId));
+
+
+}*/
+
+/*
+constructor(private actions$: Actions, private threadsService: ThreadsService) {
+
+}
+
+@Effect() newMessages$ : Observable<any> = this.actions$
+  .ofType(SEND_NEW_MESSAGE_ACTION)
+  .debug("sending new message to the server")
+  .switchMap(action => this.threadsService.saveNewMessage(action.payload))
+  .catch(() => Observable.of(new ErrorOccurredAction("Error Ocurred while saving message")) );*/

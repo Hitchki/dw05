@@ -18,6 +18,7 @@ export class LoadUserContentAction implements  Action {
   constructor(public payload?: any) { }
 }
 
+
 // export class UserContentLoadedAction implements  Action {
 //   readonly type = USER_CONTENT_LOADED_ACTION;
 //   constructor(public payload?: any) { }
@@ -39,11 +40,11 @@ export class LoadUserContentAction implements  Action {
 //   constructor(public payload?: any) { }
 // }
 //
-// export const TEST_ACTION = 'TEST_ACTION';
-// export class TestAction implements  Action {
-//   readonly type = TEST_ACTION;
-//   constructor(public payload?: any) { }
-// }
+export const TEST_ACTION = 'TEST_ACTION';
+export class TestAction implements  Action {
+  readonly type = TEST_ACTION;
+  constructor(public payload?: any) { }
+}
 
 
 //

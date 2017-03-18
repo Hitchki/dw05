@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store'
 import { ApplicationState } from '../store/application-state'
-import { UserChangedAction } from '../store/actions'
+import { UserChangedAction, LoadUserContentAction } from '../store/actions'
 
 @Component({
   selector: 'cpf-cpf',
@@ -64,9 +64,10 @@ export class CpfComponent implements OnInit {
 
     if (userId !== this.userId) {
       this.userId = userId;
-      this.store.dispatch( new UserChangedAction(changedUserStateData));
+      // this.store.dispatch( new UserChangedAction(changedUserStateData));
+      this.store.dispatch( new LoadUserContentAction(changedUserStateData));
     } else {
-        ;
+      // this.store.dispatch( new UserChangedAction(LoadUserContentAction));
     }
 
   }
