@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 // import { Store } from '@ngrx/store';
 // import { ApplicationState } from '../store/application-state';
 import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store'
+import { ApplicationState } from '../store/application-state'
+import { UserChangedAction } from '../store/actions'
 
 @Component({
   selector: 'cpf-cpf',
@@ -11,20 +14,27 @@ import { Observable } from 'rxjs';
 })
 export class CpfComponent implements OnInit {
 
-  // constructor(private route: ActivatedRoute,
-  //             private store: Store<ApplicationState>
-  // ) { }
+  private userId: string = undefined;
 
-  constructor(private route: ActivatedRoute
+  constructor(private route: ActivatedRoute,
+              private store: Store<ApplicationState>
   ) { }
+
+  // constructor(private route: ActivatedRoute
+  // ) { }
 
   ngOnInit() {
     // this.route.params.subscribe(console.log.bind(this, 'params: '));
     this.route.fragment.subscribe(
-      console.log.bind(this, 'fragment1: '),
+      (fragment) => {
+        console.log('fragment1: ', fragment);
+        this.fragmentChanged(fragment);
+        // this.store.dispatch( new UserChangedAction(fragment));
+      } ,
       error => alert(error),
       () => alert('fragment-completed')
     );
+
     this.route.data.subscribe(
       console.log.bind(this, 'data: '),
       error => alert(error),
@@ -33,8 +43,32 @@ export class CpfComponent implements OnInit {
 
     // this.route.url.subscribe(console.log.bind(this, 'url: '));
 
-    // Observable.combineLatest(this.route.fragment, this.route.data)
-    //   .subscribe(console.log.bind(this, 'combineLatest: '));
+/*    Observable.combineLatest(this.route.fragment, this.route.data)
+      .subscribe(
+        (fragment) => {
+          console.log('fragment1: ', fragment);
+          this.store.dispatch( new UserChangedAction(fragment));
+        } ,
+        error => alert(error),
+        () => alert('fragment-completed')
+      );*/
+  }
+
+  fragmentChanged(fragment: string): void {
+    const userId = this.getUserId(fragment);
+
+    const changedUserStateData = {
+      userId: this.getUserId(fragment),
+      urlPath: this.getUrlPath(fragment)
+    };
+
+    if (userId !== this.userId) {
+      this.userId = userId;
+      this.store.dispatch( new UserChangedAction(changedUserStateData));
+    } else {
+        ;
+    }
+
   }
 
   getUserId(fragment: string): string {
@@ -46,8 +80,8 @@ export class CpfComponent implements OnInit {
     return fragment ? fragment.slice(fragment.indexOf('/') + 1) : '';
   }
 
-  replaceActionFromFragment(fragment: string): string {
-    return fragment ? fragment.replace(/^.+?\//, '') : '';
-  }
+  // replaceActionFromFragment(fragment: string): string {
+  //   return fragment ? fragment.replace(/^.+?\//, '') : '';
+  // }
 
 }

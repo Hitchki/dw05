@@ -17,10 +17,13 @@ import { CpfModule } from './cpf/cpf.module';
 import { EffectsModule } from '@ngrx/effects';
 import { LoadContentEffectService } from './store/effects/load-content-effect.service';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { StoreModule, Action } from '@ngrx/store';
+import { StoreModule, Action, combineReducers } from '@ngrx/store';
 import { INITIAL_APPLICATION_STATE, ApplicationState } from './store/application-state';
 // import { TEST_ACTION, PATH_STRING_CHANGED_ACTION, CONTENT_STATE_CHANGED_ACTION } from './store/actions';
 import { ContentStates } from './cpf/content/content.interfaces';
+import { rootReducer } from './store/reducers/rootReducer'
+import { uiState } from './store/reducers/uiStateReducer'
+import { storeData } from './store/reducers/storeDataReducer'
 
 // export function storeReducer(state: ApplicationState, action: Action): ApplicationState {
 //
@@ -83,10 +86,10 @@ import { ContentStates } from './cpf/content/content.interfaces';
 
     // ES6 abbreviated syntax
     // StoreModule.provideStore(rootReducer, INITIAL_APPLICATION_STATE),
-    // StoreModule.provideStore(combineReducers({uiState, storeData}), INITIAL_APPLICATION_STATE),
+    StoreModule.provideStore(combineReducers({uiState, storeData}), INITIAL_APPLICATION_STATE),
 
     // EffectsModule.run(LoadContentEffectService),
-    // StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    StoreDevtoolsModule.instrumentOnlyWithExtension(),
   ],
   providers: [],
   bootstrap: [AppComponent]
