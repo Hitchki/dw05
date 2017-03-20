@@ -7,7 +7,7 @@
 // }
 
 export interface UiState {
-  cpfAction: string;
+  cpfAction?: string;
   urlPath: string;
   userId: string;
   // pathNodesString: string;
