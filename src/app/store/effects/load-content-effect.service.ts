@@ -6,8 +6,8 @@ import {
 import { Action } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
-
 import { ContentService } from '../../cpf/content/content.service';
+
 
 @Injectable()
 export class LoadContentEffectService {

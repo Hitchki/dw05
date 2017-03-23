@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ContentService } from './content.service';
+import { ContentService } from './pathnodes.service';
 
 describe('ContentService', () => {
   beforeEach(() => {
