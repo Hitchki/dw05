@@ -10,17 +10,24 @@ import { UiChange, ContentVM } from '../content.interfaces';
 export class MainComponent implements OnInit {
 
   @Input() contentData: ContentVM;
+  @Input() urlPath: string;
   @Output() uiChange = new EventEmitter<UiChange>();
+  @Output() newUrlPath = new EventEmitter<string>();
 
-  constructor() { }
+  constructor() {
+    this.urlPath = 'hellöööö';
+  }
 
   ngOnInit() {
     // this.contentData.subs
-    console.log('contentDataöööööööööööööööööö: ', this.contentData);
-    this.uiChange.emit('Das ist ein Teststring!');
+    // console.log('contentDataöööööööööööööööööö: ', this.contentData);
+    // this.uiChange.emit('Das ist ein Teststring!');
+    // this.urlPath = this.urlPath + 'abc';
   }
 
   onClick($event, index) {
-    alert( index);
+    // alert( index);
+    // debugger;
+    this.newUrlPath.emit(' Das ist ein Teststring!');
   }
 }

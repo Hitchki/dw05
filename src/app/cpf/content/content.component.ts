@@ -17,7 +17,7 @@ import { Observable } from 'rxjs';
 })
 export class ContentComponent implements OnInit {
 
-  private pathNodesString: string;
+  private urlPath$: Observable<string>;
   private mainContentVM: ContentVM;
   private navContentVM: ContentVM;
   private navMoreContentVM: ContentVM;
@@ -27,23 +27,24 @@ export class ContentComponent implements OnInit {
   // data: Observable<any>;
 
   constructor(private pathnodesService: PathnodesService,
+              private router: Router,
               private store: Store<ApplicationState>
   ) {
     // this.
     const currentUserId = store.select(this.userIdSelector)
       .subscribe(
         cu => {
-          console.log('x!!!!!!!currentUserId: ', cu);
+          // console.log('x!!!!!!!currentUserId: ', cu);
         }
       );
 
     // const currentUserId = store.map(state => state.uiState.userId);
-    const urlPath = store.map(state => state.uiState.urlPath);
+    this.urlPath$ = store.map(state => state.uiState.urlPath);
     const data = store.map(state => state.storeData.content);
 
-    console.log('!currentUserId: ', currentUserId);
-    console.log('urlPath: ', urlPath);
-    console.log('data: ', data);
+    // console.log('!currentUserId: ', currentUserId);
+    // console.log('urlPath: ', urlPath);
+    // console.log('data: ', data);
   }
 
 
@@ -61,6 +62,26 @@ export class ContentComponent implements OnInit {
     // }
 
     return currentUserId;
+  }
+
+  newUrlPath(url) {
+    // url = '/playground/angular-fire/';
+    url = 'test2/projects/0/subprojects/1/normtext/0/normtext/1';
+    // url = 'playground1 ';
+    // http://localhost:4200/cpf#test2/projects/0/subprojects/1/normtext/0/normtext/0
+    // alert(url);
+    // debugger;
+    // this.router.navigateByUrl(url)
+    this.router.navigate(['cpf'], {fragment: url})
+      .then( (result) => {
+        if (!result) {
+          // Hier kommt man hin, wenn sich nix geändert hat, auch nicht im Fragment!
+          console.log(result);
+          // alert(result);
+        }
+        console.log('result navigateByUrl', result);
+      })
+      .catch(err => alert(err));
   }
 
 }

@@ -67,7 +67,8 @@ export class CpfComponent implements OnInit {
       this.store.dispatch( new UserChangedAction(changedUserStateData));
       this.store.dispatch( new LoadUserContentAction(changedUserStateData));
     } else {
-      // this.store.dispatch( new UserChangedAction(LoadUserContentAction));
+      // debugger;
+      this.store.dispatch( new UserChangedAction(changedUserStateData));
     }
 
   }

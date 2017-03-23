@@ -26,7 +26,8 @@ import { uiState } from './store/reducers/uiStateReducer'
 import { storeData } from './store/reducers/storeDataReducer'
 import { compose } from '@ngrx/core/compose'
 import { routerReducer } from '@ngrx/router-store'
-import { storeFreeze } from 'ngrx-store-freeze'
+import { storeFreeze } from 'ngrx-store-freeze';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound/pagenotfound.component'
 
 // export function storeReducer(state: ApplicationState, action: Action): ApplicationState {
 //
@@ -72,14 +73,14 @@ import { storeFreeze } from 'ngrx-store-freeze'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
 
-    AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     CoreModule,
     CpfModule,
@@ -98,6 +99,8 @@ import { storeFreeze } from 'ngrx-store-freeze'
 
     EffectsModule.run(LoadContentEffectService),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
+
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

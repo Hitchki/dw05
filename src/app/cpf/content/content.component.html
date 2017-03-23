@@ -2,6 +2,11 @@
   content works!
 </p>
 
+
+<cpf-main [urlPath]="urlPath$ | async" (newUrlPath)="newUrlPath($event)"></cpf-main>
+
+<cpf-nav></cpf-nav>
+
 <!--<cpf-nav></cpf-nav>-->
 
 <!--<cpf-main [contentData]="mainContentVM" (uiChange)="uiChange($event)"></cpf-main>-->
