@@ -18,9 +18,11 @@ import { Observable } from 'rxjs';
 export class ContentComponent implements OnInit {
 
   private urlPath$: Observable<string>;
-  private mainContentVM: ContentVM;
-  private navContentVM: ContentVM;
-  private navMoreContentVM: ContentVM;
+  private data$: Observable<any>;
+
+  // private mainContentVM: ContentVM;
+  // private navContentVM: ContentVM;
+  // private navMoreContentVM: ContentVM;
 
   // userId$: Observable<string>;
   // urlPath$: Observable<string>;
@@ -40,7 +42,7 @@ export class ContentComponent implements OnInit {
 
     // const currentUserId = store.map(state => state.uiState.userId);
     this.urlPath$ = store.map(state => state.uiState.urlPath);
-    const data = store.map(state => state.storeData.content);
+    this.data$ = store.map(state => state.storeData.content);
 
     // console.log('!currentUserId: ', currentUserId);
     // console.log('urlPath: ', urlPath);

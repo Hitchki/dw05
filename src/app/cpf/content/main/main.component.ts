@@ -9,7 +9,7 @@ import { UiChange, ContentVM } from '../content.interfaces';
 })
 export class MainComponent implements OnInit {
 
-  @Input() contentData: ContentVM;
+  @Input() contentData: any;
   @Input() urlPath: string;
   @Output() uiChange = new EventEmitter<UiChange>();
   @Output() newUrlPath = new EventEmitter<string>();

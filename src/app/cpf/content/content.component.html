@@ -3,7 +3,7 @@
 </p>
 
 
-<cpf-main [urlPath]="urlPath$ | async" (newUrlPath)="newUrlPath($event)"></cpf-main>
+<cpf-main [urlPath]="urlPath$ | async" [contentData]="data$ | async" (newUrlPath)="newUrlPath($event)"></cpf-main>
 
 <cpf-nav></cpf-nav>
 

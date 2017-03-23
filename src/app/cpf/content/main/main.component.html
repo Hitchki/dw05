@@ -6,13 +6,29 @@ urlPath of main: {{urlPath}}
 
 <button (click)="onClick()">onClick</button>
 
-<!--<div *ngFor="let contentItem of contentData?.pathData?.selectedPathNode?.cpfNodes;
+
+<div>projects:</div>
+
+<pre *ngIf="contentData?.projects">{{ contentData?.projects[0] | json }}</pre>
+
+
+<div *ngFor="let contentItem of contentData?.projects;
               let i = index;" (click)="onClick($event, i)">
-  {{ contentItem.text }}
- &lt;!&ndash;<pre> {{contentItem | json}} </pre>&ndash;&gt;
+  <!--{{ contentItem.text }}-->
+  <pre> {{contentItem | json}} </pre>
 </div>
 
-<pre>main-contentData selectedPathNodeIndex: {{ contentData?.pathData?.selectedPathNodeIndex | json }}</pre>
+
+
+
+<!--<pre>projects: {{ contentData?.projects[0] | json }}</pre>-->
+
+<!--<pre>main-data: {{ contentData | json }}</pre>-->
+
+
+
+
+<!--<pre>main-contentData selectedPathNodeIndex: {{ contentData?.pathData?.selectedPathNodeIndex | json }}</pre>
 <pre>main-contentData selectedPathNode: {{ contentData?.pathData?.selectedPathNode | json }}</pre>
 
 &lt;!&ndash;contentData: {{ contentData | json }}&ndash;&gt;
