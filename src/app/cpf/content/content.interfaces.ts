@@ -36,6 +36,12 @@ export interface UiChangeEvent {
   firePath: string;
 }
 
+export interface AllContentData {
+  navContent: ContentData;
+  navMoreContent: ContentData;
+  mainContent: ContentData;
+}
+
 export interface ContentData {
   cpfNodes: any[];
   selectedIndex: number;

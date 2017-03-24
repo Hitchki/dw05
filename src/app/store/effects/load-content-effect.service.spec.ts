@@ -10,7 +10,7 @@ describe('LoadContentEffectService', () => {
     });
   });
 
-  it('should ...', inject([LoadContentEffectService], (service: LoadContentEffectService) => {
+  xit('should ...', inject([LoadContentEffectService], (service: LoadContentEffectService) => {
     expect(service).toBeTruthy();
   }));
 });
