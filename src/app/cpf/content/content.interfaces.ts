@@ -1,5 +1,14 @@
+// export interface BasePathNode {
+//   type: string;  // is the same as the partialFragment
+//   cpfNodes: any[];
+//   selectedIndex: number;
+// }
+
+// export type BasePathNodes = BasePathNode[];
+
 export interface PathNode {
-  pathNodesString?: string;
+  urlPath?: string;
+  firePath?: string;
   type: string;  // is the same as the partialFragment
   cpfNodes: any[];
   selectedIndex: number;

@@ -35,7 +35,7 @@ export class PathnodesService {
     return pathNodesStringsHelpers;
   }
 
-  buildPathNodesStringsForPathNodes(pathNodes: PathNodes) {
+  buildPathNodesStringsForPathNodes(pathNodes: PathNodes, userId?: string, databaseURL?: string) {
     let pathNodesString = '';
     pathNodes.forEach(
       pathNode => {
@@ -44,7 +44,8 @@ export class PathnodesService {
         // todo decide if cpfNodesPathNodesString makes sense.
         // pathNode.cpfNodesPathNodesString = pathNodesString;
         pathNodesString += (pathNode.selectedIndex !== undefined) ? '/' + pathNode.selectedIndex : '';
-        pathNode.pathNodesString = pathNodesString;
+        pathNode.urlPath = userId ? `userId/pathNodesString` : pathNodesString ;
+        pathNode.firePath = databaseURL ? `databaseURL/pathNode.urlPath` : pathNode.urlPath ;
       }
     );
   }
