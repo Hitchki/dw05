@@ -4,7 +4,7 @@ import { PathnodesService } from './pathnodes.service';
 import { ApplicationState } from '../../store/application-state';
 import { Store } from '@ngrx/store';
 
-import { ContentStates, PathData, PathNodes, ContentVM, UiChange } from './content.interfaces';
+import { ContentStates, PathData, PathNodes, ContentVM, UiChange, AllContentData } from './content.interfaces';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -18,6 +18,7 @@ export class ContentComponent implements OnInit {
   private data$: Observable<any>;
 
   private pathNodes: PathNodes;
+  private allDataContent: AllContentData;
 
   // private mainContentVM: ContentVM;
   // private navContentVM: ContentVM;
@@ -28,7 +29,7 @@ export class ContentComponent implements OnInit {
   // data: Observable<any>;
 
 
-  getAllContenData(urlPath, data) {
+  getAllContenData_old(urlPath, data) {
     if (urlPath && data.projects) {
       // debugger;
       console.log('zzz111this.pathNodes-urlPath', urlPath);
@@ -36,6 +37,25 @@ export class ContentComponent implements OnInit {
       this.pathNodes = this.pathnodesService.getPathNodes(urlPath, data);
     }
     return this.pathNodes;
+  }
+
+  getAllContenData(urlPath, data) {
+    const allContentData = {
+      navContent: undefined,
+      navMoreContent: undefined,
+      mainContent: undefined
+    };
+    if (urlPath && data.projects) {
+      // debugger;
+
+      console.log('zzz111this.pathNodes-urlPath', urlPath);
+      console.log('zzz111this.pathNodes-data', data);
+      this.pathNodes = this.pathnodesService.getPathNodes(urlPath, data);
+      allContentData.navContent = this.pathNodes[0];
+      allContentData.navMoreContent = this.pathNodes[2];
+      allContentData.mainContent = this.pathNodes[2];
+    }
+    return allContentData;
   }
 
   allDataModel() {
