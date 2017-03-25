@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { UiChange, ContentVM } from '../content.interfaces';
+import { UiChange } from '../content.interfaces';
 
 @Component({
   selector: 'cpf-main',

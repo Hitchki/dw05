@@ -4,7 +4,7 @@ import { PathnodesService } from './pathnodes.service';
 import { ApplicationState } from '../../store/application-state';
 import { Store } from '@ngrx/store';
 
-import { ContentStates, PathData, PathNodes, ContentVM, UiChange, AllContentData } from './content.interfaces';
+import { PathNodes, AllContentData } from './content.interfaces';
 import { Observable } from 'rxjs';
 
 @Component({

@@ -20,7 +20,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule, Action, combineReducers } from '@ngrx/store';
 import { INITIAL_APPLICATION_STATE, ApplicationState } from './store/application-state';
 // import { TEST_ACTION, PATH_STRING_CHANGED_ACTION, CONTENT_STATE_CHANGED_ACTION } from './store/actions';
-import { ContentStates } from './cpf/content/content.interfaces';
 import { rootReducer } from './store/reducers/rootReducer'
 import { uiState } from './store/reducers/uiStateReducer'
 import { storeData } from './store/reducers/storeDataReducer'

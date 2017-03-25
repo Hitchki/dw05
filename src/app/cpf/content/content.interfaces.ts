@@ -16,28 +16,6 @@ export interface PathNode {
 
 export type PathNodes = PathNode[];
 
-export interface PathData {
-  pathNodes?: PathNodes;
-  selectedPathNode?: PathNode;
-  selectedPathNodeIndex: number;
-}
-
-export interface ContentVM {
-  pathData: PathData;
-  action?: string;
-  isEditMode?: boolean;
-}
-
-export interface ContentStates {
-  navContent: ContentVM;
-  navMoreContent: ContentVM;
-  mainContent: ContentVM;
-}
-
-// export interface UiChange {
-//   pathString: string;
-// }
-
 export type UiChange = string;
 
 export interface UiChangeEvent {
@@ -58,3 +36,27 @@ export interface ContentData {
   urlPath: string;
   firePath: string;
 }
+
+
+
+// export interface PathData {
+//   pathNodes?: PathNodes;
+//   selectedPathNode?: PathNode;
+//   selectedPathNodeIndex: number;
+// }
+
+// export interface ContentVM {
+//   pathData: PathData;
+//   action?: string;
+//   isEditMode?: boolean;
+// }
+//
+// export interface ContentStates {
+//   navContent: ContentVM;
+//   navMoreContent: ContentVM;
+//   mainContent: ContentVM;
+// }
+
+// export interface UiChange {
+//   pathString: string;
+// }

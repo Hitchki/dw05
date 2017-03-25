@@ -1,5 +1,4 @@
 import { Action } from '@ngrx/store';
-import { ContentStates } from '../cpf/content/content.interfaces';
 
 export const USER_CHANGED_ACTION = 'USER_CHANGED_ACTION';
 export const LOAD_USER_CONTENT_ACTION = 'LOAD_USER_CONTENT_ACTION';
