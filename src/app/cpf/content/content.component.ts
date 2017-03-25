@@ -14,11 +14,11 @@ import { Observable } from 'rxjs';
 })
 export class ContentComponent implements OnInit {
 
-  private urlPath$: Observable<string>;
-  private data$: Observable<any>;
+  public urlPath$: Observable<string>;
+  public data$: Observable<any>;
 
   private pathNodes: PathNodes;
-  private allDataContent: AllContentData;
+  public allContentData$: Observable<AllContentData>;
 
   getAllContenData(urlPath, data) {
     const allContentData = {
@@ -28,7 +28,7 @@ export class ContentComponent implements OnInit {
     };
     if (urlPath && data.projects) {
       this.pathNodes = this.pathnodesService.getPathNodes(urlPath, data, 'test2', 'https://denkwelten.firebaseio.com');
-      debugger;
+      // debugger;
       allContentData.navContent = this.pathNodes[0];
       allContentData.navMoreContent = this.pathNodes[2];
       allContentData.mainContent = this.pathNodes[2];
@@ -56,12 +56,13 @@ export class ContentComponent implements OnInit {
     this.urlPath$ = store.map(state => state.uiState.urlPath);
     this.data$ = store.map(state => state.storeData.content);
 
-    const latest = this.urlPath$
+    this.allContentData$ = this.urlPath$
       .withLatestFrom(this.data$)
-      .map(([urlPath, data]) => this.getAllContenData(urlPath, data))
-      .subscribe(
-        // pathNodes => console.log('SSSSSSSSSSSSsubscribe_pathNodes: ', pathNodes)
-      );
+      .map(([urlPath, data]) => this.getAllContenData(urlPath, data));
+
+      // .subscribe(
+      //   // pathNodes => console.log('SSSSSSSSSSSSsubscribe_pathNodes: ', pathNodes)
+      // );
 
 
     const latest1 = this.urlPath$
