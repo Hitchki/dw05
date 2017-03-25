@@ -20,25 +20,6 @@ export class ContentComponent implements OnInit {
   private pathNodes: PathNodes;
   private allDataContent: AllContentData;
 
-  // private mainContentVM: ContentVM;
-  // private navContentVM: ContentVM;
-  // private navMoreContentVM: ContentVM;
-
-  // userId$: Observable<string>;
-  // urlPath$: Observable<string>;
-  // data: Observable<any>;
-
-
-  getAllContenData_old(urlPath, data) {
-    if (urlPath && data.projects) {
-      // debugger;
-      console.log('zzz111this.pathNodes-urlPath', urlPath);
-      console.log('zzz111this.pathNodes-data', data);
-      this.pathNodes = this.pathnodesService.getPathNodes(urlPath, data);
-    }
-    return this.pathNodes;
-  }
-
   getAllContenData(urlPath, data) {
     const allContentData = {
       navContent: undefined,
@@ -46,11 +27,8 @@ export class ContentComponent implements OnInit {
       mainContent: undefined
     };
     if (urlPath && data.projects) {
-      // debugger;
-
-      console.log('zzz111this.pathNodes-urlPath', urlPath);
-      console.log('zzz111this.pathNodes-data', data);
       this.pathNodes = this.pathnodesService.getPathNodes(urlPath, data);
+      // debugger;
       allContentData.navContent = this.pathNodes[0];
       allContentData.navMoreContent = this.pathNodes[2];
       allContentData.mainContent = this.pathNodes[2];
@@ -67,7 +45,6 @@ export class ContentComponent implements OnInit {
               private router: Router,
               private store: Store<ApplicationState>
   ) {
-    // this.
     const currentUserId = store.select(this.userIdSelector)
       .subscribe(
         cu => {
@@ -83,7 +60,7 @@ export class ContentComponent implements OnInit {
       .withLatestFrom(this.data$)
       .map(([urlPath, data]) => this.getAllContenData(urlPath, data))
       .subscribe(
-        pathNodes => console.log('SSSSSSSSSSSSsubscribe_pathNodes: ', pathNodes)
+        // pathNodes => console.log('SSSSSSSSSSSSsubscribe_pathNodes: ', pathNodes)
       );
 
 
@@ -91,79 +68,21 @@ export class ContentComponent implements OnInit {
       .withLatestFrom(this.data$)
       .let(this.allDataModel())
       .subscribe(
-        pathNodes => console.log('ÖÖÖÖÖSsubscribe_pathNodes: ', pathNodes)
+        // pathNodes => console.log('ÖÖÖÖÖSsubscribe_pathNodes: ', pathNodes)
       );
-
-    // this.urlPath$.withLatestFrom(
-    //   this.data$,
-    //   (urlPath, data) => {
-    //     // alert('abcd');
-    //     // debugger;
-    //
-    //     if (urlPath && data.projects) {
-    //       // debugger;
-    //       console.log('yyyyyyyyythis.pathNodes-urlPath', urlPath);
-    //       console.log('yyyyyyyyythis.pathNodes-data', data);
-    //       this.pathNodes = pathnodesService.getPathNodes(urlPath, data);
-    //     }
-    //
-    //     console.log('yyyyyyyyyyyyyyyyyyyythis.pathNodes', this.pathNodes);
-    //     return this.pathNodes;
-    //   }
-    // ).map(
-    //   pathNodes => pathNodes
-    // )
-    // .subscribe(
-    //   pathNodes => console.log('subscribe_pathNodes: ', pathNodes)
-    // );
-
-
-    // const source3 = this.urlPath$.combineLatest(
-    //   this.data$,
-    //   // function (s1, s2) { return s1 + ', ' + s2; }
-    //   (urlPath, data) => {
-    //     alert('abcd');
-    //     debugger;
-    //     this.pathNodes = pathnodesService.getPathNodes(urlPath, data);
-    //     console.log('yyyyyyyyyyyyyyyyyyyythis.pathNodes', this.pathNodes);
-    //   }
-    // );
 
     const source1 = this.urlPath$.withLatestFrom(
       this.data$,
       // function (s1, s2) { return s1 + ', ' + s2; }
       (urlPath, data) => {
-        // alert('abcd');
-        // debugger;
-
-        console.log('yyyyyyyyythis.pathNodes-urlPath', urlPath);
-        console.log('yyyyyyyyythis.pathNodes-data', data);
 
         if (urlPath && data.projects) {
           // debugger;
           this.pathNodes = pathnodesService.getPathNodes(urlPath, data);
         }
-
-        console.log('yyyyyyyyyyyyyyyyyyyythis.pathNodes', this.pathNodes);
       }
     ).subscribe();
 
-    // const source2 = this.data$.withLatestFrom(
-    //   this.urlPath$,
-    //   // function (s1, s2) { return s1 + ', ' + s2; }
-    //   (data, urlPath) => {
-    //     alert('abc');
-    //     // debugger;
-    //     // this.pathNodes = pathnodesService.getPathNodes(urlPath, data);
-    //     console.log('yyyyyyyyyyyyyyyyyyyythis.pathNodes-urlPath', urlPath);
-    //     console.log('yyyyyyyyyyyyyyyyyyyythis.pathNodes-data', data);
-    //
-    //   }
-    // ).subscribe();
-
-    // console.log('!currentUserId: ', currentUserId);
-    // console.log('urlPath: ', urlPath);
-    // console.log('data: ', data);
   }
 
     ngOnInit() {}
@@ -201,3 +120,59 @@ export class ContentComponent implements OnInit {
   }
 
 }
+
+
+
+
+
+// const source2 = this.data$.withLatestFrom(
+//   this.urlPath$,
+//   // function (s1, s2) { return s1 + ', ' + s2; }
+//   (data, urlPath) => {
+//     alert('abc');
+//     // debugger;
+//     // this.pathNodes = pathnodesService.getPathNodes(urlPath, data);
+//     console.log('yyyyyyyyyyyyyyyyyyyythis.pathNodes-urlPath', urlPath);
+//     console.log('yyyyyyyyyyyyyyyyyyyythis.pathNodes-data', data);
+//
+//   }
+// ).subscribe();
+
+// console.log('!currentUserId: ', currentUserId);
+// console.log('urlPath: ', urlPath);
+// console.log('data: ', data);
+
+// this.urlPath$.withLatestFrom(
+//   this.data$,
+//   (urlPath, data) => {
+//     // alert('abcd');
+//     // debugger;
+//
+//     if (urlPath && data.projects) {
+//       // debugger;
+//       console.log('yyyyyyyyythis.pathNodes-urlPath', urlPath);
+//       console.log('yyyyyyyyythis.pathNodes-data', data);
+//       this.pathNodes = pathnodesService.getPathNodes(urlPath, data);
+//     }
+//
+//     console.log('yyyyyyyyyyyyyyyyyyyythis.pathNodes', this.pathNodes);
+//     return this.pathNodes;
+//   }
+// ).map(
+//   pathNodes => pathNodes
+// )
+// .subscribe(
+//   pathNodes => console.log('subscribe_pathNodes: ', pathNodes)
+// );
+
+
+// const source3 = this.urlPath$.combineLatest(
+//   this.data$,
+//   // function (s1, s2) { return s1 + ', ' + s2; }
+//   (urlPath, data) => {
+//     alert('abcd');
+//     debugger;
+//     this.pathNodes = pathnodesService.getPathNodes(urlPath, data);
+//     console.log('yyyyyyyyyyyyyyyyyyyythis.pathNodes', this.pathNodes);
+//   }
+// );
