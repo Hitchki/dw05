@@ -44,8 +44,8 @@ export class PathnodesService {
         // todo decide if cpfNodesPathNodesString makes sense.
         // pathNode.cpfNodesPathNodesString = pathNodesString;
         pathNodesString += (pathNode.selectedIndex !== undefined) ? '/' + pathNode.selectedIndex : '';
-        pathNode.urlPath = userId ? `userId/pathNodesString` : pathNodesString ;
-        pathNode.firePath = databaseURL ? `databaseURL/pathNode.urlPath` : pathNode.urlPath ;
+        pathNode.urlPath = userId ? `${userId}/${pathNodesString}` : pathNodesString ;
+        pathNode.firePath = databaseURL ? `${databaseURL}/${pathNode.urlPath}` : pathNode.urlPath ;
       }
     );
   }
@@ -76,7 +76,7 @@ export class PathnodesService {
     return {type: type, cpfNodes: cpfNodes, selectedIndex: selectedNodeIndex};
   }
 
-  getPathNodes(pathNodesString: string, cpfNodes?: any[]) {
+  getPathNodes(pathNodesString: string, cpfNodes?: any[], userId?: string, databaseURL?: string) {
 
     cpfNodes = cpfNodes ? cpfNodes : [];
 
@@ -85,7 +85,7 @@ export class PathnodesService {
     const pathNodesStringsHelpers = this.getNodesArrays(pathNodesStringsArray);
     const pathNodes = this.getPathNodesFRA(cpfNodes, pathNodesStringsHelpers.pathTypesArray, pathNodesStringsHelpers.pathIndexArray);
 
-    this.buildPathNodesStringsForPathNodes(pathNodes);
+    this.buildPathNodesStringsForPathNodes(pathNodes, userId, databaseURL);
     this.pathNodesSubject.next(pathNodes);
     return pathNodes;
   }
