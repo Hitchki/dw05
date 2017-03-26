@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PathnodesService } from './pathnodes.service';
+import { PathnodesService } from './pathnodes/pathnodes.service';
 import { ApplicationState } from '../../store/application-state';
 import { Store } from '@ngrx/store';
 
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'cpf-content',
   templateUrl: './content.component.html',
-  styleUrls: ['./content.component.css']
+  styleUrls: ['./content.component.scss']
 })
 export class ContentComponent implements OnInit {
 

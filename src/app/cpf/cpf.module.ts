@@ -8,7 +8,7 @@ import { MainComponent } from './content/main/main.component';
 import { NavMoreComponent } from './content/nav-more/nav-more.component';
 import { CpfComponent } from './cpf.component';
 import { ContentService } from './content/content.service';
-import { PathnodesService } from './content/pathnodes.service'
+import { PathnodesService } from './content/pathnodes/pathnodes.service'
 
 @NgModule({
   imports: [
