@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
-import { FirebaseService } from '../../core/firebase.service';
-import { PathNodesStringsHelpers } from './content-service-helpers.interface';
-import { PathNodes, PathNode } from './content.interfaces';
+import { FirebaseService } from '../../../core/firebase.service';
+import { PathNodesStringsHelpers } from '../content-service-helpers.interface';
+import { PathNodes, PathNode } from '../content.interfaces';
 
 @Injectable()
 export class PathnodesService {

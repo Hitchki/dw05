@@ -2,8 +2,26 @@
   nav works!
 </p>
 
-<cpf-nav-more [contentData]="navMoreContentData"></cpf-nav-more>
-<pre> {{contentData | json}} </pre>
+
+<div *ngFor="let project of contentData?.cpfNodes; let pi=index;" #project>
+  <div (click)="projectOnClick(pi, contentData?.type , contentData?.urlPath, contentData)">
+    {{project?.properties?.title}}
+  </div>
+  <!--navnavnav: <pre> {{project | json}} </pre>-->
+
+  <div *ngFor="let subproject of project?.subprojects; let si=index;" #subproject>
+    <div *ngIf="si===contentData?.selectedIndex">
+
+      <span>{{subproject?.properties?.title}}</span>
+
+      <cpf-nav-more [contentData]="navMoreContentData"></cpf-nav-more>
+
+    </div>
+  </div>
+
+</div>
+
+<!--<pre> {{contentData | json}} </pre>-->
 
 
 <p>
