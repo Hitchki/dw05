@@ -9,7 +9,6 @@
     <div (click)="onClick(i1, contentData?.type)">
       {{project?.properties?.title}}
     </div>
-    <!--navnavnav: <pre> {{project | json}} </pre>-->
 
     <div *ngFor="let subproject of project?.subprojects; let i2=index;" #subItem>
       <div *ngIf="i1===contentData?.selectedIndex">
@@ -22,7 +21,6 @@
 
       </div>
     </div>
-
   </div>
 </div>
 <!--<pre> {{contentData | json}} </pre>-->

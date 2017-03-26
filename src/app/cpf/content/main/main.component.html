@@ -4,19 +4,44 @@
 
 urlPath of main: {{urlPath}}
 
-<button (click)="onClick()">onClick</button>
+
+<div class="main">
 
 
-<div>projects:</div>
+  <!--<pre>contentData: {{contentData | json}}</pre>-->
 
-<!--<pre *ngIf="contentData?.projects">{{ contentData?.projects[0] | json }}</pre>-->
+  <div *ngFor="let main of contentData?.cpfNodes; let i1=index;" #proItem>
+    <div (click)="onClick(i1, contentData?.type)">
+      <pre>{{main | json}}</pre>
+    </div>
 
+    <!--<div *ngFor="let info of main?.subprojects; let i2=index;" #subItem>-->
+      <!--<div *ngIf="i1===contentData?.selectedIndex">-->
 
-<div *ngFor="let contentItem of contentData?.projects;
-              let i = index;" (click)="onClick($event, i)">
-  <!--{{ contentItem.text }}-->
-  <pre> {{contentItem | json}} </pre>
+        <!--<div (click)="onClick(i2, 'subprojects')">-->
+          <!--{{subproject?.properties?.title}}-->
+        <!--</div>-->
+
+        <!--<cpf-nav-more [contentData]="navMoreContentData"></cpf-nav-more>-->
+
+      <!--</div>-->
+    <!--</div>-->
+  </div>
 </div>
+
+<!--<button (click)="onClick()">onClick</button>-->
+
+
+<!--<div>projects:</div>-->
+
+<!--&lt;!&ndash;<pre *ngIf="contentData?.projects">{{ contentData?.projects[0] | json }}</pre>&ndash;&gt;-->
+
+
+<!--<div *ngFor="let contentItem of contentData?.projects;-->
+              <!--let i = index;" (click)="onClick($event, i)">-->
+  <!--&lt;!&ndash;{{ contentItem.text }}&ndash;&gt;-->
+  <!--<pre> {{contentItem | json}} </pre>-->
+<!--</div>-->
 
 
 

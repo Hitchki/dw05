@@ -7,7 +7,7 @@
            [navMoreContentData]="(allContentData$ | async).navMoreContent">
   </cpf-nav>
 
-  <cpf-main [urlPath]="urlPath$ | async" [contentData]="data$ | async" (newUrlPath)="newUrlPath($event)"></cpf-main>
+  <cpf-main [urlPath]="urlPath$ | async" [contentData]="(allContentData$ | async).mainContent" (newUrlPath)="newUrlPath($event)"></cpf-main>
 </div>
 
 
