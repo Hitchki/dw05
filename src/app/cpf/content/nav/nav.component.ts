@@ -18,12 +18,12 @@ export class NavComponent implements OnInit {
   ngOnInit() {
   }
 
-  projectOnClick(index: number, type?: string , urlPath?: string, contentData?: ContentData) {
-    console.log('projectOnclick ', index, type, urlPath, contentData);
-  }
+  // projectOnClick(index: number, type?: string , urlPath?: string, contentData?: ContentData) {
+  //   console.log('projectOnclick ', index, type, urlPath, contentData);
+  // }
 
-  subProjectOnclick() {
-
+  onClick(index: number, type?: string) {
+    console.log('projectOnclick ', index, type);
   }
 
 }
