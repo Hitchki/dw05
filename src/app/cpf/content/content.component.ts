@@ -29,8 +29,8 @@ export class ContentComponent implements OnInit {
     if (urlPath && data.projects) {
       this.pathNodes = this.pathnodesService.getPathNodes(urlPath, data, 'test2', 'https://denkwelten.firebaseio.com');
       // debugger;
-      allContentData.navContent = this.pathNodes[0];
-      allContentData.navMoreContent = this.pathNodes[2];
+      allContentData.navContent = this.pathNodes[2];
+      allContentData.navMoreContent = this.pathNodes[3];
       allContentData.mainContent = this.pathNodes[2];
     }
     return allContentData;
