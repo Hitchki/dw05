@@ -8,7 +8,7 @@ urlPath of main: {{urlPath}}
 <div class="main">
 
 
-  <!--<pre>contentData: {{contentData | json}}</pre>-->
+  <pre>contentData: {{contentData | json}}</pre>
 
   <div *ngFor="let main of contentData?.cpfNodes; let i1=index;" #proItem>
     <div (click)="onClick(i1, contentData?.type)">

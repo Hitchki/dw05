@@ -4,7 +4,7 @@ import { PathnodesService } from './pathnodes/pathnodes.service';
 import { ApplicationState } from '../../store/application-state';
 import { Store } from '@ngrx/store';
 
-import { PathNodes, AllContentData } from './content.interfaces';
+import { PathNodes, AllContentData, UiChange } from './content.interfaces';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -69,7 +69,6 @@ export class ContentComponent implements OnInit {
       .withLatestFrom(this.data$)
       .let(this.allDataModel())
       .subscribe(
-        // pathNodes => console.log('ÖÖÖÖÖSsubscribe_pathNodes: ', pathNodes)
       );
 
     const source1 = this.urlPath$.withLatestFrom(
@@ -86,7 +85,7 @@ export class ContentComponent implements OnInit {
 
   }
 
-    ngOnInit() {}
+  ngOnInit() {}
 
   userIdSelector(state: ApplicationState): string {
 
@@ -120,6 +119,12 @@ export class ContentComponent implements OnInit {
       .catch(err => alert(err));
   }
 
+
+  uiChange(urlPath: UiChange) {
+    const fullUrlPath = `cpf#test2/${urlPath}`;
+    alert('urlPath: ' + fullUrlPath);
+    this.router.navigateByUrl(fullUrlPath);
+  }
 }
 
 

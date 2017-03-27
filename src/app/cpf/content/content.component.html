@@ -4,10 +4,14 @@
 
 <div class="cpf">
   <cpf-nav [contentData]="(allContentData$ | async).navContent"
-           [navMoreContentData]="(allContentData$ | async).navMoreContent">
+           [navMoreContentData]="(allContentData$ | async).navMoreContent"
+           (uiChange)="uiChange($event)">
   </cpf-nav>
 
-  <cpf-main [urlPath]="urlPath$ | async" [contentData]="(allContentData$ | async).mainContent" (newUrlPath)="newUrlPath($event)"></cpf-main>
+  <cpf-main [contentData]="(allContentData$ | async).mainContent"
+            [urlPath]="urlPath$ | async"
+            (newUrlPath)="newUrlPath($event)">
+  </cpf-main>
 </div>
 
 

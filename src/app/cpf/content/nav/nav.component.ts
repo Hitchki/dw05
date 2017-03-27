@@ -23,6 +23,14 @@ export class NavComponent implements OnInit {
   // }
 
   onClick(index: number, type?: string) {
+    let urlPath;
+    if (type === 'projects') {
+      urlPath = `urlPath/${index}`;
+    } else {
+      urlPath = `urlPath/subprojects/${index}`;
+      // urlPath = `urlPath\${type}\${index}`;
+    }
+    this.uiChange.emit(urlPath);
     console.log('projectOnclick ', index, type);
   }
 
