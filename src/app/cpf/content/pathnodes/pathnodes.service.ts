@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 // import { Subject } from 'rxjs/Subject';
 
 // import { FirebaseService } from '../../../core/firebase.service';
-import { PathNodesStringsHelpers } from '../content-service-helpers.interface';
+import { PathNodesStringsHelpers } from './pathnodes-service-helpers.interface';
 import { PathNodes, PathNode } from '../content.interfaces';
 
 @Injectable()
