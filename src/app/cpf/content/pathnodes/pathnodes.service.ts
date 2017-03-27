@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+// import { Observable } from 'rxjs/Observable';
+// import { Subject } from 'rxjs/Subject';
 
-import { FirebaseService } from '../../../core/firebase.service';
+// import { FirebaseService } from '../../../core/firebase.service';
 import { PathNodesStringsHelpers } from '../content-service-helpers.interface';
 import { PathNodes, PathNode } from '../content.interfaces';
 
 @Injectable()
 export class PathnodesService {
 
-  private pathNodesSubject = new Subject<PathNodes>();
+  // private pathNodesSubject = new Subject<PathNodes>();
 
   constructor(
-    private firebaseService: FirebaseService
+    // private firebaseService: FirebaseService
   ) { }
 
-  public getUserContent(userId: string): Observable<any> {
-    return this.firebaseService.getUserContent(userId);
-  }
+  // public getUserContent(userId: string): Observable<any> {
+  //   return this.firebaseService.getUserContent(userId);
+  // }
 
   getNormalizedPathNodesString(pathNodesString: string) {
     const normPathNodesString = pathNodesString.replace(/\/\/+/g, '/');
@@ -86,7 +86,7 @@ export class PathnodesService {
     const pathNodes = this.getPathNodesFRA(cpfNodes, pathNodesStringsHelpers.pathTypesArray, pathNodesStringsHelpers.pathIndexArray);
 
     this.buildPathNodesStringsForPathNodes(pathNodes, userId, databaseURL);
-    this.pathNodesSubject.next(pathNodes);
+    // this.pathNodesSubject.next(pathNodes);
     return pathNodes;
   }
 
