@@ -81,7 +81,7 @@ describe('PathnodesService as it is', () => {
     }));
   });
 
-  xdescribe('getPathNodesFRA test2', () => {
+  xdescribe('getBasePathNodes test2', () => {
     let pathTypesArray: string[];
     let pathIndexArray: number[];
     let dwNodes: any = test2.projects;
@@ -90,7 +90,7 @@ describe('PathnodesService as it is', () => {
       pathIndexArray = [0, 1];
       dwNodes = test2.projects;
       const result = {};
-      expect(service.getPathNodesFRA(dwNodes, pathTypesArray, pathIndexArray)).toEqual(jasmine.objectContaining(result));
+      expect(service.getBasePathNodes(dwNodes, pathTypesArray, pathIndexArray)).toEqual(jasmine.objectContaining(result));
     }));
 
     xit('should give back subprojects - pathNodes defined', inject([PathnodesService], (service: PathnodesService) => {
@@ -99,7 +99,7 @@ describe('PathnodesService as it is', () => {
       const cpfNodes = test2;
       const result = null;
       const pathNodes = <PathNodes>[];
-      expect(service.getPathNodesFRA(cpfNodes, pathTypesArray, pathIndexArray)).toEqual(jasmine.objectContaining(result));
+      expect(service.getBasePathNodes(cpfNodes, pathTypesArray, pathIndexArray)).toEqual(jasmine.objectContaining(result));
     }));
   });
 });

@@ -35,7 +35,7 @@ export class PathnodesService {
     return pathNodesStringsHelpers;
   }
 
-  buildPathNodesStringsForPathNodes(pathNodes: PathNodes, userId?: string, databaseURL?: string) {
+  buildUrlPaths(pathNodes: PathNodes, userId?: string, databaseURL?: string) {
     let pathNodesString = '';
     pathNodes.forEach(
       pathNode => {
@@ -50,7 +50,7 @@ export class PathnodesService {
     );
   }
 
-  getPathNodesFRA(cpfNodes, pathTypesArray: string[], pathIndexArray: number[]) {
+  getBasePathNodes(cpfNodes, pathTypesArray: string[], pathIndexArray: number[]) {
 
     let localCpfNodes = cpfNodes;
     const pathNodes: PathNodes = [];
@@ -83,9 +83,9 @@ export class PathnodesService {
     const normalizedPathNodesString = this.getNormalizedPathNodesString(pathNodesString);
     const pathNodesStringsArray = this.getPathNodesStringsArray(normalizedPathNodesString);
     const pathNodesStringsHelpers = this.getNodesArrays(pathNodesStringsArray);
-    const pathNodes = this.getPathNodesFRA(cpfNodes, pathNodesStringsHelpers.pathTypesArray, pathNodesStringsHelpers.pathIndexArray);
+    const pathNodes = this.getBasePathNodes(cpfNodes, pathNodesStringsHelpers.pathTypesArray, pathNodesStringsHelpers.pathIndexArray);
 
-    this.buildPathNodesStringsForPathNodes(pathNodes, userId, databaseURL);
+    this.buildUrlPaths(pathNodes, userId, databaseURL);
     // this.pathNodesSubject.next(pathNodes);
     return pathNodes;
   }
