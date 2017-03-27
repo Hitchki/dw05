@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 // import { Subject } from 'rxjs/Subject';
 
 // import { FirebaseService } from '../../../core/firebase.service';
-import { PathNodesStringsHelpers } from './pathnodes-service-helpers.interface';
+import { PathHelpers } from './pathnodes-service-helpers.interface';
 import { PathNodes, PathNode } from '../content.interfaces';
 
 @Injectable()
@@ -24,15 +24,15 @@ export class PathnodesService {
     return normPathNodesString.replace(/\/$/g, '');
   }
 
-  getPathNodesStringsArray(normalizedPathNodesString: string) {
+  getPathStringsArray(normalizedPathNodesString: string) {
     return normalizedPathNodesString.split('/');
   }
 
-  getNodesArrays(pathNodesStringsArray: any[]) {
-    const pathNodesStringsHelpers: PathNodesStringsHelpers = <PathNodesStringsHelpers>{};
-    pathNodesStringsHelpers.pathTypesArray = pathNodesStringsArray.filter((ele, ind) => !(ind % 2));
-    pathNodesStringsHelpers.pathIndexArray = pathNodesStringsArray.filter((ele, ind) => ind % 2).map(index => +index);
-    return pathNodesStringsHelpers;
+  getNodesArrays(pathStringsArray: any[]) {
+    const pathHelpers: PathHelpers = <PathHelpers>{};
+    pathHelpers.typesArray = pathStringsArray.filter((ele, ind) => !(ind % 2));
+    pathHelpers.indexArray = pathStringsArray.filter((ele, ind) => ind % 2).map(index => +index);
+    return pathHelpers;
   }
 
   buildUrlPaths(pathNodes: PathNodes, userId?: string, databaseURL?: string) {
@@ -50,20 +50,20 @@ export class PathnodesService {
     );
   }
 
-  getBasePathNodes(cpfNodes, pathTypesArray: string[], pathIndexArray: number[]) {
+  getBasePathNodes(cpfNodes, typesArray: string[], indexArray: number[]) {
 
     let localCpfNodes = cpfNodes;
     const pathNodes: PathNodes = [];
     let selectedNode;
 
-    pathTypesArray.map(
+    typesArray.map(
       (type, arraysIndex) => {
         localCpfNodes = localCpfNodes[type];
 
-        const selectedNodeIndex = pathIndexArray[arraysIndex];
+        const selectedNodeIndex = indexArray[arraysIndex];
 
         selectedNode = localCpfNodes[selectedNodeIndex];
-        const newPathNode: PathNode = this.getSinglePathNode(localCpfNodes, type, selectedNodeIndex);
+        const newPathNode: PathNode = this.getSingleBasePathNode(localCpfNodes, type, selectedNodeIndex);
         pathNodes.push(newPathNode);
 
         localCpfNodes = selectedNode;
@@ -72,7 +72,7 @@ export class PathnodesService {
     return pathNodes;
   }
 
-  getSinglePathNode(cpfNodes, type, selectedNodeIndex): PathNode {
+  getSingleBasePathNode(cpfNodes, type, selectedNodeIndex): PathNode {
     return {type: type, cpfNodes: cpfNodes, selectedIndex: selectedNodeIndex};
   }
 
@@ -81,9 +81,9 @@ export class PathnodesService {
     cpfNodes = cpfNodes ? cpfNodes : [];
 
     const normalizedPathNodesString = this.getNormalizedPathNodesString(pathNodesString);
-    const pathNodesStringsArray = this.getPathNodesStringsArray(normalizedPathNodesString);
-    const pathNodesStringsHelpers = this.getNodesArrays(pathNodesStringsArray);
-    const pathNodes = this.getBasePathNodes(cpfNodes, pathNodesStringsHelpers.pathTypesArray, pathNodesStringsHelpers.pathIndexArray);
+    const pathStringsArray = this.getPathStringsArray(normalizedPathNodesString);
+    const pathHelpers = this.getNodesArrays(pathStringsArray);
+    const pathNodes = this.getBasePathNodes(cpfNodes, pathHelpers.typesArray, pathHelpers.indexArray);
 
     this.buildUrlPaths(pathNodes, userId, databaseURL);
     // this.pathNodesSubject.next(pathNodes);
