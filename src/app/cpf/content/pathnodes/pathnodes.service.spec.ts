@@ -28,64 +28,64 @@ describe('PathnodesService as it is', () => {
     expect(service).toBeTruthy();
   }));
 
-  xdescribe('getNormalizedPathNodesString', () => {
+  describe('getNormPathNodesString', () => {
     it('should not change correct fragments', inject([PathnodesService], (service: PathnodesService) => {
       const fragment = 'franz/ulrich';
-      expect(service.getNormalizedPathNodesString(fragment)).toBe('franz/ulrich');
+      expect(service.getNormPathNodesString(fragment)).toBe('franz/ulrich');
     }));
 
     it('should replace duplicate // with one /', inject([PathnodesService], (service: PathnodesService) => {
       const fragment = 'franz//ulrich';
-      expect(service.getNormalizedPathNodesString(fragment)).toBe('franz/ulrich');
+      expect(service.getNormPathNodesString(fragment)).toBe('franz/ulrich');
     }));
 
     it('should replace duplicate // with one /', inject([PathnodesService], (service: PathnodesService) => {
       const fragment = 'franz///ulrich';
-      expect(service.getNormalizedPathNodesString(fragment)).toBe('franz/ulrich');
+      expect(service.getNormPathNodesString(fragment)).toBe('franz/ulrich');
     }));
 
     it('should remove duplicates /// and / at the end', inject([PathnodesService], (service: PathnodesService) => {
       const fragment = 'franz///ulrich/';
-      expect(service.getNormalizedPathNodesString(fragment)).toBe('franz/ulrich');
+      expect(service.getNormPathNodesString(fragment)).toBe('franz/ulrich');
     }));
   });
 
 
-  xdescribe('getNodesArrays', () => {
+  describe('getNodesArrays', () => {
     it('should give back correct fragmentsArray - even case', inject([PathnodesService], (service: PathnodesService) => {
       const fragmentsArray = ['projects', '7', 'subprojects', '2'];
-      const result: pathHelpers = {typesArray: ['projects','subprojects' ],indexArray:[7,2]};
+      const result: PathHelpers = {typesArray: ['projects','subprojects' ],indexArray:[7,2]};
        expect(service.getNodesArrays(fragmentsArray)).toEqual(jasmine.objectContaining(result));
     }));
 
     it('should give back correct fragmentsArray - uneven case', inject([PathnodesService], (service: PathnodesService) => {
       const fragmentsArray = ['projects', '7', 'subprojects'];
-      const result: pathHelpers = {typesArray: ['projects','subprojects' ],indexArray:[7]};
+      const result: PathHelpers = {typesArray: ['projects','subprojects' ],indexArray:[7]};
      expect(service.getNodesArrays(fragmentsArray)).toEqual(jasmine.objectContaining(result));
     }));
 
     it('full - even case', inject([PathnodesService], (service: PathnodesService) => {
       const fragment = 'projects/7/subprojects/2';
-      const normalizedFragment = service.getNormalizedPathNodesString(fragment);
+      const normalizedFragment = service.getNormPathNodesString(fragment);
       const fragmentsArray = service.getPathStringsArray(normalizedFragment);
-      const result: pathHelpers = {typesArray: ['projects','subprojects' ],indexArray:[7,2]};
+      const result: PathHelpers = {typesArray: ['projects','subprojects' ],indexArray:[7,2]};
       expect(service.getNodesArrays(fragmentsArray)).toEqual(jasmine.objectContaining(result));
     }));
 
     it('full - uneven case', inject([PathnodesService], (service: PathnodesService) => {
       const fragment = 'projects/7/subprojects';
-      const normalizedFragment = service.getNormalizedPathNodesString(fragment);
+      const normalizedFragment = service.getNormPathNodesString(fragment);
       const fragmentsArray = service.getPathStringsArray(normalizedFragment);
-      const result: pathHelpers = {typesArray: ['projects','subprojects' ],indexArray:[7]};
+      const result: PathHelpers = {typesArray: ['projects','subprojects' ],indexArray:[7]};
       expect(service.getNodesArrays(fragmentsArray)).toEqual(jasmine.objectContaining(result));
     }));
   });
 
-  xdescribe('getBasePathNodes test2', () => {
+  describe('getBasePathNodes test2', () => {
     let typesArray: string[];
     let indexArray: number[];
     let dwNodes: any = test2.projects;
-    it('should give back subprojects - pathNodes undefined', inject([PathnodesService], (service: PathnodesService) => {
+    xit('should give back subprojects - pathNodes undefined', inject([PathnodesService], (service: PathnodesService) => {
       typesArray = ['projects', 'subprojects'];
       indexArray = [0, 1];
       dwNodes = test2.projects;

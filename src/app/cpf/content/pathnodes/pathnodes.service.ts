@@ -19,13 +19,13 @@ export class PathnodesService {
   //   return this.firebaseService.getUserContent(userId);
   // }
 
-  getNormalizedPathNodesString(pathNodesString: string) {
+  getNormPathNodesString(pathNodesString: string) {
     const normPathNodesString = pathNodesString.replace(/\/\/+/g, '/');
     return normPathNodesString.replace(/\/$/g, '');
   }
 
-  getPathStringsArray(normalizedPathNodesString: string) {
-    return normalizedPathNodesString.split('/');
+  getPathStringsArray(normPathNodesString: string) {
+    return normPathNodesString.split('/');
   }
 
   getNodesArrays(pathStringsArray: any[]) {
@@ -80,8 +80,8 @@ export class PathnodesService {
 
     cpfNodes = cpfNodes ? cpfNodes : [];
 
-    const normalizedPathNodesString = this.getNormalizedPathNodesString(pathNodesString);
-    const pathStringsArray = this.getPathStringsArray(normalizedPathNodesString);
+    const normPathNodesString = this.getNormPathNodesString(pathNodesString);
+    const pathStringsArray = this.getPathStringsArray(normPathNodesString);
     const pathHelpers = this.getNodesArrays(pathStringsArray);
     const pathNodes = this.getBasePathNodes(cpfNodes, pathHelpers.typesArray, pathHelpers.indexArray);
 
