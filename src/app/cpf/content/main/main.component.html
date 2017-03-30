@@ -1,13 +1,11 @@
-<p>
-  main works!
-</p>
+<div class="main">
+  <cpf-normtext [contentData]="contentData"
+                (uiChange)="onUiChange($event)">
+  </cpf-normtext>
 
+  urlPath of main: {{urlPath}}
+</div>
 
-<cpf-normtext [contentData]="contentData"
-              (uiChange)="onUiChange($event)">
-</cpf-normtext>
-
-urlPath of main: {{urlPath}}
 
 
 <!--<div class="main">-->

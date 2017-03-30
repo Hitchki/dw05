@@ -1,0 +1,19 @@
+@import "../css/_variables";
+
+header {
+  position: fixed;
+  height: $padingheader;
+  width: 100%;
+  background: #75dfe2;
+  //background: ;
+}
+
+:host-context(body.debug) header {
+  outline: solid red;
+  border: solid red;
+}
+
+//header {
+//  outline: solid red;
+//  border: solid red;
+//}

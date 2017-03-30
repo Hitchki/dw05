@@ -10,7 +10,7 @@ import { UserChangedAction, LoadUserContentAction } from '../store/actions'
 @Component({
   selector: 'cpf-cpf',
   templateUrl: './cpf.component.html',
-  styleUrls: ['./cpf.component.css']
+  styleUrls: ['./cpf.component.scss']
 })
 export class CpfComponent implements OnInit {
 

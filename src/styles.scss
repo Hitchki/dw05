@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "css/reset.css";
+//@import "css/normalize.css";
+//@import "css/bootstrap-3.3.7-dist/bootstrap-3.3.7-dist/css/bootstrap.css";
+
+@import "css/_variables.scss";
+
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  //box-sizing: border-box;
+}
