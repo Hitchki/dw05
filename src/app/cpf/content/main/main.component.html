@@ -2,32 +2,37 @@
   main works!
 </p>
 
+
+<cpf-normtext [contentData]="contentData"
+              (uiChange)="onUiChange($event)">
+</cpf-normtext>
+
 urlPath of main: {{urlPath}}
 
 
-<div class="main">
+<!--<div class="main">-->
 
 
-  <pre>contentData: {{contentData | json}}</pre>
+  <!--<pre>contentData: {{contentData | json}}</pre>-->
 
-  <div *ngFor="let main of contentData?.cpfNodes; let i1=index;" #proItem>
-    <div (click)="onClick(i1, contentData?.type)">
-      <pre>{{main | json}}</pre>
-    </div>
-
-    <!--<div *ngFor="let info of main?.subprojects; let i2=index;" #subItem>-->
-      <!--<div *ngIf="i1===contentData?.selectedIndex">-->
-
-        <!--<div (click)="onClick(i2, 'subprojects')">-->
-          <!--{{subproject?.properties?.title}}-->
-        <!--</div>-->
-
-        <!--<cpf-nav-more [contentData]="navMoreContentData"></cpf-nav-more>-->
-
-      <!--</div>-->
+  <!--<div *ngFor="let main of contentData?.cpfNodes; let i1=index;" #proItem>-->
+    <!--<div (click)="onClick(i1, contentData?.type)">-->
+      <!--<pre>{{main | json}}</pre>-->
     <!--</div>-->
-  </div>
-</div>
+
+    <!--&lt;!&ndash;<div *ngFor="let info of main?.subprojects; let i2=index;" #subItem>&ndash;&gt;-->
+      <!--&lt;!&ndash;<div *ngIf="i1===contentData?.selectedIndex">&ndash;&gt;-->
+
+        <!--&lt;!&ndash;<div (click)="onClick(i2, 'subprojects')">&ndash;&gt;-->
+          <!--&lt;!&ndash;{{subproject?.properties?.title}}&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+        <!--&lt;!&ndash;<cpf-nav-more [contentData]="navMoreContentData"></cpf-nav-more>&ndash;&gt;-->
+
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+  <!--</div>-->
+<!--</div>-->
 
 <!--<button (click)="onClick()">onClick</button>-->
 

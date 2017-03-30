@@ -23,12 +23,6 @@ export interface UiChangeEvent {
   firePath: string;
 }
 
-export interface AllContentData {
-  navContent: ContentData;
-  navMoreContent: ContentData;
-  mainContent: ContentData;
-}
-
 export interface ContentData {
   cpfNodes: any[];
   selectedIndex: number;
@@ -37,7 +31,12 @@ export interface ContentData {
   firePath: string;
 }
 
-
+export interface AllContentData {
+  navContent: ContentData;
+  navMoreContent: ContentData;
+  mainContent: ContentData;
+  // async?: any;
+}
 
 // export interface PathData {
 //   pathNodes?: PathNodes;

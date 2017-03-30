@@ -30,4 +30,10 @@ export class MainComponent implements OnInit {
     // debugger;
     this.newUrlPath.emit(' Das ist ein Teststring!');
   }
+
+  onUiChange($event) {
+    // alert( index);
+    // debugger;
+    this.newUrlPath.emit(' Das ist ein Teststring!');
+  }
 }

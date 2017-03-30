@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PathnodesService } from './pathnodes/pathnodes.service';
+import { PathnodesService } from './services/pathnodes/pathnodes.service';
 import { ApplicationState } from '../../store/application-state';
 import { Store } from '@ngrx/store';
 
-import { PathNodes, AllContentData, UiChange } from './content.interfaces';
+/* tslint:disable:no-access-missing-member */
+import { AllContentData } from './content.interfaces';
+import { PathNodes, UiChange } from './content.interfaces';
+
 import { Observable } from 'rxjs';
+import { AllContentService } from './services/all-content/all-content.service';
 
 @Component({
   selector: 'cpf-content',
@@ -20,28 +24,17 @@ export class ContentComponent implements OnInit {
   private pathNodes: PathNodes;
   public allContentData$: Observable<AllContentData>;
 
-  getAllContenData(urlPath, data) {
-    const allContentData = {
-      navContent: undefined,
-      navMoreContent: undefined,
-      mainContent: undefined
-    };
-    if (urlPath && data.projects) {
-      this.pathNodes = this.pathnodesService.getPathNodes(urlPath, data, 'test2', 'https://denkwelten.firebaseio.com');
-      // debugger;
-      allContentData.navContent = this.pathNodes[0];
-      allContentData.navMoreContent = this.pathNodes[2];
-      allContentData.mainContent = this.pathNodes[2];
-    }
-    return allContentData;
+  getAllContentData(urlPath, data) {
+    return this.allContentService.getAllContentData(urlPath, data, 'test2', 'https://denkwelten.firebaseio.com');
   }
 
   allDataModel() {
     return state => state
-      .map(([urlPath, data]) => this.getAllContenData(urlPath, data));
+      .map(([urlPath, data]) => this.getAllContentData(urlPath, data));
   }
 
   constructor(private pathnodesService: PathnodesService,
+              private allContentService: AllContentService,
               private router: Router,
               private store: Store<ApplicationState>
   ) {
@@ -58,7 +51,7 @@ export class ContentComponent implements OnInit {
 
     this.allContentData$ = this.urlPath$
       .withLatestFrom(this.data$)
-      .map(([urlPath, data]) => this.getAllContenData(urlPath, data));
+      .map(([urlPath, data]) => this.getAllContentData(urlPath, data));
 
       // .subscribe(
       //   // pathNodes => console.log('SSSSSSSSSSSSsubscribe_pathNodes: ', pathNodes)
@@ -121,9 +114,15 @@ export class ContentComponent implements OnInit {
 
 
   uiChange(urlPath: UiChange) {
-    const fullUrlPath = `cpf#test2/${urlPath}`;
-    alert('urlPath: ' + fullUrlPath);
-    this.router.navigateByUrl(fullUrlPath);
+    const fullUrlPath = `/cpf#${urlPath}`;
+
+    // const fullUrlPath = `/cpf#urlPath`;
+    // alert('urlPath: ' + fullUrlPath);
+    this.router.navigateByUrl(fullUrlPath)
+      // .then(result => console.log('xxxxxxxxxxxxxxxxxresult', result),
+      //       (err) => {debugger;  console.log('xxxxxxxxxxxxxerr', err); });
+      .then(result => console.log('result', result))
+      .catch(err => {debugger;  console.debug('ACHTUNG, es ist ein Fehler aufgetreten: ', err); });
   }
 }
 

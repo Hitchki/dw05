@@ -8,14 +8,17 @@ import { MainComponent } from './content/main/main.component';
 import { NavMoreComponent } from './content/nav-more/nav-more.component';
 import { CpfComponent } from './cpf.component';
 import { ContentService } from './content/content.service';
-import { PathnodesService } from './content/pathnodes/pathnodes.service'
+import { PathnodesService } from './content/services/pathnodes/pathnodes.service';
+import { NormtextComponent } from './content/normtext/normtext/normtext.component';
+import { SearchtreeComponent } from './content/searchtree/searchtree/searchtree.component'
+import { AllContentService } from './content/services/all-content/all-content.service'
 
 @NgModule({
   imports: [
     CommonModule,
     CpfRoutingModule
   ],
-  declarations: [CpfComponent, ContentComponent, NavComponent, MainComponent, NavMoreComponent],
-  providers: [ContentService, PathnodesService]
+  declarations: [CpfComponent, ContentComponent, NavComponent, MainComponent, NavMoreComponent, NormtextComponent, SearchtreeComponent],
+  providers: [ContentService, PathnodesService, AllContentService]
 })
 export class CpfModule { }
