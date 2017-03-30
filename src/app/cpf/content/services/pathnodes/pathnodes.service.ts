@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 
 // import { FirebaseService } from '../../../core/firebase.service';
 import { PathHelpers } from './pathnodes-service-helpers.interface';
-import { PathNodes, PathNode } from '../content.interfaces';
+import { PathNodes, PathNode } from '../../content.interfaces';
 
 @Injectable()
 export class PathnodesService {
