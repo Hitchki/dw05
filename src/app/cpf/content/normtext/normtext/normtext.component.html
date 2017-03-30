@@ -1,0 +1,34 @@
+<p>
+  yyyyyyyyyyyyyyyynormtext works!
+</p>
+
+
+<div class="main">
+
+
+  <!--<pre>contentData: {{contentData | json}}</pre>-->
+
+  <div *ngFor="let normtextItem of contentData?.cpfNodes; let i1=index;" #proItem>
+    <div (click)="onClick(i1, contentData?.type)">
+      <pre>{{normtextItem | json}}</pre>
+      abcdefghij
+    </div>
+
+    <!--<div *ngFor="let info of main?.subprojects; let i2=index;" #subItem>-->
+    <!--<div *ngIf="i1===contentData?.selectedIndex">-->
+
+    <!--<div (click)="onClick(i2, 'subprojects')">-->
+    <!--{{subproject?.properties?.title}}-->
+    <!--</div>-->
+
+    <!--<cpf-nav-more [contentData]="navMoreContentData"></cpf-nav-more>-->
+
+    <!--</div>-->
+    <!--</div>-->
+  </div>
+</div>
+
+
+<p>
+  yyyyyyyyyyyyyyyynormtext works!
+</p>
