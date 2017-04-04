@@ -9,7 +9,7 @@ header {
 }
 
 :host-context(body.debug) header {
-  outline: solid red;
+  //outline: solid red;
   border: solid red;
 }
 
