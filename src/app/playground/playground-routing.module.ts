@@ -3,8 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { PlaygroundComponent } from './playground.component';
 import { AngularFireComponent } from './angular-fire/angular-fire.component';
-import { AngularFireListComponent } from './angular-fire-list/angular-fire-list.component'
-import { AngularFireObjectComponent } from './angular-fire-object/angular-fire-object.component'
+import { AngularFireListComponent } from './angular-fire-list/angular-fire-list.component';
+import { AngularFireObjectComponent } from './angular-fire-object/angular-fire-object.component';
+import { CssTestComponent } from './css-test/css-test.component';
 
 
 const playgroundRoutes: Routes =
@@ -23,7 +24,10 @@ const playgroundRoutes: Routes =
       }, {
         path: 'angular-fire-object',
         component: AngularFireObjectComponent
-      },
+      }, {
+      path: 'css-test',
+      component: CssTestComponent
+    },
       /*      {
         path: 'play2',
         component: Play2Component
