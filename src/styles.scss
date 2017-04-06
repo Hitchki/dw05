@@ -13,7 +13,10 @@ html {
 body {
   margin: 0;
   height: 100%;
-  background-color: #2b542c;
+  background-color: hsl(187, 100%, 95%);
+
+  margin-top: $containerMargin;
+  height: $containerHeight;
 }
 
 * {
@@ -22,12 +25,12 @@ body {
   box-sizing: border-box;
 }
 
-//header {
+//html {
 //  -webkit-box-sizing: border-box;
 //  -moz-box-sizing: border-box;
 //  box-sizing: border-box;
 //}
-
+//
 //*:before,
 //*:after {
 //  -webkit-box-sizing: border-box;

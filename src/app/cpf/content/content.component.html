@@ -1,16 +1,17 @@
-<div class="xxcontent xxrow">
-  <cpf-nav  class="xxxcol"
-            [contentData]="(allContentData$ | async).navContent"
+<!--content-component works!-->
+
+
+
+<!--<div></div>-->
+  <cpf-nav  [contentData]="(allContentData$ | async).navContent"
             [navMoreContentData]="(allContentData$ | async).navMoreContent"
             (uiChange)="uiChange($event)">
   </cpf-nav>
 
-  <cpf-main class="xxcol"
-            [contentData]="(allContentData$ | async).mainContent"
+  <cpf-main [contentData]="(allContentData$ | async).mainContent"
             [urlPath]="urlPath$ | async"
             (newUrlPath)="newUrlPath($event)">
   </cpf-main>
-</div>
 
 
 <!--<div class="content row">-->

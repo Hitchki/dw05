@@ -1,25 +1,25 @@
 
-abc
+<!--abc-->
 
-<!--<div class="nav">-->
-  <!--<div *ngFor="let project of contentData?.cpfNodes; let i1=index;" #proItem>-->
-    <!--<div (click)="onClick(i1, contentData?.type)">-->
-      <!--{{project?.properties?.title}}-->
-    <!--</div>-->
+<div class="nav">
+  <div *ngFor="let project of contentData?.cpfNodes; let i1=index;" #proItem>
+    <div (click)="onClick(i1, contentData?.type)">
+      {{project?.properties?.title}}
+    </div>
 
-    <!--<div *ngFor="let subproject of project?.subprojects; let i2=index;" #subItem>-->
-      <!--<div *ngIf="i1===contentData?.selectedIndex">-->
+    <div *ngFor="let subproject of project?.subprojects; let i2=index;" #subItem>
+      <div *ngIf="i1===contentData?.selectedIndex">
 
-        <!--<div (click)="onClick(i2, 'subprojects')">-->
-          <!--{{subproject?.properties?.title}}-->
-        <!--</div>-->
+        <div (click)="onClick(i2, 'subprojects')">
+          {{subproject?.properties?.title}}
+        </div>
 
-        <!--<cpf-nav-more [contentData]="navMoreContentData"></cpf-nav-more>-->
+        <cpf-nav-more [contentData]="navMoreContentData"></cpf-nav-more>
 
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
