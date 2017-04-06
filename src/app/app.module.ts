@@ -20,13 +20,13 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule, Action, combineReducers } from '@ngrx/store';
 import { INITIAL_APPLICATION_STATE, ApplicationState } from './store/application-state';
 // import { TEST_ACTION, PATH_STRING_CHANGED_ACTION, CONTENT_STATE_CHANGED_ACTION } from './store/actions';
-import { rootReducer } from './store/reducers/rootReducer'
-import { uiState } from './store/reducers/uiStateReducer'
-import { storeData } from './store/reducers/storeDataReducer'
-import { compose } from '@ngrx/core/compose'
-import { routerReducer } from '@ngrx/router-store'
+import { rootReducer } from './store/reducers/rootReducer';
+import { uiState } from './store/reducers/uiStateReducer';
+import { storeData } from './store/reducers/storeDataReducer';
+import { compose } from '@ngrx/core/compose';
+import { routerReducer } from '@ngrx/router-store';
 import { storeFreeze } from 'ngrx-store-freeze';
-import { PagenotfoundComponent } from './pagenotfound/pagenotfound/pagenotfound.component'
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound/pagenotfound.component';
 
 // export function storeReducer(state: ApplicationState, action: Action): ApplicationState {
 //
@@ -73,7 +73,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound/pagenotfound.
 @NgModule({
   declarations: [
     AppComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,7 +94,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound/pagenotfound.
     // StoreModule.provideStore(combineReducers({uiState, storeData}), INITIAL_APPLICATION_STATE),
 
     // StoreModule.provideStore(compose(storeFreeze, combineReducers)({uiState, storeData}), INITIAL_APPLICATION_STATE),
-    // StoreModule.provideStore(compose(storeFreeze, combineReducers)({uiState,storeData, router: routerReducer}), INITIAL_APPLICATION_STATE),
+    // StoreModule.provideStore(compose(storeFreeze, combineReducers)
+    // ({uiState,storeData, router: routerReducer}), INITIAL_APPLICATION_STATE),
 
     EffectsModule.run(LoadContentEffectService),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
