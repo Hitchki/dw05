@@ -3,13 +3,15 @@
 
 
 <!--<div></div>-->
-<div class="cpf-content-fixed nav-container">
-  <cpf-nav  [contentData]="(allContentData$ | async).navContent"
-            [navMoreContentData]="(allContentData$ | async).navMoreContent"
-            (uiChange)="uiChange($event)">
-  </cpf-nav>
+<div class="cpf-content-fixed">
+  <div class="nav-container">
+    <!--abc-->
+    <cpf-nav  [contentData]="(allContentData$ | async).navContent"
+              [navMoreContentData]="(allContentData$ | async).navMoreContent"
+              (uiChange)="uiChange($event)">
+    </cpf-nav>
+  </div>
 </div>
-
 
   <cpf-main [contentData]="(allContentData$ | async).mainContent"
             [urlPath]="urlPath$ | async"
