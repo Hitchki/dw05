@@ -42,15 +42,15 @@
   }
 
   .cpf-content-fixed, cpf-content {
-    max-width: 1000px;
-    width: 1000px;
+    max-width: $maxContainerWidth;
+    width: 100%;
     margin: 0 auto;
   }
 
   cpf-nav {
     display: block;
     heigth: 100%;
-    width: 50%;
+    //width: 50%;
     overflow: hidden;
     background-color: hsl(187, 100%, 85%);
     //height: $containerHeight;
