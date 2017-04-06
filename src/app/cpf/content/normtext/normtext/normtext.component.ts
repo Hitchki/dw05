@@ -18,7 +18,6 @@ export class NormtextComponent implements OnInit {
   }
 
   onClick(index: number, type?: string) {
-    debugger;
     let urlPath;
     if (type === 'projects') {
       urlPath = `${this.contentData.urlPath}/${index}`;

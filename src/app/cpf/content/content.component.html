@@ -1,11 +1,11 @@
-<div class="content row">
+<div class="xxcontent xxrow">
   <cpf-nav  class="xxxcol"
             [contentData]="(allContentData$ | async).navContent"
             [navMoreContentData]="(allContentData$ | async).navMoreContent"
             (uiChange)="uiChange($event)">
   </cpf-nav>
 
-  <cpf-main class="col"
+  <cpf-main class="xxcol"
             [contentData]="(allContentData$ | async).mainContent"
             [urlPath]="urlPath$ | async"
             (newUrlPath)="newUrlPath($event)">
