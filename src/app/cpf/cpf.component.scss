@@ -1,7 +1,7 @@
 @import "../../css/_variables";
 
 :host {
-  background-color: hsl(187, 100%, 90%);
+  background-color: hsl(187, 100%, 95%);
   border: 2px solid blue;
 
   height: 100%;
@@ -20,20 +20,21 @@
     display: block;
     width: 25%;
     overflow: scroll;
-    background-color: #2aabd2;
-    height: 100%;
+    background-color: hsl(187, 100%, 85%);
+    height: $containerHeight;
     position: fixed;
   }
 
   cpf-main {
-    margin-left: 50%;
-    width: 50%;
+    display: block;
+    margin-left: 25%;
+    width: 75%;
     //flex: 1 1 70%;
     //flex-basis: 70%;
     border: 1px solid red;
     //align-items: stretch;
-    background-color: #9d9d9d;
-    overflow: hidden;
+    background-color: hsl(187, 100%, 95%);
+    //overflow: hidden;
   }
 
 }
