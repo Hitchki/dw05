@@ -16,13 +16,31 @@
     height: 100%;
   }
 
-  cpf-nav {
-    display: block;
-    width: 25%;
-    overflow: scroll;
-    background-color: hsl(187, 100%, 85%);
+  .cpf-content-fixed {
+    //display: block;
+    background-color: hsl(187, 100%, 5%);
     height: $containerHeight;
     position: fixed;
+
+    &.nav-container {
+      width: 25%;
+    }
+
+    &.info-container {
+      width: 25%;
+    }
+
+  }
+
+
+
+  cpf-nav {
+    display: block;
+    width: 100%;
+    overflow: scroll;
+    background-color: hsl(187, 100%, 85%);
+    //height: $containerHeight;
+    //position: fixed;
   }
 
   cpf-main {
