@@ -10,7 +10,7 @@ export class AllContentService {
   constructor(private pathnodesService: PathnodesService) { }
 
   getAllContentData(urlPath: string, data, userId: string, fireUrlPrefix?: string): AllContentData {
-    const allContentData = {
+    const allContentData: AllContentData = {
       navContent: undefined,
       navMoreContent: undefined,
       mainContent: undefined
@@ -20,6 +20,9 @@ export class AllContentService {
       // debugger;
 
       allContentData.navContent = this.pathNodes[0];
+
+      //todo in pathnodesService verlagern?
+      allContentData.navContent.selectedChildIndex = this.pathNodes[1] ? this.pathNodes[1].selectedIndex : undefined;
 
       const pathNodeCount = this.pathNodes.length;
 

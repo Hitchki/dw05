@@ -7,11 +7,11 @@
 // export type BasePathNodes = BasePathNode[];
 
 export interface PathNode {
-  urlPath?: string;
-  firePath?: string;
-  type: string;  // is the same as the partialFragment
   cpfNodes: any[];
+  firePath?: string;
   selectedIndex: number;
+  type: string;  // is the same as the partialFragment
+  urlPath?: string;
 }
 
 export type PathNodes = PathNode[];
@@ -23,12 +23,8 @@ export interface UiChangeEvent {
   firePath: string;
 }
 
-export interface ContentData {
-  cpfNodes: any[];
-  selectedIndex: number;
-  type: string;
-  urlPath: string;
-  firePath: string;
+export interface ContentData extends PathNode {
+  selectedChildIndex?: number;
 }
 
 export interface AllContentData {

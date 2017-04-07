@@ -1,5 +1,4 @@
 
-
 <div class="nav">
   <div *ngFor="let project of contentData?.cpfNodes; let i1=index;" #proItem>
     <div (click)="onClick(i1, contentData?.type)">
@@ -13,8 +12,10 @@
           {{subproject?.properties?.title}}
         </div>
 
-        
-        <cpf-nav-more [contentData]="navMoreContentData"></cpf-nav-more>
+
+        <div *ngIf="i2===contentData?.selectedChildIndex">
+          <cpf-nav-more [contentData]="navMoreContentData"></cpf-nav-more>
+        </div>
 
       </div>
     </div>
