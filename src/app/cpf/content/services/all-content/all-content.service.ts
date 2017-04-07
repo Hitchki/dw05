@@ -18,9 +18,25 @@ export class AllContentService {
     if (urlPath && data.projects) {
       this.pathNodes = this.pathnodesService.getPathNodes(urlPath, data, 'prototext', 'https://denkwelten.firebaseio.com');
       // debugger;
+
       allContentData.navContent = this.pathNodes[0];
-      allContentData.navMoreContent = this.pathNodes[2];
-      allContentData.mainContent = this.pathNodes[2];
+
+      const pathNodeCount = this.pathNodes.length;
+
+      if (pathNodeCount <= 2) {
+        allContentData.mainContent = undefined;
+      } else if (pathNodeCount === 3 ) {
+        allContentData.mainContent = this.pathNodes[pathNodeCount - 1];
+      } else if (pathNodeCount > 3 ) {
+        allContentData.mainContent = this.pathNodes[pathNodeCount - 2];
+      }
+
+      if (pathNodeCount <= 2) {
+        allContentData.navMoreContent = undefined;
+      } else if (pathNodeCount > 2 ) {
+        allContentData.navMoreContent = this.pathNodes[pathNodeCount - 1];
+      }
+
     }
     return allContentData;
   }
