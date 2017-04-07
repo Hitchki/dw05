@@ -25,7 +25,7 @@ export class ContentComponent implements OnInit {
   public allContentData$: Observable<AllContentData>;
 
   getAllContentData(urlPath, data) {
-    return this.allContentService.getAllContentData(urlPath, data, 'test2', 'https://denkwelten.firebaseio.com');
+    return this.allContentService.getAllContentData(urlPath, data, 'prototext', 'https://denkwelten.firebaseio.com');
   }
 
   allDataModel() {
@@ -94,9 +94,9 @@ export class ContentComponent implements OnInit {
 
   newUrlPath(url) {
     // url = '/playground/angular-fire/';
-    url = 'test2/projects/0/subprojects/1/normtext/0/normtext/1';
+    url = 'prototext/projects/0/subprojects/1/normtext/0/normtext/1';
     // url = 'playground1 ';
-    // http://localhost:4200/cpf#test2/projects/0/subprojects/1/normtext/0/normtext/0
+    // http://localhost:4200/cpf#prototext/projects/0/subprojects/1/normtext/0/normtext/0
     // alert(url);
     // debugger;
     // this.router.navigateByUrl(url)

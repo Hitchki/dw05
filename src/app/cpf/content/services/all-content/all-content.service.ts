@@ -16,7 +16,7 @@ export class AllContentService {
       mainContent: undefined
     };
     if (urlPath && data.projects) {
-      this.pathNodes = this.pathnodesService.getPathNodes(urlPath, data, 'test2', 'https://denkwelten.firebaseio.com');
+      this.pathNodes = this.pathnodesService.getPathNodes(urlPath, data, 'prototext', 'https://denkwelten.firebaseio.com');
       // debugger;
       allContentData.navContent = this.pathNodes[0];
       allContentData.navMoreContent = this.pathNodes[2];

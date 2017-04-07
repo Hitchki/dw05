@@ -19,8 +19,8 @@ export class LoadContentEffectService {
   // @Effect({dispatch: false}) userContent$: Observable<Action> = this.actions$
     .ofType(LOAD_USER_CONTENT_ACTION)
     .debug('LOAD_USER_CONTENT_ACTION received!')
-    .switchMap(action => this.contentService.getUserContent('test2') )
-    // .switchMap(action => this.contentService.getPathNodes('test2') )
+    .switchMap(action => this.contentService.getUserContent('prototext') )
+    // .switchMap(action => this.contentService.getPathNodes('prototext') )
     .do((content) => console.log('content', content))
     .debug('getUserContent - data received!!')
     // .map((content) => new TestAction(content) );
