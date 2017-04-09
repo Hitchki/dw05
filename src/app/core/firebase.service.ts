@@ -12,4 +12,6 @@ export class FirebaseService {
   public getUserContent(userId: string): Observable<any> {
     return this.db.object(userId);
   }
+
+
 }
