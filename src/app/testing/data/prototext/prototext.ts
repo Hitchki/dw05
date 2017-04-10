@@ -9,31 +9,19 @@ export const prototext =
     },
     "subprojects": [
       {
-        "normtext": "normtext: {\"0\": { text: \"text1\" }, \"1\": { text: \"text2\" } }",
         "properties": {
-          "title": "Einleitung"
-        }
-      },
-      {
+          "title": "Sprachbarrieren Eliten und Volk"
+        },
         "normtext": [
           {
-            "normtext": [
-              {
-                "text": "zu Ende1"
-              },
-              {
-                "text": "zu Ende2"
-              },
-              {
-                "text": "zu Ende3"
-              }
-            ],
-            "text": "Flassbecks Thesen finde ich sehr gut"
+            "title": "Die Eliten und das Volk"
           },
           {
-            "text": "Jede Wirtschaft hat einen Materialdurchsatz."
+            "text": "Das kann sich tatsächlich so anfühlen, da die Menschen oft nicht einmal verstehen, worüber die Eliten sprechen."
           }
         ],
+      },
+      {
         "properties": {
           "title": "Etwas zu Ende diskutieren"
         }

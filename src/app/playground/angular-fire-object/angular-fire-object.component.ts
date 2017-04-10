@@ -11,6 +11,10 @@ import { prototext } from '../../testing/data/prototext/prototext';
 export class AngularFireObjectComponent implements OnInit {
   items: FirebaseObjectObservable<any>;
   // af: AngularFire;
+
+  private message: string;
+  private data: any;
+
   constructor(private af: AngularFire) {
     // this.items = af.database.object('/test4/projects');
   }
@@ -19,14 +23,15 @@ export class AngularFireObjectComponent implements OnInit {
   }
 
   save1() {
-    let data;
+    // data = [{normtext: 'abcd'}, {normtext: 'abcd1'}];
+    this.data = prototext;
 
-    data = [{normtext: 'abcd'}, {normtext: 'abcd1'}];
-    data = prototext;
+    const rest = this.af.database.object('/prototext').set(this.data);
 
-    const rest = this.af.database.object('/abc').set(data);
+    rest.then(() => this.message = `Hat funktioniert`)
+      .catch((er) => this.message = `Fehler ${er}`);
+
   }
-
 
   // addItem(newName: string) {
   //   this.items.push({ text: newName });
