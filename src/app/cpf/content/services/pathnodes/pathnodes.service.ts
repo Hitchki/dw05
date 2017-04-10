@@ -45,7 +45,7 @@ export class PathnodesService {
         // pathNode.cpfNodesPathNodesString = pathNodesString;
         pathNodesString += (pathNode.selectedIndex !== undefined) ? '/' + pathNode.selectedIndex : '';
         pathNode.urlPath = userId ? `${userId}/${pathNodesString}` : pathNodesString ;
-        pathNode.firePath = databaseURL ? `${databaseURL}/${pathNode.urlPath}` : pathNode.urlPath ;
+        pathNode.firePath = databaseURL ? `${databaseURL}/${pathNode.urlPath}.json` : `pathNode.urlPath.json` ;
       }
     );
   }
