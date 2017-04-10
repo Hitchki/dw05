@@ -47,7 +47,9 @@ export class AllContentService {
       } else if (pathNodeCount > 3 ) {
         allContentData.mainContent = this.pathNodes[pathNodeCount - 2];
       }
-      allContentData.mainContent.contentPath = contentPath;
+      if (allContentData.mainContent) {
+        allContentData.mainContent.contentPath = contentPath;
+      }
 
       if (pathNodeCount <= 2) {
         allContentData.navMoreContent = undefined;
