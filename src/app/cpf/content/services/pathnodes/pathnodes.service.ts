@@ -64,16 +64,16 @@ export class PathnodesService {
 
         if (localCpfNodes) {
           selectedNode = localCpfNodes[selectedNodeIndex];
+
+          const newPathNode: PathNode = this.getSingleBasePathNode(localCpfNodes, type, selectedNodeIndex);
+          pathNodes.push(newPathNode);
+
+          localCpfNodes = selectedNode;
         } else {
           selectedNodeIndex = undefined;
           console.info(`pathUrl was to long - 
                   selectedNodeIndex was set to undefined instead of ${selectedNodeIndex}`);
         }
-
-        const newPathNode: PathNode = this.getSingleBasePathNode(localCpfNodes, type, selectedNodeIndex);
-        pathNodes.push(newPathNode);
-
-        localCpfNodes = selectedNode;
       }
     );
     return pathNodes;
