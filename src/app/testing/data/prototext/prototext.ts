@@ -16,10 +16,13 @@ export const prototext =
           {
             "text": "Die Eliten und das Volk",
             "moreInfo":
-              { "normtext": [
+              [
                 { "text": "Aber kann man überhaupt so kommunizieren, dass das ein Großteil der Menschen versteht?"  }
-                ]
-              }
+              ],
+            "comment":
+              [
+                { "text": "Das kann man aber auch ganz anders sehen!"  }
+              ]
           },
           {
             "text": "Das kann sich tatsächlich so anfühlen, da die Menschen oft nicht einmal verstehen, worüber die Eliten sprechen."

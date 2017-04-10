@@ -25,16 +25,20 @@ export class AllContentService {
     if (urlPath && data.projects) {
       this.pathNodes = this.pathnodesService.getPathNodes(urlPath, data, 'prototext', 'https://denkwelten.firebaseio.com');
       // debugger;
-
       allContentData.navContent = this.pathNodes[0];
 
       debugger;
       const contentPath = this.getContentPath(urlPath);
+      const contentPathArray = contentPath.split('/');
 
       // todo in pathnodesService verlagern?
       allContentData.navContent.selectedChildIndex = this.pathNodes[1] ? this.pathNodes[1].selectedIndex : undefined;
 
       const pathNodeCount = this.pathNodes.length;
+
+      console.log('!!!!this.pathNodes: ', this.pathNodes);
+
+      console.log('!!!!this.pathNodes[pathNodeCount - 1]: ', this.pathNodes[pathNodeCount - 1].urlPath);
 
       if (pathNodeCount <= 2) {
         allContentData.mainContent = undefined;
