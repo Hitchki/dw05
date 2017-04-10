@@ -25,6 +25,7 @@ export interface UiChangeEvent {
 
 export interface ContentData extends PathNode {
   selectedChildIndex?: number;
+  contentPath?: string;
 }
 
 export interface AllContentData {

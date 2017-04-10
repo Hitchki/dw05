@@ -1,10 +1,11 @@
 
-  <!--<pre>contentData: {{contentData | json}}</pre>-->
+  <pre>contentData: {{contentData | json}}</pre>
 
   <div *ngFor="let normtextItem of contentData?.cpfNodes; let i1=index;" #proItem>
+    <!--contentData?.type: {{contentData?.type}}-->
+    <!--<pre>{{normtextItem | json}}</pre>-->
     <div (click)="onClick(i1, contentData?.type)">
-      <pre>{{normtextItem | json}}</pre>
-      abcdefghij
+      {{normtextItem.text}}
     </div>
 
     <div>

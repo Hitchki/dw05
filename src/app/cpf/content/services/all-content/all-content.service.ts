@@ -9,6 +9,13 @@ export class AllContentService {
 
   constructor(private pathnodesService: PathnodesService) { }
 
+  getContentPath(urlPath) {
+    // todo urlPath
+    const contentPath: string = urlPath.replace(/^projects\/.+?\/(subprojects\/.+?\/){0,1}/, '');
+    // const contentPath: string = urlPath.replace(/^.+?\/projects\/.+?\/(subprojects\/.+?\/){0,1}/, '');
+    return contentPath;
+  }
+
   getAllContentData(urlPath: string, data, userId: string, fireUrlPrefix?: string): AllContentData {
     const allContentData: AllContentData = {
       navContent: undefined,
@@ -21,7 +28,10 @@ export class AllContentService {
 
       allContentData.navContent = this.pathNodes[0];
 
-      //todo in pathnodesService verlagern?
+      debugger;
+      const contentPath = this.getContentPath(urlPath);
+
+      // todo in pathnodesService verlagern?
       allContentData.navContent.selectedChildIndex = this.pathNodes[1] ? this.pathNodes[1].selectedIndex : undefined;
 
       const pathNodeCount = this.pathNodes.length;
@@ -33,6 +43,7 @@ export class AllContentService {
       } else if (pathNodeCount > 3 ) {
         allContentData.mainContent = this.pathNodes[pathNodeCount - 2];
       }
+      allContentData.mainContent.contentPath = contentPath;
 
       if (pathNodeCount <= 2) {
         allContentData.navMoreContent = undefined;

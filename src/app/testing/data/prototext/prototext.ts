@@ -5,7 +5,7 @@ export const prototext =
   {"projects": [
   {
     "properties": {
-      "title": "Was kann cpf gut?"
+      "title": "Praktische Beispiele"
     },
     "subprojects": [
       {
@@ -14,10 +14,18 @@ export const prototext =
         },
         "normtext": [
           {
-            "title": "Die Eliten und das Volk"
+            "text": "Die Eliten und das Volk",
+            "moreInfo":
+              { "normtext": [
+                { "text": "Aber kann man überhaupt so kommunizieren, dass das ein Großteil der Menschen versteht?"  }
+                ]
+              }
           },
           {
             "text": "Das kann sich tatsächlich so anfühlen, da die Menschen oft nicht einmal verstehen, worüber die Eliten sprechen."
+          },
+          {
+            "text": "Hier kommt im Endeffekt noch ein wunderschönes Bild her."
           }
         ],
       },
