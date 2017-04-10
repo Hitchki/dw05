@@ -13,5 +13,11 @@ export class FirebaseService {
     return this.db.object(userId);
   }
 
+  public saveProjects(userId: string, data: any): any {
+    // return Observable.fromPromise(this.db.object(userId).set('abcd'));
+    return this.db.object(userId).set(data);
+    // return this.db.list(userId);
+    // return Observable.from(['observable in firebase-load-service from User: ' + userId]);
+  }
 
 }

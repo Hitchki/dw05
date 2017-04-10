@@ -1,0 +1,50 @@
+{
+
+  "projects": [
+    {
+      "properties": {
+        "title": "test2-project0"
+      },
+      "subprojects": [
+        {
+          "normtext": [
+            {
+              "text": "text1"
+            },
+            {
+              "text": "text2"
+            }
+          ],
+          "properties": {
+            "title": "test2-project0-subproject0"
+          }
+        },
+        {
+          "normtext": [
+            {
+              "normtext": [
+                {
+                  "text": "Und das mag ich hier begründen"
+                },
+                {
+                  "text": "blabla1"
+                },
+                {
+                  "text": "blabla2"
+                }
+              ],
+              "text": "Flassbecks Thesen finde ich sehr gut"
+            },
+            {
+              "text": "Jede Wirtschaft hat einen Materialdurchsatz."
+            }
+          ],
+          "properties": {
+            "title": "test2-project0-subproject1"
+          }
+        }
+      ]
+    }
+  ]
+
+}

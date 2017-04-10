@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFire, FirebaseObjectObservable } from 'angularfire2'
+import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
+import { test2 } from '../../testing/data/test2';
+import { prototext } from '../../testing/data/prototext/prototext';
 
 @Component({
   selector: 'cpf-angular-fire-object',
@@ -8,12 +10,23 @@ import { AngularFire, FirebaseObjectObservable } from 'angularfire2'
 })
 export class AngularFireObjectComponent implements OnInit {
   items: FirebaseObjectObservable<any>;
-  constructor(af: AngularFire) {
-    this.items = af.database.object('/test4/projects');
+  // af: AngularFire;
+  constructor(private af: AngularFire) {
+    // this.items = af.database.object('/test4/projects');
   }
 
   ngOnInit() {
   }
+
+  save1() {
+    let data;
+
+    data = [{normtext: 'abcd'}, {normtext: 'abcd1'}];
+    data = prototext;
+
+    const rest = this.af.database.object('/abc').set(data);
+  }
+
 
   // addItem(newName: string) {
   //   this.items.push({ text: newName });
