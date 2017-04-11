@@ -16,6 +16,29 @@ export class AllContentService {
     return contentPath;
   }
 
+  getDefaultPaths(urlPath) {
+    // todo urlPath
+    // debugger;
+    if (urlPath.match(/^projects$/)) {
+      urlPath = `${urlPath}/0/subprojects/0/normtext/0`;
+    } else if (urlPath.match(/^projects\/$/)) {
+      urlPath = `${urlPath}0/subprojects/0/normtext/0`;
+    } else if (urlPath.match(/^projects\/\d+?$/)) {
+      urlPath = `${urlPath}/subprojects/0/normtext/0`;
+    } else if (urlPath.match(/^projects\/\d+?\/$/)) {
+      urlPath = `${urlPath}subprojects/0/normtext/0`;
+    } else if (urlPath.match(/^projects\/\d+?\/subprojects$/)) {
+      urlPath = `${urlPath}/0/normtext/0`;
+    } else if (urlPath.match(/^projects\/\d+?\/subprojects\/$/)) {
+      urlPath = `${urlPath}0/normtext/0`;
+    } else if (urlPath.match(/^projects\/\d+?\/subprojects\/\d+?$/)) {
+      urlPath = `${urlPath}/normtext/0`;
+    }
+
+    // const contentPath: string = urlPath.replace(/^.+?\/projects\/.+?\/(subprojects\/.+?\/){0,1}/, '');
+    return urlPath;
+  }
+
   getAllContentData(urlPath: string, data, userId: string, fireUrlPrefix?: string): AllContentData {
     const allContentData: AllContentData = {
       navContent: undefined,
@@ -23,11 +46,16 @@ export class AllContentService {
       mainContent: undefined
     };
     if (urlPath && data.projects) {
+
+      urlPath = this.getDefaultPaths(urlPath);
+
+      // alert(urlPath);
+
       this.pathNodes = this.pathnodesService.getPathNodes(urlPath, data, 'prototext', 'https://denkwelten.firebaseio.com');
       // debugger;
       allContentData.navContent = this.pathNodes[0];
 
-      debugger;
+      // debugger;
       const contentPath = this.getContentPath(urlPath);
       const contentPathArray = contentPath.split('/');
 

@@ -25,7 +25,10 @@ export class NavComponent implements OnInit {
   onClick(index: number, type?: string) {
     let urlPath;
     if (type === 'projects') {
-      urlPath = `${this.contentData.urlPath}/${index}`;
+      // debugger;
+      urlPath = this.contentData.urlPath.slice(0, this.contentData.urlPath.lastIndexOf('/'));
+      // urlPath = `${this.contentData.urlPath}/${index}`;
+      urlPath = `${urlPath}/${index}`;
     } else {
       urlPath = `${this.contentData.urlPath}/subprojects/${index}`;
       // urlPath = `urlPath\${type}\${index}`;
