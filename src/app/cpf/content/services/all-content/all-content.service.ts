@@ -40,11 +40,8 @@ export class AllContentService {
   }
 
   getAllContentData(urlPath: string, data, userId: string, fireUrlPrefix?: string): AllContentData {
-    const allContentData: AllContentData = {
-      navContent: undefined,
-      navMoreContent: undefined,
-      mainContent: undefined
-    };
+    const allContentData = {} as AllContentData;
+
     if (urlPath && data.projects) {
 
       urlPath = this.getDefaultPaths(urlPath);
@@ -52,38 +49,34 @@ export class AllContentService {
       // alert(urlPath);
 
       this.pathNodes = this.pathnodesService.getPathNodes(urlPath, data, 'prototext', 'https://denkwelten.firebaseio.com');
+
       // debugger;
       allContentData.navContent = this.pathNodes[0];
-
-      // debugger;
-      const contentPath = this.getContentPath(urlPath);
-      const contentPathArray = contentPath.split('/');
-
-      // todo in pathnodesService verlagern?
-      allContentData.navContent.selectedChildIndex = this.pathNodes[1] ? this.pathNodes[1].selectedIndex : undefined;
 
       const pathNodeCount = this.pathNodes.length;
 
       console.log('!!!!this.pathNodes: ', this.pathNodes);
-
       console.log('!!!!this.pathNodes[pathNodeCount - 1]: ', this.pathNodes[pathNodeCount - 1].urlPath);
 
-      if (pathNodeCount <= 2) {
-        allContentData.mainContent = undefined;
-      } else if (pathNodeCount === 3 ) {
-        allContentData.mainContent = this.pathNodes[pathNodeCount - 1];
-      } else if (pathNodeCount > 3 ) {
-        allContentData.mainContent = this.pathNodes[pathNodeCount - 2];
-      }
-      if (allContentData.mainContent) {
-        allContentData.mainContent.contentPath = contentPath;
+      if (pathNodeCount > 1) {
+        allContentData.navSubContent = this.pathNodes[1];
       }
 
-      if (pathNodeCount <= 2) {
-        allContentData.navMoreContent = undefined;
-      } else if (pathNodeCount > 2 ) {
-        allContentData.navMoreContent = this.pathNodes[pathNodeCount - 1];
+      if (pathNodeCount === 3 ) {
+        allContentData.mainContent = this.pathNodes[2];
+      } else if (pathNodeCount > 3 ) {
+        allContentData.navBetweenContent = this.pathNodes[3];
+        allContentData.mainContent = this.pathNodes[pathNodeCount - 2];
+        allContentData.mainSubContent = this.pathNodes[pathNodeCount - 1];
       }
+
+      allContentData.navMoreContent = allContentData.mainContent;
+
+      const contentPath = this.getContentPath(urlPath);
+
+      const contentPathArray = contentPath.split('/');
+      // todo in pathnodesService verlagern?
+      allContentData.navContent.selectedChildIndex = this.pathNodes[1] ? this.pathNodes[1].selectedIndex : undefined;
 
     }
     return allContentData;

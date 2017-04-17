@@ -30,9 +30,11 @@ export interface ContentData extends PathNode {
 
 export interface AllContentData {
   navContent: ContentData;
+  navSubContent: ContentData;
+  navBetweenContent: ContentData;
   navMoreContent: ContentData;
   mainContent: ContentData;
-  // async?: any;
+  mainSubContent: ContentData;
 }
 
 // export interface PathData {
