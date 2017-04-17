@@ -15,7 +15,7 @@ export const prototext =
         "normtext": [
           {
             "text": "Die Eliten und das Volk",
-            "moreInfo":
+            "moreinfo":
               [
                 { "text": "Aber kann man überhaupt so kommunizieren, dass das ein Großteil der Menschen versteht?"  }
               ],
