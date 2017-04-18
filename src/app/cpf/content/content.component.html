@@ -1,38 +1,19 @@
-<!--content-component works!-->
 
-
-
-<!--<div></div>-->
 <div class="cpf-content-fixed">
   <div class="nav-container">
     <!--abc-->
-    <cpf-nav  [contentData]="(allContentData$ | async).navContent"
-              [navMoreContentData]="(allContentData$ | async).navMoreContent"
-              (uiChange)="uiChange($event)">
+    <cpf-nav
+        [contentData]="(allContentData$ | async).navContent"
+        [subContentData]="(allContentData$ | async).navSubContent"
+        [navMoreContentData]="(allContentData$ | async).navMoreContent"
+        (uiChange)="uiChange($event)">
     </cpf-nav>
   </div>
 </div>
 
-  <cpf-main [contentData]="(allContentData$ | async).mainContent"
-            [urlPath]="urlPath$ | async"
-            (newUrlPath)="newUrlPath($event)">
+  <cpf-main
+        [contentData]="(allContentData$ | async).mainContent">
+        [subContentData]="(allContentData$ | async).mainSubContent"
+        (uiChange)="uiChange($event)">
   </cpf-main>
 
-
-<!--<div class="content row">-->
-  <!--<div  class="col">-->
-    <!--DIV1-->
-  <!--</div>-->
-
-  <!--<div class="col">-->
-    <!--DIV2-->
-  <!--</div>-->
-<!--</div>-->
-
-
-<!--<cpf-nav></cpf-nav>-->
-
-<!--<cpf-main [contentData]="mainContentVM" (uiChange)="uiChange($event)"></cpf-main>-->
-
-
-<!--<cpf-nav-more></cpf-nav-more>-->

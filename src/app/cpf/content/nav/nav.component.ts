@@ -10,6 +10,7 @@ import { ContentData, UiChange } from '../content.interfaces';
 export class NavComponent implements OnInit {
 
   @Input() contentData: ContentData;
+  @Input() subContentData: ContentData;
   @Input() navMoreContentData: ContentData;
   @Output() uiChange = new EventEmitter<UiChange>();
 

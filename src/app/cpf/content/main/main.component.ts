@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { UiChange } from '../content.interfaces';
+import { ContentData, UiChange } from '../content.interfaces';
 
 @Component({
   selector: 'cpf-main',
@@ -10,12 +10,11 @@ import { UiChange } from '../content.interfaces';
 export class MainComponent implements OnInit {
 
   @Input() contentData: any;
-  @Input() urlPath: string;
+  @Input() subContentData: ContentData;
   @Output() uiChange = new EventEmitter<UiChange>();
-  @Output() newUrlPath = new EventEmitter<string>();
 
   constructor() {
-    this.urlPath = 'hellöööö';
+    // this.urlPath = 'hellöööö';
   }
 
   ngOnInit() {
@@ -28,12 +27,12 @@ export class MainComponent implements OnInit {
   onClick($event, index) {
     // alert( index);
     // debugger;
-    this.newUrlPath.emit(' Das ist ein Teststring!');
+    // this.newUrlPath.emit(' Das ist ein Teststring!');
   }
 
   onUiChange($event) {
     // alert( index);
     // debugger;
-    this.newUrlPath.emit(' Das ist ein Teststring!');
+    // this.newUrlPath.emit(' Das ist ein Teststring!');
   }
 }

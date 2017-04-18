@@ -10,6 +10,7 @@ import { ContentData, UiChange } from '../../content.interfaces';
 export class NormtextComponent implements OnInit {
 
   @Input() contentData: ContentData;
+  @Input() subContentData: ContentData;
   @Output() uiChange = new EventEmitter<UiChange>();
 
   constructor() { }
