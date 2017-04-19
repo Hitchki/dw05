@@ -1,14 +1,14 @@
 
-<div class="cpf-content-fixed">
-  <div class="nav-container">
+<!--<div class="cpf-content-fixed">-->
+  <!--<div class="nav-container">-->
     <cpf-nav
         [contentData]="(allContentData$ | async).navContent"
         [subContentData]="(allContentData$ | async).navSubContent"
         [navMoreContentData]="(allContentData$ | async).navMoreContent"
         (uiChange)="uiChange($event)">
     </cpf-nav>
-  </div>
-</div>
+  <!--</div>-->
+<!--</div>-->
 
   <cpf-main
         [contentData]="(allContentData$ | async).mainContent">
