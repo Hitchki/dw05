@@ -13,31 +13,6 @@
   cpf-content {
     display: block;
     height: 100%;
-  }
-
-  //.cpf-content-fixed {
-  //
-  //  margin-top: $containerMargin;
-  //  height: $containerHeight;
-  //  position: fixed;
-  //
-  //  .nav-container {
-  //    display: block;
-  //    width: 25%;
-  //    background-color: hsl(187, 100%, 35%);
-  //    height: 100%;
-  //    overflow: scroll;
-  //
-  //  }
-  //
-  //  &.info-container {
-  //    display: block;
-  //    width: 25%;
-  //  }
-  //
-  //}
-
-  .cpf-content-fixed, cpf-content {
     //max-width: $maxContainerWidth;
     width: 100%;
     margin: 0 auto;
@@ -51,15 +26,26 @@
     position: fixed;
     top: $containerMargin;
     width: 25%;
+    //display: none;
   }
 
-  cpf-main {
-    display: block;
-    margin-left: 25%;
-    width: 75%;
+  div.main {
+    heigth: 100%;
+    background-color: hsl(187, 100%, 25%);
+    margin: 0 35% 0 25%;
+    //overflow-x: scroll;
+    overflow: hidden;
+  }
 
-    border: 1px solid red;
-    background-color: hsl(187, 100%, 95%);
+  div.info {
+    position: fixed;
+    top: $containerMargin;
+    width: 35%;
+    right: 0;
+  }
+
+  cpf-normtext {
+    height: 100%;
   }
 
   .info-tabs-container {
@@ -85,3 +71,13 @@
   //outline: solid green;
   border: solid green 2px;
 }
+
+
+//cpf-main {
+//  display: block;
+//  margin-left: 25%;
+//  width: 75%;
+//
+//  border: 1px solid red;
+//  background-color: hsl(187, 100%, 95%);
+//}

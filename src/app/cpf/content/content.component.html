@@ -10,9 +10,24 @@
   <!--</div>-->
 <!--</div>-->
 
-  <cpf-main
-        [contentData]="(allContentData$ | async).mainContent">
-        [subContentData]="(allContentData$ | async).mainSubContent"
-        (uiChange)="uiChange($event)">
-  </cpf-main>
+  <!--<cpf-main-->
+        <!--[contentData]="(allContentData$ | async).mainContent">-->
+        <!--[subContentData]="(allContentData$ | async).mainSubContent"-->
+        <!--(uiChange)="uiChange($event)">-->
+  <!--</cpf-main>-->
 
+<div class="main">
+  <cpf-normtext
+    [contentData]="(allContentData$ | async).mainContent"
+    [subContentData]="subContentData"
+    (uiChange)="onUiChange($event)">
+  </cpf-normtext>
+</div>
+
+<div class="info">
+  <cpf-normtext
+    [contentData]="(allContentData$ | async).mainSubContent"
+    [subContentData]="subContentData"
+    (uiChange)="onUiChange($event)">
+  </cpf-normtext>
+</div>
