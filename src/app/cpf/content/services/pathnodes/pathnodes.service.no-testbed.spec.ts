@@ -9,9 +9,9 @@
 //   value: string = 'faked value';
 // }
 
-xdescribe('this is a test', () =>{
+describe('!!!!pathnodes.service.no-testbed.spec', () => {
 
-  let centralService;
+  // let centralService;
   // let contentLoadService: ContentLoadService = new ContentLoadService();
 
   beforeEach( () => {
@@ -20,7 +20,6 @@ xdescribe('this is a test', () =>{
   });
 
   describe('loadTestTree', () => {
-
 
     it('', function () {
       expect(true).toBeTruthy();

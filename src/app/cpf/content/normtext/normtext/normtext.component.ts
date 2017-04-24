@@ -18,15 +18,11 @@ export class NormtextComponent implements OnInit {
   ngOnInit() {
   }
 
-  onClick(index: number, type?: string) {
-    let urlPath;
-    if (type === 'projects') {
-      urlPath = `${this.contentData.urlPath}/${index}`;
-    } else {
-      urlPath = `${this.contentData.urlPath}/subprojects/${index}`;
-      // urlPath = `urlPath\${type}\${index}`;
-    }
+  // get
+
+  onClick(type: string, index: string) {
+    const urlPath = `${this.contentData.urlPath}/${type}/${index}`;
+    console.log('normtextOnclick ', type, index);
     this.uiChange.emit(urlPath);
-    console.log('projectOnclick ', index, type);
   }
 }

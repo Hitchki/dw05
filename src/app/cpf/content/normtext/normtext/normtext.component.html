@@ -4,9 +4,17 @@
   <div *ngFor="let normtextItem of contentData?.cpfNodes; let i1=index;" #proItem>
     <!--contentData?.type: {{contentData?.type}}-->
     <!--<pre>{{normtextItem | json}}</pre>-->
-    <div (click)="onClick(i1, contentData?.type)">
+    <div>
       {{normtextItem.text}}
     </div>
+
+    <div *ngIf="normtextItem.moreinfo" (click)="onClick('moreinfo', i1)">
+      <i class="fa fa-car"></i>
+    </div>
+    <div *ngIf="normtextItem.comment" (click)="onClick('comment', i1)">
+      <i class="fa fa-car"></i>
+    </div>
+
 
     <div *ngIf="i1===contentData.selectedIndex">
 

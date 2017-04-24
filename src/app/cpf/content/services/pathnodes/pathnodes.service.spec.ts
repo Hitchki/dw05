@@ -24,6 +24,10 @@ describe('PathnodesService as it is', () => {
     });
   });
 
+  it('', function () {
+    expect(true).toBeTruthy();
+  });
+
   it('should ...', inject([PathnodesService], (service: PathnodesService) => {
     expect(service).toBeTruthy();
   }));

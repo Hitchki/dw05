@@ -113,7 +113,7 @@ export class ContentComponent implements OnInit {
   }
 
 
-  uiChange(urlPath: UiChange) {
+  onUiChange(urlPath: UiChange) {
     const fullUrlPath = `/cpf#${urlPath}`;
 
     // const fullUrlPath = `/cpf#urlPath`;

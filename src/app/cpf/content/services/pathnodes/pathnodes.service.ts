@@ -1,41 +1,31 @@
 import { Injectable } from '@angular/core';
-// import { Observable } from 'rxjs/Observable';
-// import { Subject } from 'rxjs/Subject';
 
-// import { FirebaseService } from '../../../core/firebase.service';
 import { PathHelpers } from './pathnodes-service-helpers.interface';
 import { PathNodes, PathNode } from '../../content.interfaces';
 
 @Injectable()
 export class PathnodesService {
 
-  // private pathNodesSubject = new Subject<PathNodes>();
-
   constructor(
-    // private firebaseService: FirebaseService
   ) { }
 
-  // public getUserContent(userId: string): Observable<any> {
-  //   return this.firebaseService.getUserContent(userId);
-  // }
-
-  getNormPathNodesString(pathNodesString: string) {
+  protected getNormPathNodesString(pathNodesString: string) {
     const normPathNodesString = pathNodesString.replace(/\/\/+/g, '/');
     return normPathNodesString.replace(/\/$/g, '');
   }
 
-  getPathStringsArray(normPathNodesString: string) {
+  private getPathStringsArray(normPathNodesString: string) {
     return normPathNodesString.split('/');
   }
 
-  getNodesArrays(pathStringsArray: any[]) {
+  private getNodesArrays(pathStringsArray: any[]) {
     const pathHelpers: PathHelpers = <PathHelpers>{};
     pathHelpers.typesArray = pathStringsArray.filter((ele, ind) => !(ind % 2));
     pathHelpers.indexArray = pathStringsArray.filter((ele, ind) => ind % 2).map(index => +index);
     return pathHelpers;
   }
 
-  buildUrlPaths(pathNodes: PathNodes, userId?: string, databaseURL?: string) {
+  private buildUrlPaths(pathNodes: PathNodes, userId?: string, databaseURL?: string) {
     let pathNodesString = '';
     pathNodes.forEach(
       pathNode => {
@@ -50,40 +40,60 @@ export class PathnodesService {
     );
   }
 
-  getBasePathNodes(cpfNodes, typesArray: string[], indexArray: number[]) {
+  private getPaths(type: string, selectedIndex: number): [string, string] {
+    let urlPath = '';
+    let firePath = '';
 
-    let localCpfNodes = cpfNodes;
+    urlPath  = selectedIndex ? `${urlPath}\${type}\${+selectedIndex}`  : `${urlPath}\${type}`;
+    firePath = selectedIndex ? `${firePath}\${type}\${+selectedIndex}` : `${firePath}\${type}`;
+
+    return [urlPath, firePath];
+  }
+
+  private getBasePathNodes(cpfNodes, typesArray: string[], indexArray: number[]) {
+
+    /* traversedCpfNodes ist eine Art Zeiger auf das derzeit "aktive" firePath-Element.
+    * Beginnend mit dem Root-Knoten wird das Dokument entlang des pathUrls abgearbeitet. */
+    let traversedCpfNodes = cpfNodes;
     const pathNodes: PathNodes = [];
     let selectedNode;
+    let selectedIndex;
+
+    let urlPath = '';
+    let firePath = '';
 
     typesArray.map(
       (type, arraysIndex) => {
-        localCpfNodes = localCpfNodes[type];
 
-        let selectedNodeIndex = indexArray[arraysIndex];
+        traversedCpfNodes = traversedCpfNodes[type];
 
-        if (localCpfNodes) {
-          selectedNode = localCpfNodes[selectedNodeIndex];
+        if (traversedCpfNodes) {
+          selectedIndex = indexArray[arraysIndex];
+          selectedNode = traversedCpfNodes[selectedIndex];
 
-          const newPathNode: PathNode = this.getSingleBasePathNode(localCpfNodes, type, selectedNodeIndex);
+          if (selectedNode) {
+            [urlPath, firePath]  = this.getPaths(type, selectedIndex);
+          }
+
+          const newPathNode: PathNode = this.getSingleBasePathNode(traversedCpfNodes, type, selectedIndex);
           pathNodes.push(newPathNode);
 
-          localCpfNodes = selectedNode;
+          traversedCpfNodes = selectedNode;
         } else {
-          selectedNodeIndex = undefined;
+          // selectedIndex = undefined;
           console.info(`pathUrl was to long - 
-                  selectedNodeIndex was set to undefined instead of ${selectedNodeIndex}`);
+                  selectedIndex was set to undefined instead of ${selectedIndex}`);
         }
       }
     );
     return pathNodes;
   }
 
-  getSingleBasePathNode(cpfNodes, type, selectedNodeIndex): PathNode {
+  private getSingleBasePathNode(cpfNodes, type, selectedNodeIndex): PathNode {
     return {type: type, cpfNodes: cpfNodes, selectedIndex: selectedNodeIndex};
   }
 
-  getPathNodes(pathNodesString: string, cpfNodes?: any[], userId?: string, databaseURL?: string) {
+  public getPathNodes(pathNodesString: string, cpfNodes?: any[], userId?: string, databaseURL?: string) {
 
     cpfNodes = cpfNodes ? cpfNodes : [];
 
@@ -93,7 +103,6 @@ export class PathnodesService {
     const pathNodes = this.getBasePathNodes(cpfNodes, pathHelpers.typesArray, pathHelpers.indexArray);
 
     this.buildUrlPaths(pathNodes, userId, databaseURL);
-    // this.pathNodesSubject.next(pathNodes);
     return pathNodes;
   }
 
