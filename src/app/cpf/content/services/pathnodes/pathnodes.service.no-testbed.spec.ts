@@ -9,7 +9,7 @@
 //   value: string = 'faked value';
 // }
 
-describe('!!!!pathnodes.service.no-testbed.spec', () => {
+fdescribe('!!!!pathnodes.service.no-testbed.spec', () => {
 
   // let centralService;
   // let contentLoadService: ContentLoadService = new ContentLoadService();
@@ -19,9 +19,9 @@ describe('!!!!pathnodes.service.no-testbed.spec', () => {
     // centralService = new CentralService(fake as ContentLoadService);
   });
 
-  describe('loadTestTree', () => {
+  fdescribe('loadTestTree', () => {
 
-    it('', function () {
+    fit('', function () {
       expect(true).toBeTruthy();
     });
   });

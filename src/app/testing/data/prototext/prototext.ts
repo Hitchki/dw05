@@ -12,12 +12,21 @@ export const prototext =
         "properties": {
           "title": "Sprachbarrieren Eliten und Volk"
         },
-        "normtext": [
+        "normtext":
+        [
           {
             "text": "Die Eliten und das Volk",
             "moreinfo":
               [
-                { "text": "Aber kann man überhaupt so kommunizieren, dass das ein Großteil der Menschen versteht?"  }
+                {
+                  "text": "Aber kann man überhaupt so kommunizieren, dass das ein Großteil der Menschen versteht?",
+                  "moreinfo":
+                    [
+                      {
+                        "text": "Das mag auf den ersten Blick nämlich unmöglich erscheinen"
+                      },
+                    ],
+                },
               ],
             "comment":
               [
