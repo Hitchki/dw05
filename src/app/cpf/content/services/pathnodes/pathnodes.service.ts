@@ -9,7 +9,7 @@ export class PathnodesService {
   constructor(
   ) { }
 
-  protected getNormPathNodesString(pathNodesString: string) {
+  private getNormPathNodesString(pathNodesString: string) {
     const normPathNodesString = pathNodesString.replace(/\/\/+/g, '/');
     return normPathNodesString.replace(/\/$/g, '');
   }

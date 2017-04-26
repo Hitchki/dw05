@@ -9,14 +9,16 @@
 //   value: string = 'faked value';
 // }
 
+import { PathnodesService } from './pathnodes.service';
+
 fdescribe('!!!!pathnodes.service.no-testbed.spec', () => {
 
-  // let centralService;
+  let pathnodesService;
   // let contentLoadService: ContentLoadService = new ContentLoadService();
 
   beforeEach( () => {
-    const fake =  { getValue: () => 'fake value' };
-    // centralService = new CentralService(fake as ContentLoadService);
+    // const fake =  { getValue: () => 'fake value' };
+    pathnodesService = new PathnodesService();
   });
 
   fdescribe('loadTestTree', () => {
@@ -24,6 +26,12 @@ fdescribe('!!!!pathnodes.service.no-testbed.spec', () => {
     fit('', function () {
       expect(true).toBeTruthy();
     });
+
+    fit('', function () {
+      const abc = pathnodesService.getNormPathNodesString('abc//abc');
+      expect(abc).toBe('abc/abc');
+    });
+
   });
 
 
