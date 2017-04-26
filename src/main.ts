@@ -13,7 +13,7 @@ if (environment.production) {
 
 platformBrowserDynamic().bootstrapModule(AppModule);
 
-const debuggerOn = true;
+const debuggerOn = false;
 
 Observable.prototype.debug = function(message: string) {
   return this.do(

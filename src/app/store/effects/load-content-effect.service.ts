@@ -18,11 +18,11 @@ export class LoadContentEffectService {
   @Effect() userContent$: Observable<Action> = this.actions$
   // @Effect({dispatch: false}) userContent$: Observable<Action> = this.actions$
     .ofType(LOAD_USER_CONTENT_ACTION)
-    .debug('LOAD_USER_CONTENT_ACTION received!')
+    // .debug('LOAD_USER_CONTENT_ACTION received!')
     .switchMap(action => this.contentService.getUserContent('prototext') )
     // .switchMap(action => this.contentService.getPathNodes('prototext') )
     .do((content) => console.log('content', content))
-    .debug('getUserContent - data received!!')
+    // .debug('getUserContent - data received!!')
     // .map((content) => new TestAction(content) );
     .map((content) => new UserContentLoadedAction(content) );
   //
