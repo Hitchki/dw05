@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 
-import { PathHelpers } from './pathnodes-service-helpers.interface';
 import { PathNodes, PathNode } from '../../content.interfaces';
 
 @Injectable()
@@ -19,10 +18,9 @@ export class PathnodesService {
   }
 
   private getNodesArrays(pathStringsArray: any[]) {
-    const pathHelpers: PathHelpers = <PathHelpers>{};
-    pathHelpers.typesArray = pathStringsArray.filter((ele, ind) => !(ind % 2));
-    pathHelpers.indexArray = pathStringsArray.filter((ele, ind) => ind % 2).map(index => +index);
-    return pathHelpers;
+    const typesArray = pathStringsArray.filter((ele, ind) => !(ind % 2));
+    const indexArray = pathStringsArray.filter((ele, ind) => ind % 2).map(index => +index);
+    return [typesArray, indexArray];
   }
 
   private buildUrlPaths(pathNodes: PathNodes, userId?: string, databaseURL?: string) {
@@ -99,8 +97,8 @@ export class PathnodesService {
 
     const normPathNodesString = this.getNormPathNodesString(pathNodesString);
     const pathStringsArray = this.getPathStringsArray(normPathNodesString);
-    const pathHelpers = this.getNodesArrays(pathStringsArray);
-    const pathNodes = this.getBasePathNodes(cpfNodes, pathHelpers.typesArray, pathHelpers.indexArray);
+    const [typesArray, indexArray] = this.getNodesArrays(pathStringsArray);
+    const pathNodes = this.getBasePathNodes(cpfNodes, typesArray, indexArray);
 
     this.buildUrlPaths(pathNodes, userId, databaseURL);
     return pathNodes;
