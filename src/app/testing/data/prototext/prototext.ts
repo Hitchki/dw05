@@ -15,7 +15,8 @@ export const prototext =
         "normtext":
         [
           {
-            "text": "Die Eliten und das Volk",
+            "text": "Die Eliten und das Volk. " +
+            "<p>Das kann sich tatsächlich so anfühlen, dass die Menschen nicht einmal verstehen, worüber die Eliten sprechen.</p>",
             "moreinfo":
               [
                 {
