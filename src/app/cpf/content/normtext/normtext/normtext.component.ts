@@ -39,26 +39,48 @@ export class NormtextComponent implements OnInit {
         break;
       case 'add':
         text = window.prompt('eingabe', '');
-        if (text) {
-          // this.contentData.cpfNodes[index].text = text;
-
-          for (let i: number = index; i < this.contentData.cpfNodes.length; i++) {
-            this.contentData.cpfNodes[index  + 1] = this.contentData.cpfNodes[index];
-          }
-          this.contentData.cpfNodes[index] = {text: text};
+        // if (text) {
+        //   const length = this.contentData.cpfNodes.length;
+        //   for (let i: number = length; index < i; i--) {
+        //     this.contentData.cpfNodes[i] = this.contentData.cpfNodes[i - 1];
+        //   }
+        //   this.contentData.cpfNodes[index + 1] = {text: text};
+        // }
+        if (text && index) {
+          const newNode = {text: text};
+          this.contentData.cpfNodes.splice(index + 1, 0, newNode);
         }
         break;
-
-      case 'delete':
+      case 'insert':
+        text = window.prompt('eingabe', '');
+        // if (text) {
+        //   const length = this.contentData.cpfNodes.length;
+        //   for (let i: number = length; index < i; i--) {
+        //     this.contentData.cpfNodes[i] = this.contentData.cpfNodes[i - 1];
+        //   }
+        //   this.contentData.cpfNodes[index] = {text: text};
+        // }
         if (text) {
-          // this.contentData.cpfNodes[index].text = text;
-
-          for (let i: number = index; i < this.contentData.cpfNodes.length; i++) {
-            this.contentData.cpfNodes[index] = this.contentData.cpfNodes[index - 1];
-          }
-          // this.contentData.cpfNodes[index].text = text;
+          const newNode = {text: text};
+          this.contentData.cpfNodes.splice(index, 0, newNode);
         }
-        delete this.contentData.cpfNodes[this.contentData.cpfNodes.length - 1];
+        break;
+      case 'addLast':
+        const type = window.prompt('type!!', 'moreinfo');
+        if (type) {
+          text = window.prompt('eingabe', '');
+          if (text) {
+            this.contentData.cpfNodes[index][type] = [{text: text}];
+          }
+        }
+        break;
+      case 'delete':
+        // const length = this.contentData.cpfNodes.length;
+        // delete this.contentData.cpfNodes[index];
+        // for (let i: number = index; i < length - 1; i++) {
+        //   this.contentData.cpfNodes[i] = this.contentData.cpfNodes[i + 1];
+        // }
+        this.contentData.cpfNodes.splice(index, 1);
         break;
     }
 
