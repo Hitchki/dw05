@@ -13,4 +13,8 @@ export class ContentService {
   getUserContent(userId: string): Observable<any> {
     return this.firebaseService.getUserContent(userId);
   }
+
+  saveUserContent(userId: string, data: any): Observable<any> {
+    return this.firebaseService.saveUserContent(userId, data);
+  }
 }

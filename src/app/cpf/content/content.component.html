@@ -1,3 +1,10 @@
+<!--<div style="position: absolute; top: -20px;"></div>-->
+
+<div id="saveContent">
+  <button id="saveButton" (click)="onSave()">save Content</button>
+  <input type="text" id="saveUser" [(ngModel)]="userIdToSave">
+</div>
+
 
 <!--<div class="cpf-content-fixed">-->
   <!--<div class="nav-container">-->
@@ -31,3 +38,4 @@
     (uiChange)="onUiChange($event)">
   </cpf-normtext>
 </div>
+

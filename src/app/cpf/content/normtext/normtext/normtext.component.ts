@@ -13,16 +13,55 @@ export class NormtextComponent implements OnInit {
   @Input() subContentData: ContentData;
   @Output() uiChange = new EventEmitter<UiChange>();
 
+  public edit = true;
+
   constructor() { }
 
   ngOnInit() {
   }
-
-  // get
 
   onClick(type: string, index: string) {
     const urlPath = `${this.contentData.urlPath}/${type}/${index}`;
     console.log('normtextOnclick ', type, index);
     this.uiChange.emit(urlPath);
   }
+
+  onEditClick(actionType: string, index: number) {
+
+    let text = '';
+
+    switch (actionType) {
+      case 'edit':
+        text = window.prompt('eingabe', this.contentData.cpfNodes[index].text);
+        if (text) {
+          this.contentData.cpfNodes[index].text = text;
+        }
+        break;
+      case 'add':
+        text = window.prompt('eingabe', '');
+        if (text) {
+          this.contentData.cpfNodes[index].text = text;
+
+          for (let i: number = index; i < this.contentData.cpfNodes.length; i++) {
+            this.contentData.cpfNodes[index] = this.contentData.cpfNodes[index + 1];
+          }
+          this.contentData.cpfNodes[index].text = text;
+        }
+        break;
+
+      case 'delete':
+        if (text) {
+          this.contentData.cpfNodes[index].text = text;
+
+          for (let i: number = index; i < this.contentData.cpfNodes.length; i++) {
+            this.contentData.cpfNodes[index] = this.contentData.cpfNodes[index - 1];
+          }
+          // this.contentData.cpfNodes[index].text = text;
+        }
+        break;
+    }
+
+    // this.uiChange.emit(urlPath);
+  }
+
 }

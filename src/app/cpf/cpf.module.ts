@@ -12,10 +12,12 @@ import { PathnodesService } from './content/services/pathnodes/pathnodes.service
 import { NormtextComponent } from './content/normtext/normtext/normtext.component';
 import { SearchtreeComponent } from './content/searchtree/searchtree/searchtree.component'
 import { AllContentService } from './content/services/all-content/all-content.service'
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     CpfRoutingModule
   ],
   declarations: [CpfComponent, ContentComponent, NavComponent, MainComponent, NavMoreComponent, NormtextComponent, SearchtreeComponent],

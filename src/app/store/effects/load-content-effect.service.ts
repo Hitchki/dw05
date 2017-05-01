@@ -19,7 +19,14 @@ export class LoadContentEffectService {
   // @Effect({dispatch: false}) userContent$: Observable<Action> = this.actions$
     .ofType(LOAD_USER_CONTENT_ACTION)
     // .debug('LOAD_USER_CONTENT_ACTION received!')
-    .switchMap(action => this.contentService.getUserContent('prototext') )
+    .switchMap(
+      // (action, payload) => this.contentService.getUserContent('prototext3')
+       (action) => {
+        // console.log('payload userContent$', action.payload.userId);
+        //  return this.contentService.getUserContent('prototext3');
+         return this.contentService.getUserContent(action.payload.userId);
+      }
+    )
     // .switchMap(action => this.contentService.getPathNodes('prototext') )
     .do((content) => console.log('content', content))
     // .debug('getUserContent - data received!!')

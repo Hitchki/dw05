@@ -13,6 +13,12 @@ export class FirebaseService {
     return this.db.object(userId);
   }
 
+  public saveUserContent(userId: string, data: any): any {
+    const tmp = this.db.object(userId).set(data);
+    return tmp;
+    // return this.db.object(userId).set(data);
+  }
+
   public saveProjects(userId: string, data: any): any {
     // return Observable.fromPromise(this.db.object(userId).set('abcd'));
     return this.db.object(userId).set(data);

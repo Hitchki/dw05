@@ -48,7 +48,7 @@ export class AllContentService {
 
       // alert(urlPath);
 
-      this.pathNodes = this.pathnodesService.getPathNodes(urlPath, data, 'prototext', 'https://denkwelten.firebaseio.com');
+      this.pathNodes = this.pathnodesService.getPathNodes(urlPath, data, userId, 'https://denkwelten.firebaseio.com');
 
       // debugger;
       allContentData.navContent = this.pathNodes[0];

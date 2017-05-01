@@ -10,6 +10,7 @@ import { PathNodes, UiChange } from './content.interfaces';
 
 import { Observable } from 'rxjs';
 import { AllContentService } from './services/all-content/all-content.service';
+import { ContentService } from './content.service'
 
 @Component({
   selector: 'cpf-content',
@@ -24,8 +25,10 @@ export class ContentComponent implements OnInit {
   private pathNodes: PathNodes;
   public allContentData$: Observable<AllContentData>;
 
+  public userIdToSave = '_prototext';
+
   getAllContentData(urlPath, data) {
-    return this.allContentService.getAllContentData(urlPath, data, 'prototext', 'https://denkwelten.firebaseio.com');
+    return this.allContentService.getAllContentData(urlPath, data, 'prototext3', 'https://denkwelten.firebaseio.com');
   }
 
   allDataModel() {
@@ -34,6 +37,7 @@ export class ContentComponent implements OnInit {
   }
 
   constructor(private pathnodesService: PathnodesService,
+              private contentService: ContentService,   // nur gebraucht für onSave/saveUserContent
               private allContentService: AllContentService,
               private router: Router,
               private store: Store<ApplicationState>
@@ -123,6 +127,11 @@ export class ContentComponent implements OnInit {
       //       (err) => {debugger;  console.log('xxxxxxxxxxxxxerr', err); });
       .then(result => console.log('result', result))
       .catch(err => {debugger;  console.debug('ACHTUNG, es ist ein Fehler aufgetreten: ', err); });
+  }
+
+  onSave() {
+    console.log('pathNodes to save', this.pathNodes);
+    this.contentService.saveUserContent(this.userIdToSave, { projects: this.pathNodes[0].cpfNodes}) ;
   }
 }
 

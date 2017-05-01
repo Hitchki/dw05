@@ -10,6 +10,11 @@
 
 :host /deep/ {
 
+  #saveContent {
+    position: fixed;
+    top: 20px;
+  }
+
   cpf-content {
     display: block;
     height: 100%;
