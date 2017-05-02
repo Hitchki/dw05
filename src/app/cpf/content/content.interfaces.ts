@@ -12,6 +12,10 @@ export interface PathNode {
   selectedIndex: number;
   type: string;  // is the same as the partialFragment
   urlPath?: string;
+  urlBasePath?: string;
+
+  urlPathNeu?: string;
+  firePathNeu?: string;
 }
 
 export type PathNodes = PathNode[];

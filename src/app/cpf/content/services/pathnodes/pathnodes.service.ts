@@ -38,57 +38,69 @@ export class PathnodesService {
     );
   }
 
-  private getPaths(type: string, selectedIndex: number): [string, string] {
-    let urlPath = '';
-    let firePath = '';
+  private getPaths(type: string, selectedIndex: number, oldUrlPath: string, oldFirePath: string): [string, string, string] {
 
-    urlPath  = selectedIndex ? `${urlPath}\${type}\${+selectedIndex}`  : `${urlPath}\${type}`;
-    firePath = selectedIndex ? `${firePath}\${type}\${+selectedIndex}` : `${firePath}\${type}`;
+    const urlBasePath  = `${oldUrlPath}/${type}`;
+    const urlPath  = (selectedIndex !== undefined) ? `${oldUrlPath}/${type}/${selectedIndex}`  : `${oldUrlPath}/${type}`;
+    const firePath = (selectedIndex !== undefined) ? `${oldFirePath}/${type}/${selectedIndex}` : `${oldFirePath}/${type}`;
 
-    return [urlPath, firePath];
+    return [urlPath, firePath, urlBasePath];
   }
 
-  private getBasePathNodes(cpfNodes, typesArray: string[], indexArray: number[]) {
-
-    /* traversedCpfNodes ist eine Art Zeiger auf das derzeit "aktive" firePath-Element.
-    * Beginnend mit dem Root-Knoten wird das Dokument entlang des pathUrls abgearbeitet. */
-    let traversedCpfNodes = cpfNodes;
+  private getBasePathNodes(cpfNodes, typesArray: string[], indexArray: number[], userId: string, databaseUrl: string) {
     const pathNodes: PathNodes = [];
-    let selectedNode;
-    let selectedIndex;
 
-    let urlPath = '';
-    let firePath = '';
+    // if (userId) {
+      /* traversedCpfNodes ist eine Art Zeiger auf das derzeit "aktive" firePath-Element.
+       * Beginnend mit dem Root-Knoten wird das Dokument entlang des pathUrls abgearbeitet. */
+      let traversedCpfNodes = cpfNodes;
+      let selectedNode;
+      let selectedIndex;
 
-    typesArray.map(
-      (type, arraysIndex) => {
+      let urlPath = userId;
+      let urlBasePath = userId;
+      let firePath = databaseUrl;
 
-        traversedCpfNodes = traversedCpfNodes[type];
+      typesArray.map(
+        (type, arraysIndex) => {
 
-        if (traversedCpfNodes) {
-          selectedIndex = indexArray[arraysIndex];
-          selectedNode = traversedCpfNodes[selectedIndex];
+          traversedCpfNodes = traversedCpfNodes[type];
 
-          if (selectedNode) {
-            [urlPath, firePath]  = this.getPaths(type, selectedIndex);
+          if (!traversedCpfNodes) {
+            console.log(`pathUrl was to long - and shortende to ${selectedIndex}`);
+          } else {
+
+            selectedIndex = indexArray[arraysIndex];
+            selectedNode = traversedCpfNodes[selectedIndex];
+
+            if (!selectedNode) {
+              selectedIndex = undefined;
+              console.log(`pathUrl was to long - selectedIndex ${selectedIndex} is no valid data section`);
+            }
+
+            [urlPath, firePath, urlBasePath] = this.getPaths(type, selectedIndex, urlPath, firePath);
+            const newPathNode: PathNode = this.getSingleBasePathNode(traversedCpfNodes, type, selectedIndex, urlBasePath, urlPath, firePath);
+            pathNodes.push(newPathNode);
+
+            traversedCpfNodes = selectedNode;
           }
-
-          const newPathNode: PathNode = this.getSingleBasePathNode(traversedCpfNodes, type, selectedIndex);
-          pathNodes.push(newPathNode);
-
-          traversedCpfNodes = selectedNode;
-        } else {
-          // selectedIndex = undefined;
-          console.info(`pathUrl was to long - 
-                  selectedIndex was set to undefined instead of ${selectedIndex}`);
         }
-      }
-    );
+      );
+    // }
     return pathNodes;
   }
 
-  private getSingleBasePathNode(cpfNodes, type, selectedNodeIndex): PathNode {
-    return {type: type, cpfNodes: cpfNodes, selectedIndex: selectedNodeIndex};
+  private getSingleBasePathNode(cpfNodes, type, selectedNodeIndex, urlBasePath, urlPath, firePath): PathNode {
+    return {
+      type: type,
+      cpfNodes: cpfNodes,
+      selectedIndex: selectedNodeIndex,
+      urlBasePath: urlBasePath,
+      urlPath: urlPath,
+      firePath: firePath + '.json',
+      urlPathNeu: urlPath,
+      firePathNeu: firePath + '.json'
+    };
   }
 
   public getPathNodes(pathNodesString: string, cpfNodes?: any[], userId?: string, databaseURL?: string) {
@@ -98,9 +110,9 @@ export class PathnodesService {
     const normPathNodesString = this.getNormPathNodesString(pathNodesString);
     const pathStringsArray = this.getPathStringsArray(normPathNodesString);
     const [typesArray, indexArray] = this.getNodesArrays(pathStringsArray);
-    const pathNodes = this.getBasePathNodes(cpfNodes, typesArray, indexArray);
+    const pathNodes = this.getBasePathNodes(cpfNodes, typesArray, indexArray, userId, databaseURL);
 
-    this.buildUrlPaths(pathNodes, userId, databaseURL);
+    // this.buildUrlPaths(pathNodes, userId, databaseURL);
     return pathNodes;
   }
 

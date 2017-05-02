@@ -21,8 +21,10 @@ export class NormtextComponent implements OnInit {
   }
 
   onClick(type: string, index: string) {
-    const urlPath = `${this.contentData.urlPath}/${type}/${index}`;
+    const urlPath = `${this.contentData.urlBasePath}/${index}/${type}/0`;
+    console.log('normtextOnclick ', this.contentData.firePath, type, index);
     console.log('normtextOnclick ', this.contentData.urlPath, type, index);
+
     this.uiChange.emit(urlPath);
   }
 
