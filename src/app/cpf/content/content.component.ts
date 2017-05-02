@@ -21,14 +21,15 @@ export class ContentComponent implements OnInit {
 
   public urlPath$: Observable<string>;
   public data$: Observable<any>;
+  public userId$: Observable<string>;
 
   private pathNodes: PathNodes;
   public allContentData$: Observable<AllContentData>;
 
   public userIdToSave = '_prototext';
 
-  getAllContentData(urlPath, data) {
-    return this.allContentService.getAllContentData(urlPath, data, 'prototext3', 'https://denkwelten.firebaseio.com');
+  getAllContentData(urlPath, data, userId?) {
+    return this.allContentService.getAllContentData(urlPath, data, userId, 'https://denkwelten.firebaseio.com');
   }
 
   allDataModel() {
@@ -52,10 +53,12 @@ export class ContentComponent implements OnInit {
     // const currentUserId = store.map(state => state.uiState.userId);
     this.urlPath$ = store.map(state => state.uiState.urlPath);
     this.data$ = store.map(state => state.storeData.content);
+    this.userId$ = store.map(state => state.uiState.userId);
 
     this.allContentData$ = this.urlPath$
       .withLatestFrom(this.data$)
-      .map(([urlPath, data]) => this.getAllContentData(urlPath, data));
+      .withLatestFrom(this.userId$)
+      .map(([[urlPath, data], userId]) => this.getAllContentData(urlPath, data, userId));
 
       // .subscribe(
       //   // pathNodes => console.log('SSSSSSSSSSSSsubscribe_pathNodes: ', pathNodes)
