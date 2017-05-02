@@ -22,7 +22,7 @@ export class NormtextComponent implements OnInit {
 
   onClick(type: string, index: string) {
     const urlPath = `${this.contentData.urlPath}/${type}/${index}`;
-    console.log('normtextOnclick ', type, index);
+    console.log('normtextOnclick ', this.contentData.urlPath, type, index);
     this.uiChange.emit(urlPath);
   }
 
@@ -46,7 +46,7 @@ export class NormtextComponent implements OnInit {
         //   }
         //   this.contentData.cpfNodes[index + 1] = {text: text};
         // }
-        if (text && index) {
+        if (text) {
           const newNode = {text: text};
           this.contentData.cpfNodes.splice(index + 1, 0, newNode);
         }
