@@ -55,8 +55,11 @@ export class AllContentService {
 
       const pathNodeCount = this.pathNodes.length;
 
-      console.log('!!!!this.pathNodes: ', this.pathNodes);
-      console.log('!!!!this.pathNodes[pathNodeCount - 1]: ', this.pathNodes[pathNodeCount - 1].urlPath);
+      console.log('!!this.pathNodes: ', this.pathNodes);
+
+      console.log('!!!! highest firePath: ', this.pathNodes[this.pathNodes.length - 1].firePath);
+      console.log('!!!! highest urlPath: ', this.pathNodes[this.pathNodes.length - 1].urlPath);
+      // console.log('!!!!this.pathNodes[pathNodeCount - 1]: ', this.pathNodes[pathNodeCount - 1].urlPath);
 
       if (pathNodeCount > 1) {
         allContentData.navSubContent = this.pathNodes[1];
