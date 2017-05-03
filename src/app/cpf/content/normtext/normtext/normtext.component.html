@@ -1,11 +1,12 @@
 
 <!--<pre>{{contentData | json}}</pre>-->
 
-  <div *ngFor="let normtextItem of contentData?.cpfNodes; let i1=index;" #proItem>
+  <div *ngFor="let normtextItem of contentData?.cpfNodes; let i1=index;" #proItem [class.selected]="i1===contentData.selectedIndex">
     <!--contentData?.type: {{contentData?.type}}-->
     <!--<pre>{{normtextItem | json}}</pre>-->
-    <div>
-      {{normtextItem.text}}
+    <!--TODO sanitize!-->
+    <div innerHTML={{normtextItem.text}}>
+      <!--{{normtextItem.text}}-->
     </div>
 
     <div *ngIf="normtextItem.moreinfo" (click)="onClick('moreinfo', i1)">
@@ -23,14 +24,12 @@
       <i class="fa fa-plus-square" (click)="onEditClick('addLast', i1)"></i>
     </div>
 
-    <div *ngIf="i1===contentData.selectedIndex">
-
-      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
-
-      <!--<div *ngFor="let infoItem of subContentData?.cpfNodes; let i2=index;">-->
-        <!--infoItem-->
-      <!--</div>-->
-    </div>
+    <!--<div *ngIf="i1===contentData.selectedIndex">-->
+      <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11-->
+      <!--&lt;!&ndash;<div *ngFor="let infoItem of subContentData?.cpfNodes; let i2=index;">&ndash;&gt;-->
+        <!--&lt;!&ndash;infoItem&ndash;&gt;-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--</div>-->
   </div>
 
   <!--<pre>contentData: {{contentData | json}}</pre>-->

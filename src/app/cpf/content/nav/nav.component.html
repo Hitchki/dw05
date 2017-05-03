@@ -5,7 +5,8 @@
       {{project?.properties?.title}}
     </div>
 
-    <div *ngFor="let subproject of project?.subprojects; let i2=index;" #subItem>
+    <div *ngFor="let subproject of project?.subprojects; let i2=index;" #subItem
+         [class.selected]="i1===contentData?.selectedIndex && i2===contentData?.selectedChildIndex">
       <div *ngIf="i1===contentData?.selectedIndex">
 
         <div (click)="onClick(i2, 'subprojects')">

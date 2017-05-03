@@ -10,6 +10,10 @@
 
 :host /deep/ {
 
+  .selected {
+    border: 1px solid red;
+  }
+
   #saveContent {
     position: fixed;
     top: 20px;
