@@ -10,6 +10,24 @@
 
 :host /deep/ {
 
+  b {
+    font-weight: bold;
+    //color: red;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  //img[wwidth] {
+  //  //width: 50%;
+  //  width: 50%;
+  //}
+
+  img.wwidth {
+    //width: 50%;
+    width: 50%;
+  }
   .selected {
     border: 1px solid red;
   }
@@ -40,7 +58,7 @@
 
   div.main {
     heigth: 100%;
-    background-color: hsl(187, 100%, 25%);
+    background-color: hsl(187, 100%, 95%);
     margin: 0 35% 0 25%;
     //overflow-x: scroll;
     overflow: hidden;

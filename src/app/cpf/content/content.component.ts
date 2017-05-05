@@ -26,7 +26,7 @@ export class ContentComponent implements OnInit {
   private pathNodes: PathNodes;
   public allContentData$: Observable<AllContentData>;
 
-  public userIdToSave = '_prototext';
+  public userIdToSave = 'prototext';
 
   getAllContentData(urlPath, data, userId?) {
     return this.allContentService.getAllContentData(urlPath, data, userId, 'https://denkwelten.firebaseio.com');
