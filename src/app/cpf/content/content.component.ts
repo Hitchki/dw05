@@ -99,27 +99,6 @@ export class ContentComponent implements OnInit {
     return currentUserId;
   }
 
-  newUrlPath(url) {
-    // url = '/playground/angular-fire/';
-    url = 'prototext/projects/0/subprojects/1/normtext/0/normtext/1';
-    // url = 'playground1 ';
-    // http://localhost:4200/cpf#prototext/projects/0/subprojects/1/normtext/0/normtext/0
-    // alert(url);
-    // debugger;
-    // this.router.navigateByUrl(url)
-    this.router.navigate(['cpf'], {fragment: url})
-      .then( (result) => {
-        if (!result) {
-          // Hier kommt man hin, wenn sich nix geändert hat, auch nicht im Fragment!
-          console.log(result);
-          // alert(result);
-        }
-        console.log('result navigateByUrl', result);
-      })
-      .catch(err => alert(err));
-  }
-
-
   onUiChange(urlPath: UiChange) {
     const fullUrlPath = `/cpf#${urlPath}`;
 
@@ -136,8 +115,30 @@ export class ContentComponent implements OnInit {
     console.log('pathNodes to save', this.pathNodes);
     this.contentService.saveUserContent(this.userIdToSave, { projects: this.pathNodes[0].cpfNodes}) ;
   }
+
 }
 
+
+//
+// newUrlPath(url) {
+//   // url = '/playground/angular-fire/';
+//   url = 'prototext/projects/0/subprojects/1/normtext/0/normtext/1';
+//   // url = 'playground1 ';
+//   // http://localhost:4200/cpf#prototext/projects/0/subprojects/1/normtext/0/normtext/0
+//   // alert(url);
+//   // debugger;
+//   // this.router.navigateByUrl(url)
+//   this.router.navigate(['cpf'], {fragment: url})
+//     .then( (result) => {
+//       if (!result) {
+//         // Hier kommt man hin, wenn sich nix geändert hat, auch nicht im Fragment!
+//         console.log(result);
+//         // alert(result);
+//       }
+//       console.log('result navigateByUrl', result);
+//     })
+//     .catch(err => alert(err));
+// }
 
 
 
