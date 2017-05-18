@@ -8,7 +8,8 @@ import { SharedModule } from '../shared/shared.module';
 import { AngularFireListComponent } from './angular-fire-list/angular-fire-list.component';
 import { AngularFireObjectComponent } from './angular-fire-object/angular-fire-object.component';
 import { CssTestComponent } from './css-test/css-test.component';
-import { NgIfMediaQuery } from '../media-query/if-media-query.directive'
+import { NgIfMediaQuery } from '../media-query/if-media-query.directive';
+import { TemplateFormsComponent } from './template-forms/template-forms.component'
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { NgIfMediaQuery } from '../media-query/if-media-query.directive'
     AngularFireListComponent,
     AngularFireObjectComponent,
     CssTestComponent,
-    NgIfMediaQuery
+    NgIfMediaQuery,
+    TemplateFormsComponent
   ]
 })
 export class PlaygroundModule { }
