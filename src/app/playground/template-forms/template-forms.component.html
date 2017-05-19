@@ -1,3 +1,50 @@
 <p>
   template-forms works!
 </p>
+
+<h3>Create Lessons Form - Template driven</h3>
+
+<form #f="ngForm" autocomplete="off" novalidate>
+
+  <fieldset ngModelGroup="summary" #summary="ngModelGroup">
+    <legend [ngStyle]="summaryStatus(summary)">Summary</legend>
+    <div class="form-field">
+      <label>Title</label>
+      <input #tit type="text" name="title" [(ngModel)]="lesson.title" required
+             minlength="3" maxlength="15" #title="ngModel">
+      <div class="field-error-message" *ngIf="title?.dirty && title?.errors?.required">Field is mandatory</div>
+      <div class="field-error-message" *ngIf="title?.dirty && title?.errors?.minlength">minimum 3 characters</div>
+    </div>
+    <div class="form-field">
+      <label>Duration</label>
+      <input type="text" [(ngModel)]="lesson.duration" name="duration" required patter="[0-9]+">
+    </div>
+    <div class="form-field">
+      <label>Level</label>
+      <input type="radio" name="level" value="BEGINNER" [(ngModel)]="lesson.value">'Beginner'
+      <input type="radio" name="level" value="ADVANCED" [(ngModel)]="lesson.value">'Advanced'
+    </div>
+
+    <p>
+      <button class="lesson-button" type="submit" [disabled]="!f.valid">Create Lesson</button>
+    </p>
+
+  </fieldset>
+
+  <fieldset>
+    <legend>Long text fields</legend>
+    <div class="form-field">
+      <label for="">Description:</label>
+      <textarea name="description" id="" [(ngModel)]="lesson.description"required></textarea>
+    </div>
+  </fieldset>
+
+  <div class="debug">
+    <h3></h3>
+    <!--<pre>{{lesson | json }}</pre>-->
+    form.value:<pre>{{f.value | json }}</pre>
+    title.errors:<pre>{{title.errors | json }}</pre>
+    The title is:<pre>{{tit.className }}</pre>
+  </div>
+
+</form>
