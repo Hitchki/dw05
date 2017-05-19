@@ -11,6 +11,11 @@ export class ReactiveFormsComponent implements OnInit {
 
   myForm: FormGroup;
 
+  duration = new FormControl(10, [
+    Validators.required,
+    Validators.pattern('[0-9]+')
+  ]);
+
   lesson = new Lesson(
     'Title goes here',
     0,
@@ -26,10 +31,7 @@ export class ReactiveFormsComponent implements OnInit {
           Validators.minLength(3),
           Validators.maxLength(20)]
         ],
-      duration: [10, [
-        Validators.required,
-        Validators.pattern('[0-9]+')]
-      ],
+      duration: this.duration,
       description: ['Description goes here', [
         Validators.required]]
     });
