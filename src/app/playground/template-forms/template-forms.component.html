@@ -17,7 +17,9 @@
     </div>
     <div class="form-field">
       <label>Duration</label>
-      <input type="text" [(ngModel)]="lesson.duration" name="duration" required patter="[0-9]+">
+      <input type="text" [(ngModel)]="lesson.duration" name="duration" required pattern="[0-9]+" #duration="ngModel">
+      <div class="field-error-message" *ngIf="duration?.dirty && duration?.errors?.required">Field is mandatory</div>
+      <div class="field-error-message" *ngIf="duration?.dirty && duration?.errors?.pattern">only digits allowed characters</div>
     </div>
     <div class="form-field">
       <label>Level</label>
@@ -39,12 +41,13 @@
     </div>
   </fieldset>
 
-  <div class="debug">
-    <h3></h3>
-    <!--<pre>{{lesson | json }}</pre>-->
-    form.value:<pre>{{f.value | json }}</pre>
-    title.errors:<pre>{{title.errors | json }}</pre>
-    The title is:<pre>{{tit.className }}</pre>
-  </div>
-
 </form>
+
+
+<div class="debug">
+  <h3>  Debug information:</h3>
+  <!--<pre>{{lesson | json }}</pre>-->
+  form.value:<pre>{{f.value | json }}</pre>
+  title.errors:<pre>{{title.errors | json }}</pre>
+  The title is:<pre>{{tit.className }}</pre>
+</div>
