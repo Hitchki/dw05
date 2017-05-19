@@ -1,0 +1,13 @@
+.ng-dirty.ng-invalid {
+  border: 1px solid crimson;
+}
+
+/*.field-error-message {*/
+  /*color: crimson;*/
+/*}*/
+
+/*.debug {*/
+  /*margin-top: 40px;*/
+  /*color: #1a4a8e;*/
+  /*font-size: smaller;*/
+/*}*/

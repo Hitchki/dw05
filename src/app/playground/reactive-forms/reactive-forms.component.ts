@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'cpf-reactive-forms',
@@ -12,9 +12,19 @@ export class ReactiveFormsComponent implements OnInit {
 
   constructor() {
     this.myForm = new FormGroup({
-      title: new FormControl('This ist the title'),
-      duration: new FormControl(10),
-      description: new FormControl('Description goes here')
+      title: new FormControl(
+          'This ist the title', [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(10)
+        ]
+      ),
+      duration: new FormControl(10, [
+        Validators.required,
+        Validators.pattern('[0-9]+')
+      ]),
+      description: new FormControl('Description goes here', [
+        Validators.required])
     });
   }
 
