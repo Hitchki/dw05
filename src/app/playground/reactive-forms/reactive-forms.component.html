@@ -15,7 +15,7 @@
     </div>
     <div class="form-field">
       <label>Description</label>
-      <textarea myFormname="description" id="" cols="30" rows="10"></textarea>
+      <textarea formControlName="description" id="" cols="30" rows="10"></textarea>
     </div>
 
     <div class="form-field">
@@ -25,10 +25,12 @@
 </form>
 
 
-<fieldset>
+<fieldset class="debug">
   <!--<legend>Long text fields</legend>-->
   <!--<div class="form-field">-->
   <!--<label for="">Description:</label>-->
   <!--<textarea name="description" id="" [(ngModel)]="lesson.description"required></textarea>-->
   <!--</div>-->
+  Lesson Value:
+  <pre>{{lesson | json}}</pre>
 </fieldset>

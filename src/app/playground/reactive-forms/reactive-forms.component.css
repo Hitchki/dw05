@@ -6,8 +6,8 @@
   /*color: crimson;*/
 /*}*/
 
-/*.debug {*/
-  /*margin-top: 40px;*/
-  /*color: #1a4a8e;*/
-  /*font-size: smaller;*/
-/*}*/
+.debug {
+  margin-top: 40px;
+  color: #1a4a8e;
+  font-size: smaller;
+}
