@@ -7,6 +7,7 @@ import { AngularFireListComponent } from './angular-fire-list/angular-fire-list.
 import { AngularFireObjectComponent } from './angular-fire-object/angular-fire-object.component';
 import { CssTestComponent } from './css-test/css-test.component';
 import {TemplateFormsComponent} from './template-forms/template-forms.component';
+import {ReactiveFormsComponent} from "./reactive-forms/reactive-forms.component";
 
 
 const playgroundRoutes: Routes =
@@ -28,6 +29,9 @@ const playgroundRoutes: Routes =
       }, {
         path: 'template-forms',
         component: TemplateFormsComponent
+      }, {
+        path: 'reactive-forms',
+        component: ReactiveFormsComponent
       }, {
       path: 'css-test',
       component: CssTestComponent

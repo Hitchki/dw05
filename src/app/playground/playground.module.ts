@@ -9,7 +9,8 @@ import { AngularFireListComponent } from './angular-fire-list/angular-fire-list.
 import { AngularFireObjectComponent } from './angular-fire-object/angular-fire-object.component';
 import { CssTestComponent } from './css-test/css-test.component';
 import { NgIfMediaQuery } from '../media-query/if-media-query.directive';
-import { TemplateFormsComponent } from './template-forms/template-forms.component'
+import { TemplateFormsComponent } from './template-forms/template-forms.component';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component'
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { TemplateFormsComponent } from './template-forms/template-forms.componen
     AngularFireObjectComponent,
     CssTestComponent,
     NgIfMediaQuery,
-    TemplateFormsComponent
+    TemplateFormsComponent,
+    ReactiveFormsComponent
   ]
 })
 export class PlaygroundModule { }
