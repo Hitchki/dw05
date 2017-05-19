@@ -3,23 +3,23 @@
   Model driven Form
 </p>
 
-<form #f="ngForm" autocomplete="off" novalidate>
+<form [formGroup]="myForm" autocomplete="off" novalidate>
 
     <div class="form-field">
       <label>Title</label>
-      <input>
+      <input formControlName="title">
     </div>
     <div class="form-field">
       <label>Duration</label>
-      <input>
+      <input formControlName="duration">
     </div>
     <div class="form-field">
       <label>Description</label>
-      <textarea name="" id="" cols="30" rows="10"></textarea>
+      <textarea myFormname="description" id="" cols="30" rows="10"></textarea>
     </div>
 
     <div class="form-field">
-      <button class="lesson-button" type="submit" [disabled]="!f.valid">Create Lesson</button>
+      <button class="lesson-button" type="submit">Create Lesson</button>
     </div>
 
 </form>
