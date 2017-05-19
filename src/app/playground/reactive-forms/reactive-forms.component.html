@@ -7,7 +7,11 @@
 
     <div class="form-field">
       <label>Title</label>
-      <input formControlName="title">
+      <input formControlName="title" required minlength="3">
+      <div class="field-error-message"
+            *ngIf="myForm.controls.title.errors?.required">field is mandatory</div>
+      <div class="field-error-message"
+           *ngIf="myForm.controls.title.errors?.minlength">at least threee chars required</div>
     </div>
     <div class="form-field">
       <label>Duration</label>

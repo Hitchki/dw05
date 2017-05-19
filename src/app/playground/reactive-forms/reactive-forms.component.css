@@ -2,9 +2,9 @@
   border: 1px solid crimson;
 }
 
-/*.field-error-message {*/
-  /*color: crimson;*/
-/*}*/
+.field-error-message {
+  color: crimson;
+}
 
 .debug {
   margin-top: 40px;
