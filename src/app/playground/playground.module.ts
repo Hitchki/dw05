@@ -10,14 +10,16 @@ import { AngularFireObjectComponent } from './angular-fire-object/angular-fire-o
 import { CssTestComponent } from './css-test/css-test.component';
 import { NgIfMediaQuery } from '../media-query/if-media-query.directive';
 import { TemplateFormsComponent } from './template-forms/template-forms.component';
-import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component'
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
 
     SharedModule,
-    PlaygroundRoutingModule
+    PlaygroundRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [
     PlaygroundComponent,
@@ -27,7 +29,7 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
     CssTestComponent,
     NgIfMediaQuery,
     TemplateFormsComponent,
-    ReactiveFormsComponent
+    ReactiveFormsComponent,
   ]
 })
 export class PlaygroundModule { }
