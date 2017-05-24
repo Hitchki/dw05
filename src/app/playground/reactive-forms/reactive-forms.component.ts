@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Lesson, StudentLevel} from './lesson';
+import {validateDuration} from './validateDuration';
 
 @Component({
   selector: 'cpf-reactive-forms',
@@ -11,10 +12,7 @@ export class ReactiveFormsComponent implements OnInit {
 
   myForm: FormGroup;
 
-  duration = new FormControl(10, [
-    Validators.required,
-    Validators.pattern('[0-9]+')
-  ]);
+  duration = new FormControl(10, [validateDuration]);
 
   lesson = new Lesson(
     'Title goes here',
